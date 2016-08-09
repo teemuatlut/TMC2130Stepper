@@ -8,4 +8,4 @@ TODO:
 - Easy setup for NEMA17 with default settings
 
 What works:
-- Nearly all the features in the registeries are configurable through get/set functions. See datasheet for possible features.
+- Nearly all the features in the registeries are configurable through get/set functions. See datasheet for possible features. Keywords.txt lists all the implemented functions.
