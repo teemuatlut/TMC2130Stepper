@@ -148,6 +148,8 @@ class TMC2130Stepper {
 		// REG_ENCM_CTRL
 		uint8_t invert_encoder();
 		void invert_encoder(uint8_t value);
+		uint8_t maxspeed();
+		void maxspeed(uint8_t value);
 		// REG_LOST_STEPS
 		uint32_t LOST_STEPS();
 
