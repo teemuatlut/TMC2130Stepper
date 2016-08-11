@@ -835,7 +835,7 @@ void TMC2130Stepper::maxspeed(uint8_t value) {
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
-// REG_ENCM_CTRL
+// REG_LOST_STEPS
 
 uint32_t TMC2130Stepper::LOST_STEPS() {
 	uint32_t data = 0x0;
