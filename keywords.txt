@@ -78,5 +78,7 @@ stealth_symmetric 		KEYWORD2
 standstill_mode 		KEYWORD2
 DRVSTATUS 				KEYWORD2
 PWM_SCALE				KEYWORD2
+invert_encoder			KEYWORD2
+maxspeed 				KEYWORD2
 LOST_STEPS				KEYWORD2
 bool _started 			KEYWORD2
