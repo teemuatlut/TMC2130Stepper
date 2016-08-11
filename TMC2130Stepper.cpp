@@ -823,8 +823,8 @@ uint32_t TMC2130Stepper::PWM_SCALE() {
 uint8_t TMC2130Stepper::invert_encoder() {return val_invert_encoder;}
 
 void TMC2130Stepper::invert_encoder(uint8_t value) {
-	val_pwm_grad = value;
-	send2130(WRITE|REG_PWMCONF, &cur_PWMCONF, (uint32_t)value << 8, 0xFF00);
+	val_invert_encoder = value;
+	send2130(WRITE|REG_ENCMCTRL, &cur_PWMCONF, value, 0b1);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
