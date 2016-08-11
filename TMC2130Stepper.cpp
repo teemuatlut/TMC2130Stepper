@@ -827,6 +827,13 @@ void TMC2130Stepper::invert_encoder(uint8_t value) {
 	send2130(WRITE|REG_ENCMCTRL, &cur_PWMCONF, value, 0b1);
 }
 
+uint8_t TMC2130Stepper::maxspeed() {return val_maxspeed;}
+
+void TMC2130Stepper::maxspeed(uint8_t value) {
+	val_maxspeed = value;
+	send2130(WRITE|REG_ENCMCTRL, &cur_PWMCONF, value, 0b1 << 1);
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////
 // REG_ENCM_CTRL
 

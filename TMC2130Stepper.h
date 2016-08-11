@@ -245,6 +245,7 @@ class TMC2130Stepper {
 		uint8_t val_pwm_symmetric			= 0;
 		uint8_t val_freewheel				= 0;
 		uint8_t val_invert_encoder			= 0;
+		uint8_t val_maxspeed				= 0;
 
 		uint32_t send2130(uint8_t addressByte, uint32_t *config, uint32_t value, uint32_t mask);
 };
