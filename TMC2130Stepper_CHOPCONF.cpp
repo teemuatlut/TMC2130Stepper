@@ -130,7 +130,7 @@ uint8_t TMC2130Stepper::high_sense_R() {return val_vsense;}
 void TMC2130Stepper::high_sense_R(uint8_t value) {
 	if (value > 1) value = 1;
 	val_vsense = value;
-	send2130(WRITE|REG_CHOPCONF, &cur_CHOPCONF, (uint32_t)(uint32_t)value << 17, (uint32_t)0b1 << 17);
+	send2130(WRITE|REG_CHOPCONF, &cur_CHOPCONF, (uint32_t)value << 17, (uint32_t)0b1 << 17);
 }
 
 uint8_t TMC2130Stepper::fullstep_threshold() {return val_vhighfs;}
@@ -138,7 +138,7 @@ uint8_t TMC2130Stepper::fullstep_threshold() {return val_vhighfs;}
 void TMC2130Stepper::fullstep_threshold(uint8_t value) {
 	if (value > 1) value = 1;
 	val_vhighfs = value;
-	send2130(WRITE|REG_CHOPCONF, &cur_CHOPCONF, (uint32_t)(uint32_t)value << 18, (uint32_t)0b1 << 18);
+	send2130(WRITE|REG_CHOPCONF, &cur_CHOPCONF, (uint32_t)value << 18, (uint32_t)0b1 << 18);
 }
 
 uint8_t TMC2130Stepper::high_speed_mode() {return val_vhighchm;}
@@ -146,7 +146,7 @@ uint8_t TMC2130Stepper::high_speed_mode() {return val_vhighchm;}
 void TMC2130Stepper::high_speed_mode(uint8_t value) {
 	if (value > 1) value = 1;
 	val_vhighchm = value;
-	send2130(WRITE|REG_CHOPCONF, &cur_CHOPCONF, (uint32_t)(uint32_t)value << 19, (uint32_t)0b1 << 19);
+	send2130(WRITE|REG_CHOPCONF, &cur_CHOPCONF, (uint32_t)value << 19, (uint32_t)0b1 << 19);
 }
 
 uint8_t TMC2130Stepper::sync_phases() {return val_sync;}
@@ -154,7 +154,7 @@ uint8_t TMC2130Stepper::sync_phases() {return val_sync;}
 void TMC2130Stepper::sync_phases(uint8_t value) {
 	if (value > 15) value = 15;
 	val_sync = value;
-	send2130(WRITE|REG_CHOPCONF, &cur_CHOPCONF, (uint32_t)(uint32_t)value << 20, 0xF00000);
+	send2130(WRITE|REG_CHOPCONF, &cur_CHOPCONF, (uint32_t)value << 20, 0xF00000);
 }
 
 uint8_t TMC2130Stepper::microsteps() {return val_mres;}
@@ -177,7 +177,7 @@ uint8_t TMC2130Stepper::interpolate() {return val_intpol;}
 void TMC2130Stepper::interpolate(uint8_t value) {
 	if (value > 1) value = 1;
 	val_intpol = value;
-	send2130(WRITE|REG_CHOPCONF, &cur_CHOPCONF, (uint32_t)(uint32_t)value << 28, (uint32_t)0b1 << 28);
+	send2130(WRITE|REG_CHOPCONF, &cur_CHOPCONF, (uint32_t)value << 28, (uint32_t)0b1 << 28);
 }
 
 uint8_t TMC2130Stepper::double_edge_step() {return val_dedge;}
@@ -185,7 +185,7 @@ uint8_t TMC2130Stepper::double_edge_step() {return val_dedge;}
 void TMC2130Stepper::double_edge_step(uint8_t value) {
 	if (value > 1) value = 1;
 	val_dedge = value;
-	send2130(WRITE|REG_CHOPCONF, &cur_CHOPCONF, (uint32_t)(uint32_t)value << 29, (uint32_t)0b1 << 29);
+	send2130(WRITE|REG_CHOPCONF, &cur_CHOPCONF, (uint32_t)value << 29, (uint32_t)0b1 << 29);
 }
 
 uint8_t TMC2130Stepper::disable_short_protection() {return val_diss2g;}
@@ -193,5 +193,5 @@ uint8_t TMC2130Stepper::disable_short_protection() {return val_diss2g;}
 void TMC2130Stepper::disable_short_protection(uint8_t value) {
 	if (value > 1) value = 1;
 	val_diss2g = value;
-	send2130(WRITE|REG_CHOPCONF, &cur_CHOPCONF, (uint32_t)(uint32_t)value << 30, (uint32_t)0b1 << 30);
+	send2130(WRITE|REG_CHOPCONF, &cur_CHOPCONF, (uint32_t)value << 30, (uint32_t)0b1 << 30);
 }
