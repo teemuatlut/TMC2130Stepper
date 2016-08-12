@@ -1,6 +1,10 @@
 #ifndef TMC2310Stepper_h
 #define TMC2310Stepper_h
 
+#if defined(ARDUINO) && ARDUINO >= 100
+	#include <Arduino.h>
+#endif
+
 class TMC2130Stepper {
 	public:
 		TMC2130Stepper(uint8_t pinEN, uint8_t pinDIR, uint8_t pinStep, uint8_t pinCS);
@@ -13,6 +17,9 @@ class TMC2130Stepper {
 		void GCONF(uint32_t value);
 		uint8_t external_ref();
 		void external_ref(uint8_t value);
+//#ifndef TMC2130Stepper_GCONF_h
+//#include "TMC2130Stepper_GCONF.h"
+//#endif
 		uint8_t internal_sense_R();
 		void internal_sense_R(uint8_t value);
 		uint8_t stealthChop();
