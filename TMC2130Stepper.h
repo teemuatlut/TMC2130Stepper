@@ -10,16 +10,13 @@ class TMC2130Stepper {
 		TMC2130Stepper(uint8_t pinEN, uint8_t pinDIR, uint8_t pinStep, uint8_t pinCS);
 		void begin();
 		void checkStatus();
-		void setSSSCurrent();
+		void SilentStepStick2130(uint16_t);
 		void setCurrent(uint16_t mah, float Rsense);
 		// REG_GCONF
 		uint32_t GCONF();
 		void GCONF(uint32_t value);
 		uint8_t external_ref();
 		void external_ref(uint8_t value);
-//#ifndef TMC2130Stepper_GCONF_h
-//#include "TMC2130Stepper_GCONF.h"
-//#endif
 		uint8_t internal_sense_R();
 		void internal_sense_R(uint8_t value);
 		uint8_t stealthChop();
