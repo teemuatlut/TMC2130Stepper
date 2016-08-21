@@ -56,14 +56,18 @@ void TMC2130Stepper::begin() {
 	digitalWrite(_pinSTEP, LOW);
 	digitalWrite(_pinCS, HIGH);
 
-	pinMode(12, OUTPUT);
-	pinMode(11, INPUT);
-	pinMode(13, OUTPUT);
-	digitalWrite(12, LOW);
-	digitalWrite(11, HIGH);
-	digitalWrite(13, LOW);
+	pinMode(MOSI, OUTPUT);
+	pinMode(MISO, INPUT);
+	pinMode(SCK, OUTPUT);
+	digitalWrite(MOSI, LOW);
+	digitalWrite(MISO, HIGH);
+	digitalWrite(SCK, LOW);
 
 	SPI.begin();
+
+	off_time(2);
+	blank_time(3);
+
 	_started = true;
 }
 
@@ -152,12 +156,13 @@ void TMC2130Stepper::checkStatus() {
 }
 //#endif
 
-void TMC2130Stepper::setSSSCurrent() {
-	setCurrent(1000, 1);
+void TMC2130Stepper::SilentStepStick2130(uint16_t current) {
+	begin();
+	setCurrent(current, 0.11);
 }
 
 /*	
-	Requested current = mah = I_rms/1000
+	Requested current = mA = I_rms/1000
 	Equation for current:
 	I_rms = (CS+1)/32 * V_fs/(R_sense+0.02ohm) * 1/sqrt(2)
 	Solve for CS ->
@@ -165,20 +170,21 @@ void TMC2130Stepper::setSSSCurrent() {
 	
 	Example:
 	vsense = 0b0 -> V_fs = 0.325V
-	mah = 1640mAh = I_rms/1000 = 1.64A
+	mA = 1640mA = I_rms/1000 = 1.64A
 	R_sense = 0.10 Ohm
 	->
-	CS = 32*sqrt(2)*1.64*(0.10+0.02)/0.325 - 1 = 27.4
-	CS = 27
+	CS = 32*sqrt(2)*1.64*(0.10+0.02)/0.325 - 1 = 26.4
+	CS = 26
 */	
-void TMC2130Stepper::setCurrent(uint16_t mah, float Rsense) {
+void TMC2130Stepper::setCurrent(uint16_t mA, float Rsense, float multiplier) {
 	float V_fs;
 	if (val_vsense)
-		V_fs = 0.325;
-	else
 		V_fs = 0.180;
-	uint8_t CS = 32.0*1.41421*mah/1000.0*(Rsense+0.02)/V_fs - 1;
+	else
+		V_fs = 0.325;
+	uint8_t CS = 32.0*1.41421*mA/1000.0*(Rsense+0.02)/V_fs - 1;
 	run_current(CS);
+	hold_current(CS*multiplier);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
