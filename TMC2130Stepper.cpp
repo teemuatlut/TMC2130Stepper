@@ -158,7 +158,7 @@ void TMC2130Stepper::checkStatus() {
 
 void TMC2130Stepper::SilentStepStick2130(uint16_t current) {
 	begin();
-	setCurrent(current, 0.11);
+	setCurrent(current, 0.11, 0.5);
 }
 
 /*	
