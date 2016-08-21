@@ -14,7 +14,7 @@ Stepper	TMC2310Stepper	KEYWORD1
 
 begin 					KEYWORD2
 checkStatus 			KEYWORD2
-setSSSCurrent 			KEYWORD2
+SilentStepStick2130		KEYWORD2
 setCurrent 				KEYWORD2
 GCONF 					KEYWORD2
 external_ref 			KEYWORD2
