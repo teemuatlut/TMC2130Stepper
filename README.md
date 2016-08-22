@@ -180,10 +180,10 @@ Function | Argument | Returns | Description
 PWMCONF 			| - 		| uint32_t | Read actual bits from the register
 stealth_amplitude 	| 0..255 	| uint8_t  | pwm_ autoscale=0 <br>User defined  PWM amplitude offset (0-255) The resulting amplitude (limited to 0…255) is: PWM_AMPL + PWM_GRAD * 256 / TSTEP <p>pwm_ autoscale=1 <br>User defined maximum PWM amplitude when switching back from current chopper mode to voltage PWM mode (switch over velocity defined by TPWMTHRS). Do not set too low values, as the regulation cannot measure the current when the actual PWM value goes below a setting specific value. Settings above 0x40 recommended. 
 stealth_gradient 	| 0..255 	| uint8_t  | pwm_ autoscale=0 <br>Velocity dependent gradient for PWM amplitude:  PWM_GRAD * 256 / TSTEP  is added to PWM_AMPL <p>pwm_ autoscale=1 <br>User defined  maximum PWM amplitude change per half wave (1 to 15) 
-stealth_freq 		| 0..3 		| uint8_t  | <b>0:</b> fPWM=2/1024 fCLK<br><b>1:</b> fPWM=2/683 fCLK<br>2: fPWM=2/512 fCLK<br>3: fPWM=2/410 fCLK
+stealth_freq 		| 0..3 		| uint8_t  | <b>0:</b> fPWM=2/1024 fCLK<br><b>1:</b> fPWM=2/683 fCLK<br><b>2:</b> fPWM=2/512 fCLK<br><b>3:</b> fPWM=2/410 fCLK
 stealth_autoscale 	| 0/1		| uint8_t  | <b>0:</b> User defined PWM amplitude. The current settings have no influence.<br><b>1:</b> Enable automatic current control Attention: When using a user defined sine wave table, the amplitude of this sine wave table should not be less than 244. Best results are obtained with 247 to 252 as peak values.
 stealth_symmetric 	| 0/1	 	| uint8_t  | <b>0:</b> The PWM value may change within each PWM cycle (standard mode)<br><b>1:</b> A symmetric PWM cycle is enforced 
-standstill_mode 	| 0..3		| uint8_t  | Stand still option when motor current setting is zero (I_HOLD=0).<br><b>0:</b>  Normal operation<br><b>1:</b>  Freewheeling<br>2:  Coil shorted using LS drivers<br>3:  Coil shorted using HS drivers 
+standstill_mode 	| 0..3		| uint8_t  | Stand still option when motor current setting is zero (I_HOLD=0).<br><b>0:</b>  Normal operation<br><b>1:</b>  Freewheeling<br><b>2:</b> Coil shorted using LS drivers<br><b>3:</b>  Coil shorted using HS drivers 
 
 ### REG_DRVSTATUS register
 Function 	| Argument 	| Returns 	| Description
