@@ -139,9 +139,9 @@ class TMC2130Stepper {
 		void stealth_gradient(uint8_t value);
 		uint8_t stealth_freq();
 		void stealth_freq(uint8_t value);
-		uint8_t stealth_autoscale();
+		bool stealth_autoscale();
 		void stealth_autoscale(uint8_t value);
-		uint8_t stealth_symmetric();
+		bool stealth_symmetric();
 		void stealth_symmetric(uint8_t value);
 		uint8_t standstill_mode();
 		void standstill_mode(uint8_t value);
@@ -247,8 +247,8 @@ class TMC2130Stepper {
 		uint8_t val_pwm_ampl				= 0;
 		uint8_t val_pwm_grad				= 0;
 		uint8_t val_pwm_freq				= 0;
-		uint8_t val_pwm_autoscale			= 0;
-		uint8_t val_pwm_symmetric			= 0;
+		bool val_pwm_autoscale				= 0;
+		bool val_pwm_symmetric				= 0;
 		uint8_t val_freewheel				= 0;
 		uint8_t val_invert_encoder			= 0;
 		uint8_t val_maxspeed				= 0;

@@ -40,7 +40,7 @@ void TMC2130Stepper::stealth_freq(uint8_t value) {
 	send2130(WRITE|REG_PWMCONF, &cur_PWMCONF, (uint32_t)value << 16, 0x30000);
 }
 
-uint8_t TMC2130Stepper::stealth_autoscale() {return val_pwm_autoscale;}
+bool TMC2130Stepper::stealth_autoscale() {return val_pwm_autoscale;}
 
 void TMC2130Stepper::stealth_autoscale(uint8_t value) {
 	if (value > 1) value = 1;
@@ -48,7 +48,7 @@ void TMC2130Stepper::stealth_autoscale(uint8_t value) {
 	send2130(WRITE|REG_PWMCONF, &cur_PWMCONF, (uint32_t)value << 18, (uint32_t)0b1 << 18);
 }
 
-uint8_t TMC2130Stepper::stealth_symmetric() {return val_pwm_symmetric;}
+bool TMC2130Stepper::stealth_symmetric() {return val_pwm_symmetric;}
 
 void TMC2130Stepper::stealth_symmetric(uint8_t value) {
 	if (value > 1) value = 1;
