@@ -18,7 +18,7 @@ void TMC2130Stepper::GCONF(uint32_t value) {
 	send2130(WRITE|REG_GCONF, &cur_GCONF, value, 0xFFFFFFFF);
 }
 
-uint8_t TMC2130Stepper::external_ref() {return val_i_scale_analog;}
+bool TMC2130Stepper::external_ref() {return val_i_scale_analog;}
 
 void TMC2130Stepper::external_ref(uint8_t value) {
 	if (value > 1) value = 1;
@@ -26,7 +26,7 @@ void TMC2130Stepper::external_ref(uint8_t value) {
 	send2130(WRITE|REG_GCONF, &cur_GCONF, value, 0b1);
 }
 
-uint8_t TMC2130Stepper::internal_sense_R() {return val_internal_r_sense;}
+bool TMC2130Stepper::internal_sense_R() {return val_internal_r_sense;}
 
 void TMC2130Stepper::internal_sense_R(uint8_t value) {
 	if (value > 1) value = 1;
@@ -34,7 +34,7 @@ void TMC2130Stepper::internal_sense_R(uint8_t value) {
 	send2130(WRITE|REG_GCONF, &cur_GCONF, (uint32_t)value << 1, (uint32_t)0b1 << 1);
 }
 
-uint8_t TMC2130Stepper::stealthChop() {return val_en_pwm_mode;}
+bool TMC2130Stepper::stealthChop() {return val_en_pwm_mode;}
 
 void TMC2130Stepper::stealthChop(uint8_t value) {
 	if (value > 1) value = 1;
@@ -42,7 +42,7 @@ void TMC2130Stepper::stealthChop(uint8_t value) {
 	send2130(WRITE|REG_GCONF, &cur_GCONF, (uint32_t)value << 2, (uint32_t)0b1 << 2);
 }
 
-uint8_t TMC2130Stepper::commutation() {return val_enc_commutation;}
+bool TMC2130Stepper::commutation() {return val_enc_commutation;}
 
 void TMC2130Stepper::commutation(uint8_t value) {
 	if (value > 1) value = 1;
@@ -50,7 +50,7 @@ void TMC2130Stepper::commutation(uint8_t value) {
 	send2130(WRITE|REG_GCONF, &cur_GCONF, (uint32_t)value << 3, (uint32_t)0b1 << 3);
 }
 
-uint8_t TMC2130Stepper::shaft_dir() {return val_shaft;}
+bool TMC2130Stepper::shaft_dir() {return val_shaft;}
 
 void TMC2130Stepper::shaft_dir(uint8_t value) {
 #ifdef TMC2130DEBUG
@@ -62,7 +62,7 @@ void TMC2130Stepper::shaft_dir(uint8_t value) {
 	send2130(WRITE|REG_GCONF, &cur_GCONF, (uint32_t)value << 4, (uint32_t)0b1 << 4);
 }
 
-uint8_t TMC2130Stepper::diag0_errors() {return val_diag0_error;}
+bool TMC2130Stepper::diag0_errors() {return val_diag0_error;}
 
 void TMC2130Stepper::diag0_errors(uint8_t value) {
 	if (value > 1) value = 1;
@@ -70,7 +70,7 @@ void TMC2130Stepper::diag0_errors(uint8_t value) {
 	send2130(WRITE|REG_GCONF, &cur_GCONF, (uint32_t)value << 5, (uint32_t)0b1 << 5);
 }
 
-uint8_t TMC2130Stepper::diag0_temp_prewarn() {return val_diag0_otpw;}
+bool TMC2130Stepper::diag0_temp_prewarn() {return val_diag0_otpw;}
 
 void TMC2130Stepper::diag0_temp_prewarn(uint8_t value) {
 	if (value > 1) value = 1;
@@ -78,7 +78,7 @@ void TMC2130Stepper::diag0_temp_prewarn(uint8_t value) {
 	send2130(WRITE|REG_GCONF, &cur_GCONF, (uint32_t)value << 6, (uint32_t)0b1 << 6);
 }
 
-uint8_t TMC2130Stepper::diag0_stall() {return val_diag0_stall;}
+bool TMC2130Stepper::diag0_stall() {return val_diag0_stall;}
 
 void TMC2130Stepper::diag0_stall(uint8_t value) {
 	if (value > 1) value = 1;
@@ -86,7 +86,7 @@ void TMC2130Stepper::diag0_stall(uint8_t value) {
 	send2130(WRITE|REG_GCONF, &cur_GCONF, (uint32_t)value << 7, (uint32_t)0b1 << 7);
 }
 
-uint8_t TMC2130Stepper::diag1_stall() {return val_diag1_stall;}
+bool TMC2130Stepper::diag1_stall() {return val_diag1_stall;}
 
 void TMC2130Stepper::diag1_stall(uint8_t value) {
 	if (value > 1) value = 1;
@@ -94,7 +94,7 @@ void TMC2130Stepper::diag1_stall(uint8_t value) {
 	send2130(WRITE|REG_GCONF, &cur_GCONF, (uint32_t)value << 8, (uint32_t)0b1 << 8);
 }
 
-uint8_t TMC2130Stepper::diag1_index() {return val_diag1_index;}
+bool TMC2130Stepper::diag1_index() {return val_diag1_index;}
 
 void TMC2130Stepper::diag1_index(uint8_t value) {
 	if (value > 1) value = 1;
@@ -102,7 +102,7 @@ void TMC2130Stepper::diag1_index(uint8_t value) {
 	send2130(WRITE|REG_GCONF, &cur_GCONF, (uint32_t)value << 9, (uint32_t)0b1 << 9);
 }
 
-uint8_t TMC2130Stepper::diag1_chopper_on() {return val_diag1_onstate;}
+bool TMC2130Stepper::diag1_chopper_on() {return val_diag1_onstate;}
 
 void TMC2130Stepper::diag1_chopper_on(uint8_t value) {
 	if (value > 1) value = 1;
@@ -110,7 +110,7 @@ void TMC2130Stepper::diag1_chopper_on(uint8_t value) {
 	send2130(WRITE|REG_GCONF, &cur_GCONF, (uint32_t)value << 10, (uint32_t)0b1 << 10);
 }
 
-uint8_t TMC2130Stepper::diag1_steps_skipped() {return val_diag1_steps_skipped;}
+bool TMC2130Stepper::diag1_steps_skipped() {return val_diag1_steps_skipped;}
 
 void TMC2130Stepper::diag1_steps_skipped(uint8_t value) {
 	if (value > 1) value = 1;
@@ -118,7 +118,7 @@ void TMC2130Stepper::diag1_steps_skipped(uint8_t value) {
 	send2130(WRITE|REG_GCONF, &cur_GCONF, (uint32_t)value << 11, (uint32_t)0b1 << 11);
 }
 
-uint8_t TMC2130Stepper::diag0_active_high() {return val_diag0_int_pushpull;}
+bool TMC2130Stepper::diag0_active_high() {return val_diag0_int_pushpull;}
 
 void TMC2130Stepper::diag0_active_high(uint8_t value) {
 	if (value > 1) value = 1;
@@ -126,7 +126,7 @@ void TMC2130Stepper::diag0_active_high(uint8_t value) {
 	send2130(WRITE|REG_GCONF, &cur_GCONF, (uint32_t)value << 12, (uint32_t)0b1 << 12);
 }
 
-uint8_t TMC2130Stepper::diag1_active_high() {return val_diag1_pushpull;}
+bool TMC2130Stepper::diag1_active_high() {return val_diag1_pushpull;}
 
 void TMC2130Stepper::diag1_active_high(uint8_t value) {
 	if (value > 1) value = 1;
@@ -134,7 +134,7 @@ void TMC2130Stepper::diag1_active_high(uint8_t value) {
 	send2130(WRITE|REG_GCONF, &cur_GCONF, (uint32_t)value << 13, (uint32_t)0b1 << 13);
 }
 
-uint8_t TMC2130Stepper::small_hysterisis() {return val_small_hysterisis;}
+bool TMC2130Stepper::small_hysterisis() {return val_small_hysterisis;}
 
 void TMC2130Stepper::small_hysterisis(uint8_t value) {
 	if (value > 1) value = 1;
@@ -142,7 +142,7 @@ void TMC2130Stepper::small_hysterisis(uint8_t value) {
 	send2130(WRITE|REG_GCONF, &cur_GCONF, (uint32_t)value << 14, (uint32_t)0b1 << 14);
 }
 
-uint8_t TMC2130Stepper::stop_enable() {return val_stop_enable;}
+bool TMC2130Stepper::stop_enable() {return val_stop_enable;}
 
 void TMC2130Stepper::stop_enable(uint8_t value) {
 	if (value > 1) value = 1;
@@ -150,7 +150,7 @@ void TMC2130Stepper::stop_enable(uint8_t value) {
 	send2130(WRITE|REG_GCONF, &cur_GCONF, (uint32_t)value << 15, (uint32_t)0b1 << 15);
 }
 
-uint8_t TMC2130Stepper::direct_mode() {return val_direct_mode;}
+bool TMC2130Stepper::direct_mode() {return val_direct_mode;}
 
 void TMC2130Stepper::direct_mode(uint8_t value) {
 	if (value > 1) value = 1;

@@ -87,23 +87,23 @@ Note: You can read the saved value by calling a function without providing an ar
 Function 			| Argument range | Returns | Description
 --------------------|-----|---------|-----------------------------
 GCONF 				|  -  | uint32_t| Read actual bits from the register
-external_ref 		| 0/1 | uint8_t | Use external voltage reference for coil currents
-internal_sense_R 	| 0/1 | uint8_t | Use internal sense resistors
-stealthChop 		| 0/1 | uint8_t | Enable stealthChop (dependant on velocity thresholds)
-commutation 		| 0/1 | uint8_t | Enable commutation by full step encoder
-shaft_dir 			| 0/1 | uint8_t | Inverse motor direction
-diag0_errors 		| 0/1 | uint8_t | Enable DIAG0 active on driver errors: Over temperature (ot), short to GND (s2g), undervoltage chargepump (uv_cp)
-diag0_temp_prewarn 	| 0/1 | uint8_t | Enable DIAG0 active on driver over temperature prewarning
-diag0_stall 		| 0/1 | uint8_t | Enable DIAG0 active on motor stall (set TCOOLTHRS before using this feature)
-diag1_stall 		| 0/1 | uint8_t | Enable DIAG1 active on motor stall (set TCOOLTHRS before using this feature) 
-diag1_index 		| 0/1 | uint8_t | Enable DIAG1 active on index position (microstep look up table position 0) 
-diag1_chopper_on 	| 0/1 | uint8_t | Enable DIAG1 active when chopper is on
-diag1_steps_skipped | 0/1 | uint8_t | Enable output toggle when steps are skipped in dcStep mode (increment of LOST_STEPS). Do not enable in conjunction with other DIAG1 options. 
-diag0_active_high 	| 0/1 | uint8_t | Set DIAG0 to active high
-diag1_active_high 	| 0/1 | uint8_t | Set DIAG1 to active high
-small_hysterisis 	| 0/1 | uint8_t | <b>0:</b> Hysteresis for step frequency comparison is 1/16 <br><b>1:</b> Hysteresis for step frequency comparison is 1/32 
-stop_enable 		| 0/1 | uint8_t | Emergency stop: DCIN stops the sequencer when tied high (no steps become executed by the sequencer, motor goes to standstill state).
-direct_mode 		| 0/1 | uint8_t | Motor coil currents and polarity are directly controlled by the SPI interface.
+external_ref 		| 0/1 | bool | Use external voltage reference for coil currents
+internal_sense_R 	| 0/1 | bool | Use internal sense resistors
+stealthChop 		| 0/1 | bool | Enable stealthChop (dependant on velocity thresholds)
+commutation 		| 0/1 | bool | Enable commutation by full step encoder
+shaft_dir 			| 0/1 | bool | Inverse motor direction
+diag0_errors 		| 0/1 | bool | Enable DIAG0 active on driver errors: Over temperature (ot), short to GND (s2g), undervoltage chargepump (uv_cp)
+diag0_temp_prewarn 	| 0/1 | bool | Enable DIAG0 active on driver over temperature prewarning
+diag0_stall 		| 0/1 | bool | Enable DIAG0 active on motor stall (set TCOOLTHRS before using this feature)
+diag1_stall 		| 0/1 | bool | Enable DIAG1 active on motor stall (set TCOOLTHRS before using this feature) 
+diag1_index 		| 0/1 | bool | Enable DIAG1 active on index position (microstep look up table position 0) 
+diag1_chopper_on 	| 0/1 | bool | Enable DIAG1 active when chopper is on
+diag1_steps_skipped | 0/1 | bool | Enable output toggle when steps are skipped in dcStep mode (increment of LOST_STEPS). Do not enable in conjunction with other DIAG1 options. 
+diag0_active_high 	| 0/1 | bool | Set DIAG0 to active high
+diag1_active_high 	| 0/1 | bool | Set DIAG1 to active high
+small_hysterisis 	| 0/1 | bool | <b>0:</b> Hysteresis for step frequency comparison is 1/16 <br><b>1:</b> Hysteresis for step frequency comparison is 1/32 
+stop_enable 		| 0/1 | bool | Emergency stop: DCIN stops the sequencer when tied high (no steps become executed by the sequencer, motor goes to standstill state).
+direct_mode 		| 0/1 | bool | Motor coil currents and polarity are directly controlled by the SPI interface.
 
 ### IHOLD_IRUN register
 Function 		| Argument 	| Returns | Description
