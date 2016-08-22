@@ -23,6 +23,7 @@ or
 Nearly all the features in the registeries are configurable through get/set functions. See below for a list of functions. Datasheet from Trinamic also provides further detail into the settings available.
 
 ## Simple example
+```cpp
 	/*
 	Initializes the library and turns the motor in alternating directions.
 	Direction changes are implemented with two different functions provided by the library.
@@ -68,6 +69,7 @@ Nearly all the features in the registeries are configurable through get/set func
 			last_time = ms;
 		}
 	}
+```
 
 ## Register functions:
 
