@@ -24,51 +24,51 @@ Nearly all the features in the registeries are configurable through get/set func
 
 ## Simple example
 ```cpp
-	/*
-	Initializes the library and turns the motor in alternating directions.
-	Direction changes are implemented with two different functions provided by the library.
-	*/
-	const int pinEN = 16;	// Pin numbers are for an Arduino Nano v3.0
-	const int pinDIR = 19;	// Modify them to suit your own board
-	const int pinStep = 18;
-	const int pinCS = 17;
-	//const int pinMOSI = 12;
-	//const int pinMISO = 11;
-	//const int pinSCK = 13;
+/*
+Initializes the library and turns the motor in alternating directions.
+Direction changes are implemented with two different functions provided by the library.
+*/
+const int pinEN = 16;	// Pin numbers are for an Arduino Nano v3.0
+const int pinDIR = 19;	// Modify them to suit your own board
+const int pinStep = 18;
+const int pinCS = 17;
+//const int pinMOSI = 12;
+//const int pinMISO = 11;
+//const int pinSCK = 13;
 
-	bool dir = false;
+bool dir = false;
 
-	#include <TMC2130Stepper.h>
-	TMC2130Stepper TMC2130 = TMC2130Stepper(pinEN, pinDIR, pinStep, pinCS);
+#include <TMC2130Stepper.h>
+TMC2130Stepper TMC2130 = TMC2130Stepper(pinEN, pinDIR, pinStep, pinCS);
 
-	void setup() {
-		Serial.begin(9600);
-		TMC2130.begin();
-		digitalWrite(pinEN, LOW);
-	}
+void setup() {
+	Serial.begin(9600);
+	TMC2130.begin();
+	digitalWrite(pinEN, LOW);
+}
 
-	void loop() {
-		digitalWrite(pinStep, HIGH);
-		delayMicroseconds(10);
-		digitalWrite(pinStep, LOW);
-		delayMicroseconds(10);
-		uint32_t ms = millis();
-		static uint32_t last_time = 0;
-		if ((ms - last_time) > 4000) {
-			if (dir) {
-				Serial.println("Dir -> 1");
-				TMC2130.GCONF(0b1); //One of three ways to set motor direction
-				Serial.println(TMC2130.GCONF(), BIN);
-				dir = false;
-			} else {
-				Serial.println("Dir -> 0");
-				TMC2130.shaft_dir(0); //One of three ways to set motor direction
-				Serial.println(TMC2130.GCONF(), BIN);
-				dir = true;
-			}
-			last_time = ms;
+void loop() {
+	digitalWrite(pinStep, HIGH);
+	delayMicroseconds(10);
+	digitalWrite(pinStep, LOW);
+	delayMicroseconds(10);
+	uint32_t ms = millis();
+	static uint32_t last_time = 0;
+	if ((ms - last_time) > 4000) {
+		if (dir) {
+			Serial.println("Dir -> 1");
+			TMC2130.GCONF(0b1); //One of three ways to set motor direction
+			Serial.println(TMC2130.GCONF(), BIN);
+			dir = false;
+		} else {
+			Serial.println("Dir -> 0");
+			TMC2130.shaft_dir(0); //One of three ways to set motor direction
+			Serial.println(TMC2130.GCONF(), BIN);
+			dir = true;
 		}
+		last_time = ms;
 	}
+}
 ```
 
 ## Register functions:
