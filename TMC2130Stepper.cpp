@@ -65,6 +65,13 @@ void TMC2130Stepper::begin() {
 
 	SPI.begin();
 
+	GCONF(0x0);
+	CHOPCONF(0x0);
+	COOLCONF(0x0);
+	PWMCONF(0x0);
+	hold_current(0x0);
+	run_current(0x0);
+
 	off_time(2);
 	blank_time(3);
 
