@@ -71,6 +71,19 @@ void loop() {
 }
 ```
 
+## Current calculations
+
+    I_rms = (CS+1)/32 * V_fs/(R_sense+0.02mOhm) * 1/sqrt(2)
+    I_motor = I_sine/248 * (CS+1/32) * V_fs/(R_sense+0.02mOhm)
+
+Where:
+I_rms is the rms current
+I_motor is the motor current
+CS is the Current Scale value
+V_fs is the voltage determined by v_sense
+R_sense is the chosen sense resistor
+I_sine is the current position in the sine table. I_motor reaches peak value at I_sine = 248
+
 ## Functions
 
 Function 			| Argument range | Returns | Description
