@@ -206,8 +206,8 @@ PWM_SCALE 	| - 		| uint32_t 	| Read actual bits from the register
 ### REG_ENCM_CTRL register
 Function 		| Argument 	| Returns 	| Description
 ----------------|-----------|-----------|-----------------------------
-invert_encoder 	| 0/1 		| uint8_t  	| Invert encoder inputs
-maxspeed 		| 0/1	 	| uint8_t  	| Ignore Step input. If set, the hold current IHOLD determines the motor current, unless a step source is activated
+invert_encoder 	| 0/1 		| bool  	| Invert encoder inputs
+maxspeed 		| 0/1	 	| bool  	| Ignore Step input. If set, the hold current IHOLD determines the motor current, unless a step source is activated
 
 ### REG_LOST_STEPS register
 Function 	| Argument 	| Returns 	| Description

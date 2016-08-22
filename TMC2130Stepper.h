@@ -150,9 +150,9 @@ class TMC2130Stepper {
 		// REG_PWM_SCALE
 		uint32_t PWM_SCALE();
 		// REG_ENCM_CTRL
-		uint8_t invert_encoder();
+		bool invert_encoder();
 		void invert_encoder(uint8_t value);
-		uint8_t maxspeed();
+		bool maxspeed();
 		void maxspeed(uint8_t value);
 		// REG_LOST_STEPS
 		uint32_t LOST_STEPS();
@@ -250,8 +250,8 @@ class TMC2130Stepper {
 		bool val_pwm_autoscale				= 0;
 		bool val_pwm_symmetric				= 0;
 		uint8_t val_freewheel				= 0;
-		uint8_t val_invert_encoder			= 0;
-		uint8_t val_maxspeed				= 0;
+		bool val_invert_encoder				= 0;
+		bool val_maxspeed					= 0;
 
 		uint32_t send2130(uint8_t addressByte, uint32_t *config, uint32_t value, uint32_t mask);
 };

@@ -292,14 +292,14 @@ uint32_t TMC2130Stepper::PWM_SCALE() {
 ///////////////////////////////////////////////////////////////////////////////////////
 // REG_ENCM_CTRL
 
-uint8_t TMC2130Stepper::invert_encoder() {return val_invert_encoder;}
+bool TMC2130Stepper::invert_encoder() {return val_invert_encoder;}
 
 void TMC2130Stepper::invert_encoder(uint8_t value) {
 	val_invert_encoder = value;
 	send2130(WRITE|REG_ENCMCTRL, &cur_PWMCONF, value, 0b1);
 }
 
-uint8_t TMC2130Stepper::maxspeed() {return val_maxspeed;}
+bool TMC2130Stepper::maxspeed() {return val_maxspeed;}
 
 void TMC2130Stepper::maxspeed(uint8_t value) {
 	val_maxspeed = value;
