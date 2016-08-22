@@ -157,18 +157,18 @@ hysterisis_start 		| 1..8 		| uint8_t 	| Add 1, 2, …, 8 to hysteresis low valu
 fast_decay_time 		| 0..15 	| uint8_t 	| Fast decay time setting TFD with  NCLK= 32*HSTRT
 hysterisis_low 			| -3..12	| int8_t 	| This is the hysteresis value which becomes used for the hysteresis chopper. 
 sine_offset 			| -3..12	| int8_t 	| This is the sine wave offset and 1/512 of the value becomes added to the absolute value of each sine wave entry.
-disable_I_comparator 	| 0/1		| uint8_t 	| <b>1:</b> Disables current comparator usage for termination of the fast decay cycle.<br>chopper_mode needs to be 1.
-random_off_time 		| 0/1		| uint8_t 	| <b>0:</b> Chopper off time is fixed as set by TOFF <br><b>1:</b> Random mode, TOFF is random modulated by dNCLK= -12 … +3 clocks. 
+disable_I_comparator 	| 0/1		| bool 	| <b>1:</b> Disables current comparator usage for termination of the fast decay cycle.<br>chopper_mode needs to be 1.
+random_off_time 		| 0/1		| bool 	| <b>0:</b> Chopper off time is fixed as set by TOFF <br><b>1:</b> Random mode, TOFF is random modulated by dNCLK= -12 … +3 clocks. 
 chopper_mode 			| 0/1		| uint8_t 	| <b>0:</b> Standard mode (spreadCycle) <br><b>1:</b> Constant off time with fast decay time.  <br>Fast decay time is also terminated when the negative nominal current is reached. Fast decay is after on time. 
 blank_time 				| 16, 24, 36, 54| uint8_t | Set comparator blank time to 16, 24, 36 or 54 clocks. <br>Hint: 1 or 2 is recommended for most applications<br>Initialized to value 3 (TBL = 36) by begin()
-high_sense_R 			| 0/1 		| uint8_t 	| <b>0:</b> Low sensitivity, high sense resistor voltage <br><b>1:</b> High sensitivity, low sense resistor voltage 
-fullstep_threshold 		| 0/1		| uint8_t 	| This bit enables switching to fullstep, when VHIGH is exceeded. Switching takes place only at 45° position. The fullstep target current uses the current value from the microstep table at the 45° position. 
-high_speed_mode 		| 0/1		| uint8_t 	| This bit enables switching to chm=1 and fd=0, when VHIGH is exceeded. This way, a higher velocity can be achieved. Can be combined with vhighfs=1. If set, the TOFF setting automatically becomes doubled during high velocity operation in order to avoid doubling of the chopper frequency. 
-sync_phases 			| 0..15		| uint8_t 	| Synchronization of the chopper for both phases of a two phase motor in order to avoid the occurrence of a beat, especially at low motor velocities. It is automatically switched off above VHIGH.
+high_sense_R 			| 0/1 		| bool 	| <b>0:</b> Low sensitivity, high sense resistor voltage <br><b>1:</b> High sensitivity, low sense resistor voltage 
+fullstep_threshold 		| 0/1		| bool 	| This bit enables switching to fullstep, when VHIGH is exceeded. Switching takes place only at 45° position. The fullstep target current uses the current value from the microstep table at the 45° position. 
+high_speed_mode 		| 0/1		| bool 	| This bit enables switching to chm=1 and fd=0, when VHIGH is exceeded. This way, a higher velocity can be achieved. Can be combined with vhighfs=1. If set, the TOFF setting automatically becomes doubled during high velocity operation in order to avoid doubling of the chopper frequency. 
+sync_phases 			| 0..15		| bool 	| Synchronization of the chopper for both phases of a two phase motor in order to avoid the occurrence of a beat, especially at low motor velocities. It is automatically switched off above VHIGH.
 microsteps 				| 255, 128, 64, 32, 16,<br>8, 4, 2, 0 (FULLSTEP) | uint8_t | Reduced microstep resolution for Step/Dir operation. The resolution gives the number of microstep entries per sine quarter wave.
-interpolate 			| 0/1 		| uint8_t 	| The actual microstep resolution becomes extrapolated to 256 microsteps for smoothest motor operation.
-double_edge_step 		| 0/1 		| uint8_t 	| Enable step impulse at each step edge to reduce step frequency requirement. 
-disable_short_protection| 0/1 		| uint8_t 	| <b>0:</b> Short to GND protection is on <br><b>1:</b> Short to GND protection is disabled 
+interpolate 			| 0/1 		| bool 	| The actual microstep resolution becomes extrapolated to 256 microsteps for smoothest motor operation.
+double_edge_step 		| 0/1 		| bool 	| Enable step impulse at each step edge to reduce step frequency requirement. 
+disable_short_protection| 0/1 		| bool 	| <b>0:</b> Short to GND protection is on <br><b>1:</b> Short to GND protection is disabled 
 
 ### REG_COOLCONF register
 Function 			| Argument 	 | Returns  | Description
