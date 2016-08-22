@@ -1,4 +1,4 @@
-#define TMC2130DEBUG
+//#define TMC2130DEBUG
 
 #include <SPI.h>
 #include "TMC2130Stepper.h"
@@ -123,7 +123,7 @@ uint32_t TMC2130Stepper::send2130(uint8_t addressByte, uint32_t *config, uint32_
 
 	return s;
 }
-//#ifdef TMC2130DEBUG
+#ifdef TMC2130DEBUG
 void TMC2130Stepper::checkStatus() {
 	uint32_t data = 0x0;
 	uint8_t s;
@@ -154,7 +154,7 @@ void TMC2130Stepper::checkStatus() {
     if(s & 0x08) Serial.print(" standstill");
     Serial.println(" ");
 }
-//#endif
+#endif
 
 void TMC2130Stepper::SilentStepStick2130(uint16_t current) {
 	begin();
