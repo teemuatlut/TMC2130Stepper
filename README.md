@@ -88,7 +88,7 @@ I_sine is the current position in the sine table. I_motor reaches peak value at 
 
 Function 			| Argument range | Returns | Description
 --------------------|-----|---|-----------------------------
-begin 				|  -  | - | Initialized pins Enable, Direction, Step and Chip Select.<br>Initialized the SPI pins MOSI, MISO and SCK.<br>Calls spi.begin()<br>Sets off_time = 2 and blank_time = 3
+begin 				|  -  | - | Initialized pins Enable, Direction, Step and Chip Select.<br>Initialized the SPI pins MOSI, MISO and SCK.<br>Calls spi.begin()<br>Sets off_time = 2 and blank_time = 24
 setCurrent			|  0..2000<br>0.1 .. 1<br>0..1 | - | Helper function to set the motor RMS current.<br>Arguments:<br><b>uint16_t</b> Desired current in milliamps<br><b>float</b> Sense resistor value<br><b>float</b> Multiplier for holding current<br>Example for SilentStepStick2130: setCurrent(1200, 0.11, 0.5)<p>Makes use of the run_current() and hold_current() funtions.
 SilentStepStick2130 |  0..2000  | - | Calls the begin() functions and according to the argument sets the current with sense resistor being 0.11 and multiplier being 0.5
 

@@ -71,7 +71,7 @@ void TMC2130Stepper::begin() {
 	run_current(0x0);
 
 	off_time(2);
-	blank_time(3);
+	blank_time(24);
 
 	_started = true;
 }
