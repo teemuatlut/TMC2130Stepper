@@ -1,5 +1,3 @@
-//#define TMC2130DEBUG
-
 #include <SPI.h>
 #include "TMC2130Stepper.h"
 
@@ -86,16 +84,17 @@ uint32_t TMC2130Stepper::send2130(uint8_t addressByte, uint32_t *config, uint32_
 
 	s = SPI.transfer(addressByte & 0xFF);
 #ifdef TMC2130DEBUG
-	Serial.print("Address byte: ");
+	Serial.println("Received parameters:");
+	Serial.print("#Address byte: ");
 	Serial.println(addressByte, HEX);
-	Serial.print("Config: ");
-	Serial.println(*config, HEX);
-	Serial.print("Value: ");
-	Serial.println(value, HEX);
-	Serial.print("Mask: ");
-	Serial.println(mask, HEX);
-	Serial.print("s: ");
-	Serial.println(s, HEX);
+	Serial.print("#Current config: ");
+	Serial.println(*config, BIN);
+	Serial.print("#Value to write: ");
+	Serial.println(value, BIN);
+	Serial.print("#Mask: ");
+	Serial.println(mask, BIN);
+	Serial.print("#s: ");
+	Serial.println(s, BIN);
 #endif
 
 	if (addressByte << 7) { // Check if WRITE command
@@ -106,9 +105,9 @@ uint32_t TMC2130Stepper::send2130(uint8_t addressByte, uint32_t *config, uint32_
 		SPI.transfer((*config >>  8) & 0xFF);
 		SPI.transfer(*config & 0xFF);
 #ifdef TMC2130DEBUG
-		Serial.println("WRITE cmd");
+		Serial.println("=> WRITE cmd");
 		Serial.print("New config: ");
-		Serial.println(*config, HEX);
+		Serial.println(*config, BIN);
 #endif
 	} else { // READ command
 		*config  = SPI.transfer((*config >> 24) & 0xFF);
@@ -119,9 +118,9 @@ uint32_t TMC2130Stepper::send2130(uint8_t addressByte, uint32_t *config, uint32_
 		*config <<= 8;
 		*config |= SPI.transfer( *config 		& 0xFF);
 #ifdef TMC2130DEBUG
-		Serial.println("WRITE cmd");
-		Serial.print("New config: ");
-		Serial.println(*config, HEX);
+		Serial.println("=> READ cmd");
+		Serial.print("Received config: ");
+		Serial.println(*config, BIN);
 #endif
 	}
 
@@ -184,12 +183,15 @@ void TMC2130Stepper::SilentStepStick2130(uint16_t current) {
 	CS = 26
 */	
 void TMC2130Stepper::setCurrent(uint16_t mA, float Rsense, float multiplier) {
-	float V_fs;
-	if (val_vsense)
-		V_fs = 0.180;
-	else
-		V_fs = 0.325;
+	float V_fs = val_vsense ? 0.180 : 0.325;
+
 	uint8_t CS = 32.0*1.41421*mA/1000.0*(Rsense+0.02)/V_fs - 1;
+	// If Current Scale is too low, turn on high sensitivity R_sense and calculate again
+	if (CS < 16) {
+		high_sense_R(true);
+		V_fs = 0.180;
+		CS = 32.0*1.41421*mA/1000.0*(Rsense+0.02)/V_fs - 1;
+	}
 	run_current(CS);
 	hold_current(CS*multiplier);
 }

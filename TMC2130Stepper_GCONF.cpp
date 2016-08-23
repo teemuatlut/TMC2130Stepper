@@ -15,6 +15,9 @@ uint32_t TMC2130Stepper::GCONF() {
 }
 
 void TMC2130Stepper::GCONF(uint32_t value) {
+#ifdef TMC2130DEBUG
+	Serial.println("Set GCONF: ");
+#endif
 	send2130(WRITE|REG_GCONF, &cur_GCONF, value, 0xFFFFFFFF);
 }
 

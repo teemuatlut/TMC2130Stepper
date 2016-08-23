@@ -1,6 +1,8 @@
 #ifndef TMC2310Stepper_h
 #define TMC2310Stepper_h
 
+#define TMC2130DEBUG
+
 #if defined(ARDUINO) && ARDUINO >= 100
 	#include <Arduino.h>
 #endif
