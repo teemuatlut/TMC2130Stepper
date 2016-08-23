@@ -331,7 +331,7 @@ uint32_t TMC2130Stepper::PWM_SCALE() {
 
 bool TMC2130Stepper::invert_encoder() {return val_invert_encoder;}
 
-void TMC2130Stepper::invert_encoder(uint8_t value) {
+void TMC2130Stepper::invert_encoder(bool value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set invert_encoder: ");
 	Serial.println(value);
@@ -342,7 +342,7 @@ void TMC2130Stepper::invert_encoder(uint8_t value) {
 
 bool TMC2130Stepper::maxspeed() {return val_maxspeed;}
 
-void TMC2130Stepper::maxspeed(uint8_t value) {
+void TMC2130Stepper::maxspeed(bool value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set maxspeed: ");
 	Serial.println(value);

@@ -104,9 +104,9 @@ void TMC2130Stepper::sg_stall_value(int8_t value) {
 	send2130(WRITE|REG_COOLCONF, &cur_COOLCONF, ((uint32_t)value+64) << 16, 0x7F0000);
 }
 
-uint8_t TMC2130Stepper::sg_filter() {return val_sfilt;}
+bool TMC2130Stepper::sg_filter() {return val_sfilt;}
 
-void TMC2130Stepper::sg_filter(uint8_t value) {
+void TMC2130Stepper::sg_filter(bool value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set sfilt: ");
 	Serial.println(value);

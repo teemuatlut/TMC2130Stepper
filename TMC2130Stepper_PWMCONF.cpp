@@ -58,7 +58,7 @@ void TMC2130Stepper::stealth_freq(uint8_t value) {
 
 bool TMC2130Stepper::stealth_autoscale() {return val_pwm_autoscale;}
 
-void TMC2130Stepper::stealth_autoscale(uint8_t value) {
+void TMC2130Stepper::stealth_autoscale(bool value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set pwm_autoscale: ");
 	Serial.println(value);
@@ -70,7 +70,7 @@ void TMC2130Stepper::stealth_autoscale(uint8_t value) {
 
 bool TMC2130Stepper::stealth_symmetric() {return val_pwm_symmetric;}
 
-void TMC2130Stepper::stealth_symmetric(uint8_t value) {
+void TMC2130Stepper::stealth_symmetric(bool value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set pwm_symmetric: ");
 	Serial.println(value);

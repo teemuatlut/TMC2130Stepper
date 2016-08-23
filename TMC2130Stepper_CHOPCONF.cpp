@@ -105,7 +105,7 @@ void TMC2130Stepper::sine_offset(int8_t value) {
 
 bool TMC2130Stepper::disable_I_comparator() {return val_disfdcc;}
 
-void TMC2130Stepper::disable_I_comparator(uint8_t value) {
+void TMC2130Stepper::disable_I_comparator(bool value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set disfdcc: ");
 	Serial.println(value);
@@ -122,7 +122,7 @@ void TMC2130Stepper::disable_I_comparator(uint8_t value) {
 
 bool TMC2130Stepper::random_off_time() {return val_rndtf;}
 
-void TMC2130Stepper::random_off_time(uint8_t value) {
+void TMC2130Stepper::random_off_time(bool value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set rndtf: ");
 	Serial.println(value);
@@ -167,7 +167,7 @@ void TMC2130Stepper::blank_time(uint8_t value) {
 
 bool TMC2130Stepper::high_sense_R() {return val_vsense;}
 
-void TMC2130Stepper::high_sense_R(uint8_t value) {
+void TMC2130Stepper::high_sense_R(bool value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set vsense: ");
 	Serial.println(value);
@@ -179,7 +179,7 @@ void TMC2130Stepper::high_sense_R(uint8_t value) {
 
 bool TMC2130Stepper::fullstep_threshold() {return val_vhighfs;}
 
-void TMC2130Stepper::fullstep_threshold(uint8_t value) {
+void TMC2130Stepper::fullstep_threshold(bool value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set vhighfs: ");
 	Serial.println(value);
@@ -191,7 +191,7 @@ void TMC2130Stepper::fullstep_threshold(uint8_t value) {
 
 bool TMC2130Stepper::high_speed_mode() {return val_vhighchm;}
 
-void TMC2130Stepper::high_speed_mode(uint8_t value) {
+void TMC2130Stepper::high_speed_mode(bool value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set vhighchm: ");
 	Serial.println(value);
@@ -234,7 +234,7 @@ void TMC2130Stepper::microsteps(uint8_t value) {
 
 bool TMC2130Stepper::interpolate() {return val_intpol;}
 
-void TMC2130Stepper::interpolate(uint8_t value) {
+void TMC2130Stepper::interpolate(bool value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set intpol: ");
 	Serial.println(value);
@@ -246,7 +246,7 @@ void TMC2130Stepper::interpolate(uint8_t value) {
 
 bool TMC2130Stepper::double_edge_step() {return val_dedge;}
 
-void TMC2130Stepper::double_edge_step(uint8_t value) {
+void TMC2130Stepper::double_edge_step(bool value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set dedge: ");
 	Serial.println(value);
@@ -258,7 +258,7 @@ void TMC2130Stepper::double_edge_step(uint8_t value) {
 
 bool TMC2130Stepper::disable_short_protection() {return val_diss2g;}
 
-void TMC2130Stepper::disable_short_protection(uint8_t value) {
+void TMC2130Stepper::disable_short_protection(bool value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set diss2g: ");
 	Serial.println(value);

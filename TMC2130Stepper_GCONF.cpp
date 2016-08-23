@@ -24,7 +24,7 @@ void TMC2130Stepper::GCONF(uint32_t value) {
 
 bool TMC2130Stepper::external_ref() {return val_i_scale_analog;}
 
-void TMC2130Stepper::external_ref(uint8_t value) {
+void TMC2130Stepper::external_ref(bool value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set I_scale_analog: ");
 	Serial.println(value);
@@ -36,7 +36,7 @@ void TMC2130Stepper::external_ref(uint8_t value) {
 
 bool TMC2130Stepper::internal_sense_R() {return val_internal_r_sense;}
 
-void TMC2130Stepper::internal_sense_R(uint8_t value) {
+void TMC2130Stepper::internal_sense_R(bool value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set internal_Rsense: ");
 	Serial.println(value);
@@ -48,7 +48,7 @@ void TMC2130Stepper::internal_sense_R(uint8_t value) {
 
 bool TMC2130Stepper::stealthChop() {return val_en_pwm_mode;}
 
-void TMC2130Stepper::stealthChop(uint8_t value) {
+void TMC2130Stepper::stealthChop(bool value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set en_pwm_mode: ");
 	Serial.println(value);
@@ -60,7 +60,7 @@ void TMC2130Stepper::stealthChop(uint8_t value) {
 
 bool TMC2130Stepper::commutation() {return val_enc_commutation;}
 
-void TMC2130Stepper::commutation(uint8_t value) {
+void TMC2130Stepper::commutation(bool value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set enc_commutation: ");
 	Serial.println(value);
@@ -72,7 +72,7 @@ void TMC2130Stepper::commutation(uint8_t value) {
 
 bool TMC2130Stepper::shaft_dir() {return val_shaft;}
 
-void TMC2130Stepper::shaft_dir(uint8_t value) {
+void TMC2130Stepper::shaft_dir(bool value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set shaft: ");
 	Serial.println(value);
@@ -84,7 +84,7 @@ void TMC2130Stepper::shaft_dir(uint8_t value) {
 
 bool TMC2130Stepper::diag0_errors() {return val_diag0_error;}
 
-void TMC2130Stepper::diag0_errors(uint8_t value) {
+void TMC2130Stepper::diag0_errors(bool value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set diag0_error: ");
 	Serial.println(value);
@@ -96,7 +96,7 @@ void TMC2130Stepper::diag0_errors(uint8_t value) {
 
 bool TMC2130Stepper::diag0_temp_prewarn() {return val_diag0_otpw;}
 
-void TMC2130Stepper::diag0_temp_prewarn(uint8_t value) {
+void TMC2130Stepper::diag0_temp_prewarn(bool value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set diag0_otpw: ");
 	Serial.println(value);
@@ -108,7 +108,7 @@ void TMC2130Stepper::diag0_temp_prewarn(uint8_t value) {
 
 bool TMC2130Stepper::diag0_stall() {return val_diag0_stall;}
 
-void TMC2130Stepper::diag0_stall(uint8_t value) {
+void TMC2130Stepper::diag0_stall(bool value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set diag0_stall: ");
 	Serial.println(value);
@@ -120,7 +120,7 @@ void TMC2130Stepper::diag0_stall(uint8_t value) {
 
 bool TMC2130Stepper::diag1_stall() {return val_diag1_stall;}
 
-void TMC2130Stepper::diag1_stall(uint8_t value) {
+void TMC2130Stepper::diag1_stall(bool value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set diag1_stall: ");
 	Serial.println(value);
@@ -132,7 +132,7 @@ void TMC2130Stepper::diag1_stall(uint8_t value) {
 
 bool TMC2130Stepper::diag1_index() {return val_diag1_index;}
 
-void TMC2130Stepper::diag1_index(uint8_t value) {
+void TMC2130Stepper::diag1_index(bool value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set diag1_index: ");
 	Serial.println(value);
@@ -144,7 +144,7 @@ void TMC2130Stepper::diag1_index(uint8_t value) {
 
 bool TMC2130Stepper::diag1_chopper_on() {return val_diag1_onstate;}
 
-void TMC2130Stepper::diag1_chopper_on(uint8_t value) {
+void TMC2130Stepper::diag1_chopper_on(bool value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set diag1_onstate: ");
 	Serial.println(value);
@@ -156,7 +156,7 @@ void TMC2130Stepper::diag1_chopper_on(uint8_t value) {
 
 bool TMC2130Stepper::diag1_steps_skipped() {return val_diag1_steps_skipped;}
 
-void TMC2130Stepper::diag1_steps_skipped(uint8_t value) {
+void TMC2130Stepper::diag1_steps_skipped(bool value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set diag1_steps_skipped: ");
 	Serial.println(value);
@@ -168,7 +168,7 @@ void TMC2130Stepper::diag1_steps_skipped(uint8_t value) {
 
 bool TMC2130Stepper::diag0_active_high() {return val_diag0_int_pushpull;}
 
-void TMC2130Stepper::diag0_active_high(uint8_t value) {
+void TMC2130Stepper::diag0_active_high(bool value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set diag0_int_pushpull: ");
 	Serial.println(value);
@@ -180,7 +180,7 @@ void TMC2130Stepper::diag0_active_high(uint8_t value) {
 
 bool TMC2130Stepper::diag1_active_high() {return val_diag1_pushpull;}
 
-void TMC2130Stepper::diag1_active_high(uint8_t value) {
+void TMC2130Stepper::diag1_active_high(bool value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set diag1_pushpull: ");
 	Serial.println(value);
@@ -192,7 +192,7 @@ void TMC2130Stepper::diag1_active_high(uint8_t value) {
 
 bool TMC2130Stepper::small_hysterisis() {return val_small_hysterisis;}
 
-void TMC2130Stepper::small_hysterisis(uint8_t value) {
+void TMC2130Stepper::small_hysterisis(bool value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set small_hysterisis: ");
 	Serial.println(value);
@@ -204,7 +204,7 @@ void TMC2130Stepper::small_hysterisis(uint8_t value) {
 
 bool TMC2130Stepper::stop_enable() {return val_stop_enable;}
 
-void TMC2130Stepper::stop_enable(uint8_t value) {
+void TMC2130Stepper::stop_enable(bool value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set stop_enable: ");
 	Serial.println(value);
@@ -216,7 +216,7 @@ void TMC2130Stepper::stop_enable(uint8_t value) {
 
 bool TMC2130Stepper::direct_mode() {return val_direct_mode;}
 
-void TMC2130Stepper::direct_mode(uint8_t value) {
+void TMC2130Stepper::direct_mode(bool value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set direct_mode: ");
 	Serial.println(value);
