@@ -202,6 +202,10 @@ void TMC2130Stepper::setCurrent(uint16_t mA, float Rsense, float multiplier) {
 uint8_t TMC2130Stepper::power_down_delay() {return val_tpowerdown;}
 
 void TMC2130Stepper::power_down_delay(uint8_t value) {
+#ifdef TMC2130DEBUG
+	Serial.print("Set tpowerdown: ");
+	Serial.println(value);
+#endif
 	val_tpowerdown = value;
 	send2130(WRITE|REG_TPOWERDOWN, &cur_TPOWERDOWN, value, 0xFF);
 }
@@ -221,6 +225,10 @@ uint32_t TMC2130Stepper::microstep_time() {
 uint32_t TMC2130Stepper::stealth_max_speed() {return val_tpwmthrs;}
 
 void TMC2130Stepper::stealth_max_speed(uint32_t value) {
+#ifdef TMC2130DEBUG
+	Serial.print("Set tpwmthres: ");
+	Serial.println(value);
+#endif
 	if (value > 1048575) value = 1048575;
 	val_tpwmthrs = value;
 	send2130(WRITE|REG_TPWMTHRS, &cur_TPWMTHRS, value, 0xFFFFF);
@@ -232,6 +240,10 @@ void TMC2130Stepper::stealth_max_speed(uint32_t value) {
 uint32_t TMC2130Stepper::coolstep_min_speed() {return val_tcoolthrs;}
 
 void TMC2130Stepper::coolstep_min_speed(uint32_t value) {
+#ifdef TMC2130DEBUG
+	Serial.print("Set tcoolthrs: ");
+	Serial.println(value);
+#endif
 	if (value > 1048575) value = 1048575;
 	val_tcoolthrs = value;
 	send2130(WRITE|REG_TCOOLTHRS, &cur_TCOOLTHRS, value, 0xFFFFF);
@@ -243,6 +255,10 @@ void TMC2130Stepper::coolstep_min_speed(uint32_t value) {
 uint32_t TMC2130Stepper::mode_sw_speed() {return val_thigh;}
 
 void TMC2130Stepper::mode_sw_speed(uint32_t value) {
+#ifdef TMC2130DEBUG
+	Serial.print("Set thigh: ");
+	Serial.println(value);
+#endif
 	if (value > 1048575) value = 1048575;
 	val_thigh = value;
 	send2130(WRITE|REG_THIGH, &cur_THIGH, value, 0xFFFFF);
@@ -254,6 +270,10 @@ void TMC2130Stepper::mode_sw_speed(uint32_t value) {
 int16_t TMC2130Stepper::coil_A_current() {return val_xdirect_a;}
 
 void TMC2130Stepper::coil_A_current(int16_t value) {
+#ifdef TMC2130DEBUG
+	Serial.print("Set xdirect_a: ");
+	Serial.println(value);
+#endif
 	if (value < -255) value = -255;
 	else if (value > 255) value = 255;
 	val_xdirect_a = value;
@@ -263,6 +283,10 @@ void TMC2130Stepper::coil_A_current(int16_t value) {
 int16_t TMC2130Stepper::coil_B_current() {return val_xdirect_b;}
 
 void TMC2130Stepper::coil_B_current(int16_t value) {
+#ifdef TMC2130DEBUG
+	Serial.print("Set xdirect_b: ");
+	Serial.println(value);
+#endif
 	if (value < -255) value = -255;
 	else if (value > 255) value = 255;
 	val_xdirect_b = value;
@@ -275,6 +299,10 @@ void TMC2130Stepper::coil_B_current(int16_t value) {
 uint32_t TMC2130Stepper::DCstep_min_speed() {return val_vdcmin;}
 
 void TMC2130Stepper::DCstep_min_speed(uint32_t value) {
+#ifdef TMC2130DEBUG
+	Serial.print("Set vdcmin: ");
+	Serial.println(value);
+#endif
 	if (value > 16777215) value = 16777215;
 	val_vdcmin = value;
 	send2130(WRITE|REG_VDCMIN, &cur_VDCMIN, value, 0xFFFFFF);
@@ -304,6 +332,10 @@ uint32_t TMC2130Stepper::PWM_SCALE() {
 bool TMC2130Stepper::invert_encoder() {return val_invert_encoder;}
 
 void TMC2130Stepper::invert_encoder(uint8_t value) {
+#ifdef TMC2130DEBUG
+	Serial.print("Set invert_encoder: ");
+	Serial.println(value);
+#endif
 	val_invert_encoder = value;
 	send2130(WRITE|REG_ENCMCTRL, &cur_PWMCONF, value, 0b1);
 }
@@ -311,6 +343,10 @@ void TMC2130Stepper::invert_encoder(uint8_t value) {
 bool TMC2130Stepper::maxspeed() {return val_maxspeed;}
 
 void TMC2130Stepper::maxspeed(uint8_t value) {
+#ifdef TMC2130DEBUG
+	Serial.print("Set maxspeed: ");
+	Serial.println(value);
+#endif
 	val_maxspeed = value;
 	send2130(WRITE|REG_ENCMCTRL, &cur_PWMCONF, value, 0b1 << 1);
 }
