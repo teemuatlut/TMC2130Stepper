@@ -5,15 +5,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////
 // REG_PWMCONF
 
-uint32_t TMC2130Stepper::PWMCONF() {
-#ifdef TMC2130DEBUG
-	Serial.println("Get PWMCONF: ");
-#endif
-	uint32_t data = 0x0;
-	send2130(READ|REG_PWMCONF, &data, 0x0, 0x0);
-	return data;
-}
-
 void TMC2130Stepper::PWMCONF(uint32_t value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set PWMCONF: ");
@@ -99,5 +90,5 @@ void TMC2130Stepper::standstill_mode(uint8_t value) {
 	if (value < 1) value = 1;
 	else if (value > 4) value = 4;
 	val_freewheel = value;
-	send2130(WRITE|REG_PWMCONF, &cur_PWMCONF, ((uint32_t)value-1) << 20, 0x300000);
+	send2130(WRITE|REG_PWMCONF, &cur_PWMCONF, ((uint32_t)value) << 20, 0x300000);
 }

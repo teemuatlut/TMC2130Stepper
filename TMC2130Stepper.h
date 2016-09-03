@@ -118,7 +118,6 @@ class TMC2130Stepper {
 		bool disable_short_protection();
 		void disable_short_protection(bool value);
 		// REG_COOLCONF
-		uint32_t COOLCONF();
 		void COOLCONF(uint32_t value);
 		uint8_t sg_min();
 		void sg_min(uint8_t value);
@@ -135,7 +134,6 @@ class TMC2130Stepper {
 		bool sg_filter();
 		void sg_filter(bool value);
 		// REG_PWMCONF
-		uint32_t PWMCONF();
 		void PWMCONF(uint32_t value);
 		uint8_t stealth_amplitude();
 		void stealth_amplitude(uint8_t value);
