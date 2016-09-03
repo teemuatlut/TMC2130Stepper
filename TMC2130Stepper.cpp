@@ -97,7 +97,7 @@ uint32_t TMC2130Stepper::send2130(uint8_t addressByte, uint32_t *config, uint32_
 	Serial.println(s, BIN);
 #endif
 
-	if (addressByte << 7) { // Check if WRITE command
+	if (addressByte >> 7) { // Check if WRITE command
 		*config &= ~mask; // Clear bits being set
 		*config |= (value & mask); // Set new values
 		SPI.transfer((*config >> 24) & 0xFF);
