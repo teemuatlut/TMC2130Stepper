@@ -5,6 +5,15 @@
 ///////////////////////////////////////////////////////////////////////////////////////
 // REG_PWMCONF
 
+uint32_t TMC2130Stepper::PWMCONF() {
+#ifdef TMC2130DEBUG
+	Serial.println("Get PWMCONF: ");
+#endif
+	uint32_t data = 0x0;
+	send2130(READ|REG_PWMCONF, &data, 0x0, 0x0);
+	return data;
+}
+
 void TMC2130Stepper::PWMCONF(uint32_t value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set PWMCONF: ");

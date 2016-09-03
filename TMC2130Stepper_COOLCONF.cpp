@@ -5,6 +5,15 @@
 ///////////////////////////////////////////////////////////////////////////////////////
 // REG_COOLCONF
 
+uint32_t TMC2130Stepper::COOLCONF() {
+#ifdef TMC2130DEBUG
+	Serial.println("Get COOLCONF: ");
+#endif
+	uint32_t data = 0x0;
+	send2130(READ|REG_COOLCONF, &data, 0x0, 0x0);
+	return data;
+}
+
 void TMC2130Stepper::COOLCONF(uint32_t value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set COOLCONF: ");
