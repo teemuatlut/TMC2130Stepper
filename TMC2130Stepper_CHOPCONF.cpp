@@ -157,12 +157,11 @@ void TMC2130Stepper::blank_time(uint8_t value) {
 	for (int i = 0; i<4; i++) {
 		if (value >= valid[i]) {
 			value = valid[i];
+			val_tbl = value;
+			send2130(WRITE|REG_CHOPCONF, &cur_CHOPCONF, (uint32_t)i << 15, 0x18000);
 			break;
 		}
 	}
-
-	val_tbl = value;
-	send2130(WRITE|REG_CHOPCONF, &cur_CHOPCONF, (uint32_t)value << 15, 0x18000);
 }
 
 bool TMC2130Stepper::high_sense_R() {return val_vsense;}
