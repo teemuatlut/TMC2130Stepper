@@ -3,15 +3,17 @@ Arduino library for Trinamic TMC2130 Stepper driver
 
 ## TODO:
 - [ ] Comments
-- [ ] Documentation
-- [ ] Examples
-- [ ] Easy setup for NEMA17 with default settings
-- [ ] Convert functions returning 0/1 to boolean
+- [x] Documentation
+- [x] Examples
+- [x] Easy setup for NEMA17 with default settings
+- [x] Convert functions returning 0/1 to boolean
 - [ ] Fritzing image of the wiring for an example setup
 
 ## Installation:
 Download the zip file from Github and extract it to
-\your-scetchbook-location>/libraries
+
+your-scetchbook-location/libraries
+
 and restart the IDE.
 
 or
@@ -77,11 +79,17 @@ void loop() {
     I_motor = I_sine/248 * (CS+1/32) * V_fs/(R_sense+0.02mOhm)
 
 Where:
+
 I_rms is the rms current
+
 I_motor is the motor current
+
 CS is the Current Scale value
+
 V_fs is the voltage determined by v_sense
+
 R_sense is the chosen sense resistor
+
 I_sine is the current position in the sine table. I_motor reaches peak value at I_sine = 248
 
 ## Functions
@@ -173,7 +181,7 @@ sine_offset 			| -3..12	| int8_t 	| This is the sine wave offset and 1/512 of th
 disable_I_comparator 	| 0/1		| bool 	| <b>1:</b> Disables current comparator usage for termination of the fast decay cycle.<br>chopper_mode needs to be 1.
 random_off_time 		| 0/1		| bool 	| <b>0:</b> Chopper off time is fixed as set by TOFF <br><b>1:</b> Random mode, TOFF is random modulated by dNCLK= -12 … +3 clocks. 
 chopper_mode 			| 0/1		| uint8_t 	| <b>0:</b> Standard mode (spreadCycle) <br><b>1:</b> Constant off time with fast decay time.  <br>Fast decay time is also terminated when the negative nominal current is reached. Fast decay is after on time. 
-blank_time 				| 16, 24, 36, 54| uint8_t | Set comparator blank time to 16, 24, 36 or 54 clocks. <br>Hint: 1 or 2 is recommended for most applications<br>Initialized to value 3 (TBL = 36) by begin()
+blank_time 				| 16, 24,<br>36, 54| uint8_t | Set comparator blank time to 16, 24, 36 or 54 clocks. <br>Hint: 24 or 36 is recommended for most applications<br>Initialized to 36 (register value = 3) by begin()
 high_sense_R 			| 0/1 		| bool 	| <b>0:</b> Low sensitivity, high sense resistor voltage <br><b>1:</b> High sensitivity, low sense resistor voltage 
 fullstep_threshold 		| 0/1		| bool 	| This bit enables switching to fullstep, when VHIGH is exceeded. Switching takes place only at 45° position. The fullstep target current uses the current value from the microstep table at the 45° position. 
 high_speed_mode 		| 0/1		| bool 	| This bit enables switching to chm=1 and fd=0, when VHIGH is exceeded. This way, a higher velocity can be achieved. Can be combined with vhighfs=1. If set, the TOFF setting automatically becomes doubled during high velocity operation in order to avoid doubling of the chopper frequency. 
