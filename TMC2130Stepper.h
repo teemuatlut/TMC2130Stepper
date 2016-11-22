@@ -14,6 +14,7 @@ class TMC2130Stepper {
 		void checkStatus();
 		void SilentStepStick2130(uint16_t);
 		void setCurrent(uint16_t mah, float Rsense, float multiplier);
+		bool checkOT();
 		// REG_GCONF
 		uint32_t GCONF();
 		void GCONF(uint32_t value);
