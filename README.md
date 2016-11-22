@@ -10,10 +10,8 @@ Arduino library for Trinamic TMC2130 Stepper driver
 - [ ] Fritzing image of the wiring for an example setup
 
 ## Installation:
-Download the zip file from Github and extract it to
-
-your-scetchbook-location/libraries
-
+Download the zip file from Github and extract it to<br>
+your-scetchbook-location/libraries<br>
 and restart the IDE.
 
 or
@@ -78,18 +76,12 @@ void loop() {
     I_rms = (CS+1)/32 * V_fs/(R_sense+0.02mOhm) * 1/sqrt(2)
     I_motor = I_sine/248 * (CS+1/32) * V_fs/(R_sense+0.02mOhm)
 
-Where:
-
-I_rms is the rms current
-
-I_motor is the motor current
-
-CS is the Current Scale value
-
-V_fs is the voltage determined by v_sense
-
-R_sense is the chosen sense resistor
-
+Where:<br>
+I_rms is the rms current<br>
+I_motor is the motor current<br>
+CS is the Current Scale value<br>
+V_fs is the voltage determined by v_sense<br>
+R_sense is the chosen sense resistor<br>
 I_sine is the current position in the sine table. I_motor reaches peak value at I_sine = 248
 
 ## Functions
