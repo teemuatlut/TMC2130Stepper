@@ -200,7 +200,7 @@ sg_max 				| 0..15 	 | uint8_t 	| If the stallGuard2 result is equal to or above
 sg_step_width 		| 1, 2, 4, 8 | uint8_t 	| Current increment steps per measured stallGuard2 value
 sg_current_decrease | 1, 2, 8, 32| uint8_t 	| For each (value) stallGuard2 values decrease by one 
 smart_min_current 	| uint8_t 	 | uint8_t 	| <b>0:</b> 1/2 of current setting (IRUN)<br><b>1:</b> 1/4 of current setting (IRUN) 
-sg_stall_ 			| int8_t 	 | int8_t  	| This signed value controls stallGuard2 level for stall output and sets the optimum measurement range for readout. A lower value gives a higher sensitivity. Zero is the starting value working with most motors.  -64 to +63:  A higher value makes stallGuard2 less sensitive and requires more torque to indicate a stall. 
+sg_stall_value		| int8_t 	 | int8_t  	| This signed value controls stallGuard2 level for stall output and sets the optimum measurement range for readout. A lower value gives a higher sensitivity. Zero is the starting value working with most motors.  -64 to +63:  A higher value makes stallGuard2 less sensitive and requires more torque to indicate a stall. 
 sg_filter 			| uint8_t 	 | uint8_t 	| <b>0:</b> Standard mode, high time resolution for stallGuard2<br><b>1:</b> Filtered mode, stallGuard2 signal updated for each four fullsteps (resp. six fullsteps for 3 phase motor) only to compensate for motor pole tolerances 
 
 ### REG_PWMCONF register
