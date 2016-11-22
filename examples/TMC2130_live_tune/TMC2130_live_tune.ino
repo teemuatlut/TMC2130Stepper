@@ -9,7 +9,7 @@ float Rsense = 0.11;
 float hold_x = 0.5;
 
 #include <TMC2130Stepper.h>
-TMC2130Stepper myStepper = TMC2130Stepper(EN_PIN, DIR_PIN, STEP_PIN, CS_PIN);
+TMC2130Stepper myStepper = TMC2130Stepper(pinEN, pinDIR, pinStep, pinCS);
 
 void serialTuple(String cmd, int arg) {
 	Serial.print("Received command: ");
@@ -24,7 +24,7 @@ void setup() {
 	Serial.begin(9600);
 	myStepper.begin();
 	myStepper.SilentStepStick2130(1000);
-	digitalWrite(EN_PIN, LOW);
+	digitalWrite(pinEN, LOW);
 	Serial.println("Setup ready");
 }
 
@@ -38,7 +38,6 @@ void loop() {
 		if (cmd == "run") {
 			serialTuple("run", arg);
 			running = arg;
-			arg ? digitalWrite(EN_PIN, LOW) : digitalWrite(EN_PIN, HIGH);
 		}
 		else if (cmd == "speed") {
 			serialTuple("speed", arg);
@@ -331,9 +330,9 @@ void loop() {
 		}
 	}
 	if (running) {
-		digitalWrite(STEP_PIN, HIGH);
+		digitalWrite(pinStep, HIGH);
 		delayMicroseconds(speed);
-		digitalWrite(STEP_PIN, LOW);
+		digitalWrite(pinStep, LOW);
 		delayMicroseconds(speed);
 	}
 }
