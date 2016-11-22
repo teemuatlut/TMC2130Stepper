@@ -82,7 +82,9 @@ I_motor is the motor current<br>
 CS is the Current Scale value<br>
 V_fs is the voltage determined by v_sense<br>
 R_sense is the chosen sense resistor<br>
-I_sine is the current position in the sine table. I_motor reaches peak value at I_sine = 248
+I_sine is the current position in the sine table. I_motor reaches peak value at I_sine = 248<p>
+
+If external_ref is enabled, V_fs is scaled by V_ain/2.5V
 
 ## Functions
 
