@@ -7,9 +7,46 @@ int speed = 10;
 bool running = false;
 float Rsense = 0.11;
 float hold_x = 0.5;
+boolean toggle1 = 0;
 
 #include <TMC2130Stepper.h>
 TMC2130Stepper myStepper = TMC2130Stepper(EN_PIN, DIR_PIN, STEP_PIN, CS_PIN);
+
+ISR(TIMER1_COMPA_vect){//timer1 interrupt 1Hz toggles pin 13 (LED)
+//generates pulse wave of frequency 1Hz/2 = 0.5kHz (takes two cycles for full wave- toggle high then toggle low)
+  if (toggle1){
+    digitalWrite(STEP_PIN, HIGH);
+    toggle1 = 0;
+  }
+  else{
+    digitalWrite(STEP_PIN, LOW);
+    toggle1 = 1;
+  }
+}
+
+void initTimer() {
+	cli();//stop interrupts
+	//set timer1 interrupt at 1Hz
+	TCCR1A = 0;// set entire TCCR1A register to 0
+	TCCR1B = 0;// same for TCCR1B
+	TCNT1  = 0;//initialize counter value to 0
+	// set compare match register for 1hz increments
+	OCR1A = 256;// = (16*10^6) / (1*1024) - 1 (must be <65536)
+	// turn on CTC mode
+	TCCR1B |= (1 << WGM12);
+	// Set CS12 and CS10 bits for 1024 prescaler
+	TCCR1B |= (1 << CS11);// | (1 << CS10);  
+	// enable timer compare interrupt
+	TIMSK1 |= (1 << OCIE1A);
+	sei();//allow interrupts
+}
+
+void setTimer(int t) {
+	cli();
+	TCNT1 = 0;
+	OCR1A = t;
+	sei();
+}
 
 void serialTuple(String cmd, int arg) {
 	Serial.print("Received command: ");
@@ -21,6 +58,7 @@ void serialTuple(String cmd, int arg) {
 
 
 void setup() {
+	initTimer();
 	Serial.begin(9600);
 	myStepper.begin();
 	myStepper.SilentStepStick2130(1000);
@@ -42,7 +80,8 @@ void loop() {
 		}
 		else if (cmd == "speed") {
 			serialTuple("speed", arg);
-			speed = arg;
+			//speed = arg;
+			setTimer(arg);
 		}
 		else if (cmd == "setCurrent") {
 			serialTuple("setCurrent", arg);
@@ -330,10 +369,12 @@ void loop() {
 			Serial.println("Invalid command!");
 		}
 	}
+/*	
 	if (running) {
 		digitalWrite(STEP_PIN, HIGH);
 		delayMicroseconds(speed);
 		digitalWrite(STEP_PIN, LOW);
 		delayMicroseconds(speed);
 	}
+*/
 }
