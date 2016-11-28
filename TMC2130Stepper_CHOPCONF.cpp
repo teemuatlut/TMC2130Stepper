@@ -212,9 +212,9 @@ void TMC2130Stepper::sync_phases(uint8_t value) {
 	send2130(WRITE|REG_CHOPCONF, &cur_CHOPCONF, (uint32_t)value << 20, 0xF00000);
 }
 
-uint8_t TMC2130Stepper::microsteps() {return val_mres;}
+uint16_t TMC2130Stepper::microsteps() {return val_mres;}
 
-void TMC2130Stepper::microsteps(uint8_t value) {
+void TMC2130Stepper::microsteps(uint16_t value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set mres: ");
 	Serial.println(value);
