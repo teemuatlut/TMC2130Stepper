@@ -11,9 +11,9 @@ TMC2130Stepper TMC2130 = TMC2130Stepper(EN_PIN, DIR_PIN, STEP_PIN, CS_PIN);
 
 void setup() {
 	Serial.begin(9600);
-	TMC2130.begin();
-	TMC2130.SilentStepStick2130(600);
-	TMC2130.stealthChop(1);
+	TMC2130.begin(); // Initiate pins and registeries
+	TMC2130.SilentStepStick2130(600); // Same as TMC2130.setCurrent(600, 0.11, 0.5);
+	TMC2130.stealthChop(1); // Enable extremely quiet stepping
 	
 	digitalWrite(EN_PIN, LOW);
 }
