@@ -15,8 +15,8 @@ class TMC2130Stepper {
 		void SilentStepStick2130(uint16_t);
 		void setCurrent(uint16_t mah, float Rsense, float multiplier);
 		bool checkOT();
-		void takeSteps(int steps);
-		void step(int speed);
+//		void takeSteps(int steps);
+//		void step(int steps, int speed);
 		// REG_GCONF
 		uint32_t GCONF();
 		void GCONF(uint32_t value);
@@ -113,7 +113,7 @@ class TMC2130Stepper {
 		uint8_t sync_phases();
 		void sync_phases(uint8_t value);
 		uint16_t microsteps();
-		void microsteps(uint8_t value);
+		void microsteps(uint16_t value);
 		bool interpolate();
 		void interpolate(bool value);
 		bool double_edge_step();
@@ -138,8 +138,8 @@ class TMC2130Stepper {
 		void sg_filter(bool value);
 		// REG_PWMCONF
 		void PWMCONF(uint32_t value);
-		uint16_t stealth_amplitude();
-		void stealth_amplitude(uint16_t value);
+		uint8_t stealth_amplitude();
+		void stealth_amplitude(uint8_t value);
 		uint8_t stealth_gradient();
 		void stealth_gradient(uint8_t value);
 		uint8_t stealth_freq();
