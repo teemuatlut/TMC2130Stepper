@@ -219,7 +219,7 @@ void TMC2130Stepper::microsteps(uint16_t value) {
 	Serial.print("Set mres: ");
 	Serial.println(value);
 #endif
-	int valid[] 	= {		256, 	128, 	 64, 	 32, 	 16, 	  8, 	  4, 	  2, 	  0 };
+	uint16_t valid[] 	= {		256, 	128, 	 64, 	 32, 	 16, 	  8, 	  4, 	  2, 	  0 };
 	uint32_t _hex[] = {  0b0000, 0b0001, 0b0010, 0b0011, 0b0100, 0b0101, 0b0110, 0b0111, 0b1000 };
 
 	for (int i = 0; i<9; i++) {
