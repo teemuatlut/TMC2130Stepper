@@ -35,14 +35,14 @@ void TMC2130Stepper::stealth_gradient(uint8_t value) {
 	send2130(WRITE|REG_PWMCONF, &cur_PWMCONF, (uint32_t)value << 8, 0xFF00);
 }
 
-uint16_t TMC2130Stepper::stealth_freq() {return val_pwm_freq;}
+uint8_t TMC2130Stepper::stealth_freq() {return val_pwm_freq;}
 
-void TMC2130Stepper::stealth_freq(uint16_t value) {
+void TMC2130Stepper::stealth_freq(uint8_t value) {
 #ifdef TMC2130DEBUG
 	Serial.print("Set pwm_freq: ");
 	Serial.println(value);
 #endif
-	uint16_t valid[] = {1024, 683, 512, 410};
+/*	uint16_t valid[] = {1024, 683, 512, 410};
 
 	if (value < valid[3]) value = valid[3]; // Make sure we find a match for low values
 	for (int i = 0; i<4; i++) {
@@ -51,7 +51,7 @@ void TMC2130Stepper::stealth_freq(uint16_t value) {
 			break;
 		}
 	}
-
+*/
 	val_pwm_freq = value;
 	send2130(WRITE|REG_PWMCONF, &cur_PWMCONF, (uint32_t)value << 16, 0x30000);
 }
