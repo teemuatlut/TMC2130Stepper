@@ -201,7 +201,19 @@ bool TMC2130Stepper::checkOT() {
 	if (response & 0x4000000) return true; // bit 26 for overtemperature warning flag
 	return false;
 }
+/*
+void TMC2130Stepper::takeSteps(int steps) {
+	int stepsLeft = steps;
+}
 
+void TMC2130Stepper::step(int steps, int speed) {
+	if ((lastStep + speed)<=millis() && stepsLeft > 0) {
+		digitalWrite(_pinSTEP, !digitalRead(_pinSTEP));
+	}
+	stepsLeft -= 1;
+	lastStep = millis();
+}
+*/
 ///////////////////////////////////////////////////////////////////////////////////////
 // REG_TPOWERDOWN
 
