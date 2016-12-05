@@ -63,10 +63,10 @@ void TMC2130Stepper::begin() {
 
 	SPI.begin();
 /*
-	GCONF(0x0);
-	CHOPCONF(0x0);
-	COOLCONF(0x0);
-	PWMCONF(0x0);
+	GCONF(0x0000UL);
+	CHOPCONF(0x0000UL);
+	COOLCONF(0x0000UL);
+	PWMCONF(0x0000UL);
 	hold_current(0x0);
 	run_current(0x0);
 */
@@ -164,7 +164,7 @@ void TMC2130Stepper::checkStatus() {
 #endif
 
 void TMC2130Stepper::SilentStepStick2130(uint16_t current) {
-	begin();
+	//begin();
 	setCurrent(current, 0.11, 0.5);
 }
 
