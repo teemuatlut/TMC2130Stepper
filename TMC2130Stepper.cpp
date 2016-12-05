@@ -198,7 +198,7 @@ void TMC2130Stepper::setCurrent(uint16_t mA, float Rsense, float multiplier) {
 }
 
 bool TMC2130Stepper::checkOT() {
-	uint8_t response = DRVSTATUS();
+	uint32_t response = DRVSTATUS();
 	if (response & 0x4000000) return true; // bit 26 for overtemperature warning flag
 	return false;
 }
