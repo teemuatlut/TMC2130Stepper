@@ -53,7 +53,7 @@ void TMC2130Stepper::begin() {
 	digitalWrite(_pinDIR, LOW); //LOW or HIGH
 	digitalWrite(_pinSTEP, LOW);
 	digitalWrite(_pinCS, HIGH);
-
+/*
 	pinMode(MOSI, OUTPUT);
 	pinMode(MISO, INPUT);
 	pinMode(SCK, OUTPUT);
@@ -62,7 +62,7 @@ void TMC2130Stepper::begin() {
 	digitalWrite(SCK, LOW);
 
 	SPI.begin();
-/*
+
 	GCONF(0x0000UL);
 	CHOPCONF(0x0000UL);
 	COOLCONF(0x0000UL);
