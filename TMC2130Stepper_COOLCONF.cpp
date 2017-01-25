@@ -55,7 +55,7 @@ void TMC2130Stepper::sg_max(uint8_t value) {
 #endif
 	if (value > 15) value = 15;
 	val_semin = value;
-	send2130(WRITE|REG_COOLCONF, &cur_COOLCONF, (uint32_t)(uint32_t)value << 8, 0xF00);
+	send2130(WRITE|REG_COOLCONF, &cur_COOLCONF, (uint32_t)value << 8, 0xF00);
 }
 
 uint8_t TMC2130Stepper::sg_current_decrease() {return val_sedn;}
@@ -76,7 +76,7 @@ void TMC2130Stepper::sg_current_decrease(uint8_t value) {
 	}
 
 	val_sedn = value;
-	send2130(WRITE|REG_COOLCONF, &cur_COOLCONF, (uint32_t)(uint32_t)value << 13, 0x6000);
+	send2130(WRITE|REG_COOLCONF, &cur_COOLCONF, (uint32_t)value << 13, 0x6000);
 }
 
 uint8_t TMC2130Stepper::smart_min_current() {return val_seimin;}
@@ -101,7 +101,10 @@ void TMC2130Stepper::sg_stall_value(int8_t value) {
 	if (value < -64) value = -64;
 	else if (value > 63) value = 63;
 	val_sgt = value;
-	send2130(WRITE|REG_COOLCONF, &cur_COOLCONF, ((uint32_t)value+64) << 16, 0x7F0000);
+	if (value < 0)
+		send2130(WRITE|REG_COOLCONF, &cur_COOLCONF, (uint32_t)(value & 0x40) << 16, 0x7F0000UL);
+	else
+		send2130(WRITE|REG_COOLCONF, &cur_COOLCONF, (uint32_t)(value) << 16, 0x7F0000UL);
 }
 
 bool TMC2130Stepper::sg_filter() {return val_sfilt;}
@@ -113,5 +116,5 @@ void TMC2130Stepper::sg_filter(bool value) {
 #endif
 	if (value > 1) value = 1;
 	val_sfilt = value;
-	send2130(WRITE|REG_COOLCONF, &cur_COOLCONF, (uint32_t)value << 24, (uint32_t)0b1 << 24);
+	send2130(WRITE|REG_COOLCONF, &cur_COOLCONF, (uint32_t)value << 24, 0b1UL << 24);
 }
