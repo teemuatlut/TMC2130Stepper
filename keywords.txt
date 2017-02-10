@@ -17,6 +17,7 @@ checkStatus 			KEYWORD2
 SilentStepStick2130		KEYWORD2
 setCurrent 				KEYWORD2
 checkOT					KEYWORD2
+getOTPW					KEYWORD2
 GCONF 					KEYWORD2
 external_ref 			KEYWORD2
 internal_sense_R 		KEYWORD2
@@ -82,4 +83,4 @@ PWM_SCALE				KEYWORD2
 invert_encoder			KEYWORD2
 maxspeed 				KEYWORD2
 LOST_STEPS				KEYWORD2
-bool _started 			KEYWORD2
+_started	 			KEYWORD2

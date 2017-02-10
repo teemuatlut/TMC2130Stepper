@@ -195,13 +195,23 @@ void TMC2130Stepper::setCurrent(uint16_t mA, float Rsense, float multiplier) {
 	}
 	run_current(CS);
 	hold_current(CS*multiplier);
+	val_mA = mA;
 }
+
+uint16_t TMC2130Stepper::getCurrent() {	return val_mA; }
 
 bool TMC2130Stepper::checkOT() {
 	uint32_t response = DRVSTATUS();
-	if (response & 0x4000000) return true; // bit 26 for overtemperature warning flag
+	if (response & 0x4000000) {
+		flag_otpw = 1;
+		return true; // bit 26 for overtemperature warning flag
+	}
 	return false;
 }
+
+bool TMC2130Stepper::getOTPW() { return flag_otpw; }
+
+void TMC2130Stepper::clear_otpw() {	flag_otpw = 0; }
 /*
 void TMC2130Stepper::takeSteps(int steps) {
 	int stepsLeft = steps;

@@ -14,7 +14,10 @@ class TMC2130Stepper {
 		void checkStatus();
 		void SilentStepStick2130(uint16_t);
 		void setCurrent(uint16_t mah, float Rsense, float multiplier);
+		uint16_t getCurrent();
 		bool checkOT();
+		bool getOTPW();
+		void clear_otpw();
 //		void takeSteps(int steps);
 //		void step(int steps, int speed);
 		// REG_GCONF
@@ -259,6 +262,9 @@ class TMC2130Stepper {
 		bool val_maxspeed					= 0;
 
 		uint32_t send2130(uint8_t addressByte, uint32_t *config, uint32_t value, uint32_t mask);
+
+		uint16_t val_mA						= 0;
+		bool flag_otpw						= 0;
 };
 
 #endif
