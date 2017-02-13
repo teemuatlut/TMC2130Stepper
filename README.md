@@ -10,17 +10,19 @@ Arduino library for Trinamic TMC2130 Stepper driver
 - [ ] Fritzing image of the wiring for an example setup
 
 ## Installation:
-Download the zip file from Github and extract it to<br>
+
+Use the Arduino IDE library manager (Sketch -> Include library -> Manage libraries...)
+Search for TMC2130Stepper and then install.
+
+Or download the zip file from Github and extract it to<br>
 your-scetchbook-location/libraries<br>
 and restart the IDE.
 
-or
-
-    cd your-scetchbook-location/libraries
+or goto to you arduino libraries folder and in command line
     git clone https://github.com/teemuatlut/TMC2130Stepper.git
 
 ## What works:
-Nearly all the features in the registeries are configurable through get/set functions. See below for a list of functions. Datasheet from Trinamic also provides further detail into the settings available.
+Nearly all the features in the registeries are configurable through get/set functions. See below for a list of functions. Datasheet ([link](https://www.trinamic.com/fileadmin/assets/Products/ICs_Documents/TMC2130_datasheet.pdf)) from Trinamic also provides further detail into the settings available.
 
 ## Simple example
 ```cpp
@@ -72,6 +74,8 @@ void loop() {
 ```
 
 ## Current calculations
+
+A simple way to set the current is to use the setCurrent() method.
 
     I_rms = (CS+1)/32 * V_fs/(R_sense+0.02mOhm) * 1/sqrt(2)
     I_motor = I_sine/248 * (CS+1/32) * V_fs/(R_sense+0.02mOhm)
