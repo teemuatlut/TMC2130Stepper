@@ -12,6 +12,7 @@ Arduino library for Trinamic TMC2130 Stepper driver
 ## Installation:
 
 Use the Arduino IDE library manager (Sketch -> Include library -> Manage libraries...)
+
 Search for TMC2130Stepper and then install.
 
 Or download the zip file from Github and extract it to<br>
