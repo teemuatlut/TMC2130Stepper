@@ -151,17 +151,17 @@ void TMC2130Stepper::blank_time(uint8_t value) {
 	Serial.print("Set tbl: ");
 	Serial.println(value);
 #endif
-	uint8_t valid[] = {54, 36, 24, 16};
-
-	if (value < valid[3]) value = valid[3]; // Make sure we find a match for low values
-	for (int i = 0; i<4; i++) {
-		if (value >= valid[i]) {
-			value = valid[i];
-			val_tbl = value;
-			send2130(WRITE|REG_CHOPCONF, &cur_CHOPCONF, (uint32_t)i << 15, 0x18000);
-			break;
-		}
+	uint32_t v;
+	switch(value) {
+		case 16: v = 0x0; break;
+		case 24: v = 0x1; break;
+		case 36: v = 0x2; break;
+		case 54: v = 0x3; break;
+		default: return;
 	}
+	val_tbl = value;
+	send2130(WRITE|REG_CHOPCONF, &cur_CHOPCONF, v << 15, 0x18000);
+	return;
 }
 
 bool TMC2130Stepper::high_sense_R() {return val_vsense;}
