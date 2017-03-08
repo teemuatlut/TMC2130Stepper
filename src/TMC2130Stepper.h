@@ -13,7 +13,7 @@ class TMC2130Stepper {
 		void begin();
 		void checkStatus();
 		void SilentStepStick2130(uint16_t);
-		void setCurrent(uint16_t mah, float Rsense, float multiplier);
+		void setCurrent(uint16_t mA, float Rsense, float multiplier);
 		uint16_t getCurrent();
 		bool checkOT();
 		bool getOTPW();
