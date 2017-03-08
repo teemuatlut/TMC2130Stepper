@@ -32,18 +32,16 @@ void TMC2130Stepper::sg_step_width(uint8_t value) {
 	Serial.print("Set seup: ");
 	Serial.println(value);
 #endif
-	uint8_t valid[] = {8, 4, 2, 1};
-
-	if (value < valid[3]) value = valid[3]; // Make sure we find a match for low values
-	for (int i = 0; i<4; i++) {
-		if (value >= valid[i]) {
-			value = valid[i];
-			break;
-		}
+	uint32_t v;
+	switch(value) {
+		case 1: v = 0x0; break;
+		case 2: v = 0x1; break;
+		case 4: v = 0x2; break;
+		case 8: v = 0x3; break;
+		default: return;
 	}
-
 	val_seup = value;
-	send2130(WRITE|REG_COOLCONF, &cur_COOLCONF, (uint32_t)value << 5, 0x60);
+	send2130(WRITE|REG_COOLCONF, &cur_COOLCONF, v << 5, 0x60);
 }
 
 uint8_t TMC2130Stepper::sg_max() {return val_semax;}
@@ -65,18 +63,18 @@ void TMC2130Stepper::sg_current_decrease(uint8_t value) {
 	Serial.print("Set sedn: ");
 	Serial.println(value);
 #endif
-	uint8_t valid[] = {32, 8, 2, 1};
 
-	if (value < valid[3]) value = valid[3]; // Make sure we find a match for low values
-	for (int i = 0; i<4; i++) {
-		if (value >= valid[i]) {
-			value = valid[i];
-			break;
-		}
+	uint32_t v;
+	switch(value) {
+		case 32: v = 0b00; break;
+		case  8: v = 0b01; break;
+		case  2: v = 0b10; break;
+		case  1: v = 0b11; break;
+		default: return;
 	}
 
 	val_sedn = value;
-	send2130(WRITE|REG_COOLCONF, &cur_COOLCONF, (uint32_t)value << 13, 0x6000);
+	send2130(WRITE|REG_COOLCONF, &cur_COOLCONF, v << 13, 0x6000);
 }
 
 uint8_t TMC2130Stepper::smart_min_current() {return val_seimin;}
