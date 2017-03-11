@@ -111,13 +111,16 @@ uint32_t TMC2130Stepper::send2130(uint8_t addressByte, uint32_t *config, uint32_
 		Serial.println(*config, BIN);
 #endif
 	} else { // READ command
-		*config  = SPI.transfer((*config >> 24) & 0xFF);
+		SPI.transfer16(0x0000); // Clear SPI
+		SPI.transfer16(0x0000);
+		SPI.transfer(addressByte & 0xFF); // Send the address byte again
+		*config  = SPI.transfer(0x00);
 		*config <<= 8;
-		*config |= SPI.transfer((*config >> 16) & 0xFF);
+		*config |= SPI.transfer(0x00);
 		*config <<= 8;
-		*config |= SPI.transfer((*config >>  8) & 0xFF);
+		*config |= SPI.transfer(0x00);
 		*config <<= 8;
-		*config |= SPI.transfer( *config 		& 0xFF);
+		*config |= SPI.transfer(0x00);
 #ifdef TMC2130DEBUG
 		Serial.println("=> READ cmd");
 		Serial.print("Received config: ");
