@@ -40,6 +40,8 @@ hold_current			KEYWORD2
 run_current 			KEYWORD2
 hold_delay	 			KEYWORD2
 power_down_delay		KEYWORD2
+status_flags			KEYWORD2
+input					KEYWORD2
 microstep_time			KEYWORD2
 stealth_max_speed		KEYWORD2
 coolstep_min_speed 		KEYWORD2

@@ -260,6 +260,24 @@ void TMC2130Stepper::power_down_delay(uint8_t value) {
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
+// REG_GSTAT
+
+uint32_t TMC2130Stepper::status_flags() {
+	uint32_t data = 0x0;
+	send2130(READ|REG_GSTAT, &data, 0x0, 0x0);
+	return data;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
+// REG_IOIN
+
+uint32_t TMC2130Stepper::input() {
+	uint32_t data = 0x0;
+	send2130(READ|REG_IOIN, &data, 0x0, 0x0);
+	return data;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
 // REG_TSTEP
 
 uint32_t TMC2130Stepper::microstep_time() {

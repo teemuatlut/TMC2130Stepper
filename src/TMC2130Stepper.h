@@ -67,6 +67,10 @@ class TMC2130Stepper {
 		// REG_TPOWERDOWN
 		uint8_t power_down_delay();
 		void power_down_delay(uint8_t value);
+		// REG_GSTAT
+		uint32_t status_flags();
+		// REG_IOIN
+		uint32_t input();
 		// REG_TSTEP
 		uint32_t microstep_time();
 		// REG_TPWMTHRS
