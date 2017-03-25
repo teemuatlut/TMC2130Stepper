@@ -187,18 +187,33 @@ void TMC2130Stepper::SilentStepStick2130(uint16_t current) {
 	CS = 26
 */	
 void TMC2130Stepper::setCurrent(uint16_t mA, float Rsense, float multiplier) {
-	float V_fs = val_vsense ? 0.180 : 0.325;
-
-	uint8_t CS = 32.0*1.41421*mA/1000.0*(Rsense+0.02)/V_fs - 1;
+	uint8_t CS = 32.0*1.41421*mA/1000.0*(Rsense+0.02)/0.325 - 1;
+	
 	// If Current Scale is too low, turn on high sensitivity R_sense and calculate again
 	if (CS < 16) {
 		high_sense_R(true);
-		V_fs = 0.180;
-		CS = 32.0*1.41421*mA/1000.0*(Rsense+0.02)/V_fs - 1;
+		CS = 32.0*1.41421*mA/1000.0*(Rsense+0.02)/0.180 - 1;
+	} else if(high_sense_R()) { // If CS >= 16, turn off high_sense_r if it's currently ON
+		high_sense_R(false);
 	}
 	run_current(CS);
 	hold_current(CS*multiplier);
 	val_mA = mA;
+
+	#ifdef TMC2130DEBUG
+		Serial.print("mA=");
+		Serial.print(mA);
+		Serial.print("\tRsense=");
+		Serial.print(Rsense);
+		Serial.print("\tmultiplier=");
+		Serial.print(multiplier);
+		Serial.print("\tval_vsense=");
+		Serial.print(val_vsense);
+		Serial.print(" V_fs=");
+		Serial.print(V_fs);
+		Serial.print("\tCS=");
+		Serial.print(CS);
+	#endif
 }
 
 uint16_t TMC2130Stepper::getCurrent() {	return val_mA; }
