@@ -78,7 +78,6 @@ void TMC2130Stepper::begin() {
 
 uint32_t TMC2130Stepper::send2130(uint8_t addressByte, uint32_t *config, uint32_t value, uint32_t mask) {
 	uint8_t s;
-
 	SPI.begin();
 	SPI.beginTransaction(SPISettings(16000000/8, MSBFIRST, SPI_MODE3));
 	digitalWrite(_pinCS, LOW);
@@ -113,6 +112,9 @@ uint32_t TMC2130Stepper::send2130(uint8_t addressByte, uint32_t *config, uint32_
 	} else { // READ command
 		SPI.transfer16(0x0000); // Clear SPI
 		SPI.transfer16(0x0000);
+		digitalWrite(_pinCS, HIGH);
+		digitalWrite(_pinCS, LOW);
+
 		SPI.transfer(addressByte & 0xFF); // Send the address byte again
 		*config  = SPI.transfer(0x00);
 		*config <<= 8;
