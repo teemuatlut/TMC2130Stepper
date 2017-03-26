@@ -232,6 +232,9 @@ bool TMC2130Stepper::checkOT() {
 bool TMC2130Stepper::getOTPW() { return flag_otpw; }
 
 void TMC2130Stepper::clear_otpw() {	flag_otpw = 0; }
+
+bool TMC2130Stepper::isEnabled() { return !digitalRead(_pinEN); }
+
 /*
 void TMC2130Stepper::takeSteps(int steps) {
 	int stepsLeft = steps;

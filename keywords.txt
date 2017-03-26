@@ -18,6 +18,8 @@ SilentStepStick2130		KEYWORD2
 setCurrent 				KEYWORD2
 checkOT					KEYWORD2
 getOTPW					KEYWORD2
+clear_otpw				KEYWORD2
+isEnabled				KEYWORD2
 GCONF 					KEYWORD2
 external_ref 			KEYWORD2
 internal_sense_R 		KEYWORD2
