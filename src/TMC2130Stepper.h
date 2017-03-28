@@ -7,6 +7,8 @@
 	#include <Arduino.h>
 #endif
 
+const uint32_t TMC2130Stepper_version = 0x10100; // v1.1.0
+
 class TMC2130Stepper {
 	public:
 		TMC2130Stepper(uint8_t pinEN, uint8_t pinDIR, uint8_t pinStep, uint8_t pinCS);
