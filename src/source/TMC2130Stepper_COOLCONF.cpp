@@ -1,115 +1,26 @@
 #include "TMC2130Stepper.h"
+#include "TMC2130Stepper_REGDEFS.h"
+#include "TMC2130Stepper_MACROS.h"
 
-#define REG_COOLCONF 0X6D
-
-///////////////////////////////////////////////////////////////////////////////////////
-// REG_COOLCONF
-
-void TMC2130Stepper::COOLCONF(uint32_t value) {
-#ifdef TMC2130DEBUG
-	Serial.print("Set COOLCONF: ");
-	Serial.println(value);
-#endif
-	send2130(WRITE|REG_COOLCONF, &cur_COOLCONF, value, 0xFFFFFFFF);
+// COOLCONF
+uint32_t TMC2130Stepper::COOLCONF() { READ_REG(COOLCONF); }
+void TMC2130Stepper::COOLCONF(uint32_t input) {
+	COOLCONF_sr = input;
+	WRITE_REG(COOLCONF);
 }
 
-uint8_t TMC2130Stepper::sg_min() {return val_semin;}
+void TMC2130Stepper::semin(		uint8_t B )	{ MOD_REG(COOLCONF, SEMIN);		}
+void TMC2130Stepper::seup(		uint8_t B )	{ MOD_REG(COOLCONF, SEUP);		}
+void TMC2130Stepper::semax(		uint8_t B )	{ MOD_REG(COOLCONF, SEMAX);		}
+void TMC2130Stepper::sedn(		uint8_t B )	{ MOD_REG(COOLCONF, SEDN);		}
+void TMC2130Stepper::seimin(	bool 	B )	{ MOD_REG(COOLCONF, SEIMIN);	}
+void TMC2130Stepper::sgt(		uint8_t B )	{ MOD_REG(COOLCONF, SGT);		}
+void TMC2130Stepper::sfilt(		bool 	B )	{ MOD_REG(COOLCONF, SFILT);		}
 
-void TMC2130Stepper::sg_min(uint8_t value) {
-#ifdef TMC2130DEBUG
-	Serial.print("Set semin: ");
-	Serial.println(value);
-#endif
-	if (value > 15) value = 15;
-	val_semin = value;
-	send2130(WRITE|REG_COOLCONF, &cur_COOLCONF, value, 0xF);
-}
-
-uint8_t TMC2130Stepper::sg_step_width() {return val_seup;}
-
-void TMC2130Stepper::sg_step_width(uint8_t value) {
-#ifdef TMC2130DEBUG
-	Serial.print("Set seup: ");
-	Serial.println(value);
-#endif
-	uint32_t v;
-	switch(value) {
-		case 1: v = 0x0; break;
-		case 2: v = 0x1; break;
-		case 4: v = 0x2; break;
-		case 8: v = 0x3; break;
-		default: return;
-	}
-	val_seup = value;
-	send2130(WRITE|REG_COOLCONF, &cur_COOLCONF, v << 5, 0x60);
-}
-
-uint8_t TMC2130Stepper::sg_max() {return val_semax;}
-
-void TMC2130Stepper::sg_max(uint8_t value) {
-#ifdef TMC2130DEBUG
-	Serial.print("Set semax: ");
-	Serial.println(value);
-#endif
-	if (value > 15) value = 15;
-	val_semin = value;
-	send2130(WRITE|REG_COOLCONF, &cur_COOLCONF, (uint32_t)value << 8, 0xF00);
-}
-
-uint8_t TMC2130Stepper::sg_current_decrease() {return val_sedn;}
-
-void TMC2130Stepper::sg_current_decrease(uint8_t value) {
-#ifdef TMC2130DEBUG
-	Serial.print("Set sedn: ");
-	Serial.println(value);
-#endif
-
-	uint32_t v;
-	switch(value) {
-		case 32: v = 0b00; break;
-		case  8: v = 0b01; break;
-		case  2: v = 0b10; break;
-		case  1: v = 0b11; break;
-		default: return;
-	}
-
-	val_sedn = value;
-	send2130(WRITE|REG_COOLCONF, &cur_COOLCONF, v << 13, 0x6000);
-}
-
-uint8_t TMC2130Stepper::smart_min_current() {return val_seimin;}
-
-void TMC2130Stepper::smart_min_current(uint8_t value) {
-#ifdef TMC2130DEBUG
-	Serial.print("Set seimin: ");
-	Serial.println(value);
-#endif
-	if (value > 1) value = 1;
-	val_seimin = value;
-	send2130(WRITE|REG_COOLCONF, &cur_COOLCONF, (uint32_t)value << 15, 0x8000);
-}
-
-int8_t TMC2130Stepper::sg_stall_value() {return val_sgt;}
-
-void TMC2130Stepper::sg_stall_value(int8_t value) {
-#ifdef TMC2130DEBUG
-	Serial.print("Set sgt: ");
-	Serial.println(value);
-#endif
-	if (value < -64) value = -64;
-	else if (value > 63) value = 63;
-	val_sgt = value;
-	send2130(WRITE|REG_COOLCONF, &cur_COOLCONF, (uint32_t)(value) << 16, 0x7F0000UL);
-}
-
-bool TMC2130Stepper::sg_filter() {return val_sfilt;}
-
-void TMC2130Stepper::sg_filter(bool value) {
-#ifdef TMC2130DEBUG
-	Serial.print("Set sfilt: ");
-	Serial.println(value);
-#endif
-	if (value > 1) value = 1;
-	val_sfilt = value;
-	send2130(WRITE|REG_COOLCONF, &cur_COOLCONF, (uint32_t)value << 24, 0b1UL << 24);
-}
+uint8_t TMC2130Stepper::semin()	{ GET_BYTE(COOLCONF, SEMIN);	}
+uint8_t TMC2130Stepper::seup()	{ GET_BYTE(COOLCONF, SEUP);		}
+uint8_t TMC2130Stepper::semax()	{ GET_BYTE(COOLCONF, SEMAX);	}
+uint8_t TMC2130Stepper::sedn()	{ GET_BYTE(COOLCONF, SEDN);		}
+bool TMC2130Stepper::seimin()	{ GET_BYTE(COOLCONF, SEIMIN);	}
+uint8_t TMC2130Stepper::sgt()	{ GET_BYTE(COOLCONF, SGT);		}
+bool TMC2130Stepper::sfilt()	{ GET_BYTE(COOLCONF, SFILT);	}

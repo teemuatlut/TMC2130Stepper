@@ -233,10 +233,10 @@ void loop() {
 			serialTuple("hysterisis_low", arg);
 			myStepper.hysterisis_low(arg);
 		}
-		else if (cmd == "sine_offset") {
+/*		else if (cmd == "sine_offset") {
 			serialTuple("sine_offset", arg);
 			myStepper.sine_offset(arg);
-		}
+		}*/
 		else if (cmd == "disable_I_comparator") {
 			serialTuple("disable_I_comparator", arg);
 			myStepper.disable_I_comparator(arg);
@@ -343,7 +343,7 @@ void loop() {
 		}
 		else if (cmd == "DRVSTATUS") {
 			Serial.print("DRVSTATUS: 0b");
-			Serial.println(myStepper.DRVSTATUS(), BIN);
+			Serial.println(myStepper.DRV_STATUS(), BIN);
 		}
 		else if (cmd == "PWM_SCALE") {
 			Serial.print("PWM_SCALE: 0b");

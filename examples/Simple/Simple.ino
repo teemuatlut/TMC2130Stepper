@@ -1,5 +1,6 @@
-/*
-Initializes the library and turns the motor in alternating directions.
+/**
+ * Author Teemu Mäntykallio
+ * Initializes the library and turns the motor in alternating directions.
 */
 
 #define EN_PIN    38  // Nano v3:	16 Mega:	38	//enable (CFG6)
@@ -14,9 +15,9 @@ TMC2130Stepper TMC2130 = TMC2130Stepper(EN_PIN, DIR_PIN, STEP_PIN, CS_PIN);
 
 void setup() {
 	Serial.begin(9600);
-	TMC2130.begin(); // Initiate pins and registeries
-	TMC2130.SilentStepStick2130(600); // Set stepper current to 600mA. The command is the same as command TMC2130.setCurrent(600, 0.11, 0.5);
-	TMC2130.stealthChop(1); // Enable extremely quiet stepping
+	TMC2130.begin(); 			// Initiate pins and registeries
+	TMC2130.rms_current(600); 	// Set stepper current to 600mA. The command is the same as command TMC2130.setCurrent(600, 0.11, 0.5);
+	TMC2130.stealthChop(1); 	// Enable extremely quiet stepping
 	
 	digitalWrite(EN_PIN, LOW);
 }
@@ -37,7 +38,6 @@ void loop() {
 			TMC2130.shaft_dir(1);
 		}
 		dir = !dir;
-		Serial.println(TMC2130.GCONF(), BIN);
 		last_time = ms;
 	}
 }
