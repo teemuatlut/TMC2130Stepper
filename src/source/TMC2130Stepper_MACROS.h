@@ -1,7 +1,7 @@
 #ifndef TMC2130Stepper_MACROS_H
 #define TMC2130Stepper_MACROS_H
 #include "TMC2130Stepper.h"
-#include "TMC2130Stepper_REGDEFS.h"
+#include "../TMC2130Stepper_REGDEFS.h"
 
 #define WRITE_REG(R) 	send2130(TMC2130_WRITE|REG_##R, &R##_sr);
 

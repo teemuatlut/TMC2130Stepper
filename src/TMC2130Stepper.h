@@ -7,8 +7,6 @@
 	#include <Arduino.h>
 #endif
 
-#include "source/TMC2130Stepper_REGDEFS.h"
-
 const uint32_t TMC2130Stepper_version = 0x10100; // v1.1.0
 
 class TMC2130Stepper {

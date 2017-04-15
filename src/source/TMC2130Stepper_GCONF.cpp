@@ -1,5 +1,4 @@
 #include "TMC2130Stepper.h"
-#include "TMC2130Stepper_REGDEFS.h"
 #include "TMC2130Stepper_MACROS.h"
 
 // GCONF

@@ -1,5 +1,4 @@
 #include "TMC2130Stepper.h"
-#include "TMC2130Stepper_REGDEFS.h"
 #include "TMC2130Stepper_MACROS.h"
 
 uint32_t TMC2130Stepper::DRV_STATUS() { READ_REG_R(DRV_STATUS); }
