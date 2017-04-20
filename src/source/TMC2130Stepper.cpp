@@ -62,32 +62,27 @@ void TMC2130Stepper::send2130(uint8_t addressByte, uint32_t *config) {
 	digitalWrite(_pinCS, LOW);
 
 	status_response = SPI.transfer(addressByte & 0xFF); // s = 
-#ifdef TMC2130DEBUG
-	Serial.println("Received parameters:");
-	Serial.print("#Address byte: ");
-	Serial.println(addressByte, HEX);
-	Serial.print("#Current config: ");
-	Serial.println(*config, BIN);
-	Serial.print("#Value to write: ");
-	Serial.println(value, BIN);
-	Serial.print("#Mask: ");
-	Serial.println(mask, BIN);
-	Serial.print("#s: ");
-	Serial.println(s, BIN);
-#endif
+	#ifdef TMC2130DEBUG
+		Serial.println("## Received parameters:");
+		Serial.print("## Address byte: ");
+		Serial.println(addressByte, HEX);
+		Serial.print("## Config: ");
+		Serial.println(*config, BIN);
+		Serial.print("## status_response: ");
+		Serial.println(status_response, BIN);
+	#endif
 
 	if (addressByte >> 7) { // Check if WRITE command
-//		*config &= ~mask; // Clear bits being set
-//		*config |= (value & mask); // Set new values
+		//*config &= ~mask; // Clear bits being set
+		//*config |= (value & mask); // Set new values
 		SPI.transfer((*config >> 24) & 0xFF);
 		SPI.transfer((*config >> 16) & 0xFF);
 		SPI.transfer((*config >>  8) & 0xFF);
 		SPI.transfer(*config & 0xFF);
-#ifdef TMC2130DEBUG
-		Serial.println("=> WRITE cmd");
-		Serial.print("New config: ");
-		Serial.println(*config, BIN);
-#endif
+		#ifdef TMC2130DEBUG
+			Serial.println("## WRITE cmd");
+			Serial.println("##########################");
+		#endif
 	} else { // READ command
 		SPI.transfer16(0x0000); // Clear SPI
 		SPI.transfer16(0x0000);
@@ -102,11 +97,12 @@ void TMC2130Stepper::send2130(uint8_t addressByte, uint32_t *config) {
 		*config |= SPI.transfer(0x00);
 		*config <<= 8;
 		*config |= SPI.transfer(0x00);
-#ifdef TMC2130DEBUG
-		Serial.println("=> READ cmd");
-		Serial.print("Received config: ");
-		Serial.println(*config, BIN);
-#endif
+		#ifdef TMC2130DEBUG
+			Serial.println("## READ cmd");
+			Serial.print("## Received config: ");
+			Serial.println(*config, BIN);
+			Serial.println("##########################");
+		#endif
 	}
 
 	digitalWrite(_pinCS, HIGH);
@@ -114,38 +110,6 @@ void TMC2130Stepper::send2130(uint8_t addressByte, uint32_t *config) {
 
 	//return s;
 }
-#ifdef TMC2130DEBUG
-void TMC2130Stepper::checkStatus() {
-	uint32_t data = 0x0;
-	uint8_t s;
-
-    //show REG_GSTAT
-    s = send2130(READ|REG_GSTAT, &data, 0x0, 0x0);
-    Serial.print("GSTAT:     0x0");
-    Serial.print(data, HEX);
-    Serial.print("\t - ");
-    Serial.print("Status: 0x");
-    Serial.print(s, HEX);
-    if(s & 0x01) Serial.print(" reset");
-    if(s & 0x02) Serial.print(" error");
-    if(s & 0x04) Serial.print(" sg2");
-    if(s & 0x08) Serial.print(" standstill");
-    Serial.println(" ");
-
-    //show REG_DRVSTATUS
-    s = send2130(READ|REG_DRVSTATUS, &data, 0x0, 0x0);
-    Serial.print("DRVSTATUS: 0x");
-    Serial.print(data, HEX);
-    Serial.print("\t - ");
-    Serial.print("Status: 0x");
-    Serial.print(s, HEX);
-    if(s & 0x01) Serial.print(" reset");
-    if(s & 0x02) Serial.print(" error");
-    if(s & 0x04) Serial.print(" sg2");
-    if(s & 0x08) Serial.print(" standstill");
-    Serial.println(" ");
-}
-#endif
 
 bool TMC2130Stepper::checkOT() {
 	uint32_t response = DRV_STATUS();
