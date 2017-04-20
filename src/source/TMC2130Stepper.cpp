@@ -41,14 +41,13 @@ void TMC2130Stepper::begin() {
 	digitalWrite(SCK, LOW);
 
 	SPI.begin();
-
-	GCONF(0x0000UL);
-	CHOPCONF(0x0000UL);
-	COOLCONF(0x0000UL);
-	PWMCONF(0x0000UL);
-	hold_current(0x0);
-	run_current(0x0);
 */
+	GCONF(GCONF_sr);
+	CHOPCONF(CHOPCONF_sr);
+	COOLCONF(COOLCONF_sr);
+	PWMCONF(PWMCONF_sr);
+	IHOLD_IRUN(IHOLD_IRUN_sr);
+
 	toff(8); //off_time(8);
 	tbl(1); //blank_time(24);
 
