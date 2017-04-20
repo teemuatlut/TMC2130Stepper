@@ -55,24 +55,24 @@
 #define SMALL_HYSTERISIS_bp    14
 #define STOP_ENABLE_bp		   15
 #define DIRECT_MODE_bp		   16
-#define GCONF_bm				0x3FFFF
-#define I_SCALE_ANALOG_bm		0x1
-#define INTERNAL_RSENSE_bm		0x2
-#define EN_PWM_MODE_bm			0x4
-#define ENC_COMMUTATION_bm		0x8
-#define SHAFT_bm				0x10
-#define DIAG0_ERROR_bm			0x20
-#define DIAG0_OTPW_bm			0x40
-#define DIAG0_STALL_bm			0x80
-#define DIAG1_STALL_bm			0x100
-#define DIAG1_INDEX_bm			0x200
-#define DIAG1_ONSTATE_bm	    0x400
-#define DIAG1_STEPS_SKIPPED_bm  0x800
-#define DIAG0_INT_PUSHPULL_bm   0x1000
-#define DIAG1_PUSHPULL_bm	    0x2000
-#define SMALL_HYSTERISIS_bm     0x4000
-#define STOP_ENABLE_bm		    0x8000
-#define DIRECT_MODE_bm		    0x10000
+#define GCONF_bm				0x3FFFFUL
+#define I_SCALE_ANALOG_bm		0x1UL
+#define INTERNAL_RSENSE_bm		0x2UL
+#define EN_PWM_MODE_bm			0x4UL
+#define ENC_COMMUTATION_bm		0x8UL
+#define SHAFT_bm				0x10UL
+#define DIAG0_ERROR_bm			0x20UL
+#define DIAG0_OTPW_bm			0x40UL
+#define DIAG0_STALL_bm			0x80UL
+#define DIAG1_STALL_bm			0x100UL
+#define DIAG1_INDEX_bm			0x200UL
+#define DIAG1_ONSTATE_bm	    0x400UL
+#define DIAG1_STEPS_SKIPPED_bm  0x800UL
+#define DIAG0_INT_PUSHPULL_bm   0x1000UL
+#define DIAG1_PUSHPULL_bm	    0x2000UL
+#define SMALL_HYSTERISIS_bm     0x4000UL
+#define STOP_ENABLE_bm		    0x8000UL
+#define DIRECT_MODE_bm		    0x10000UL
 // GSTAT
 #define RESET_bp 			0
 #define DRV_ERR_bp			1
@@ -89,87 +89,87 @@
 #define DRV_ENN_CFG6_bp		4
 #define DCO_bp 				5
 #define VERSION_bp		   24
-#define IOIN_bm				0xFF00003F
-#define STEP_bm 			0x1
-#define DIR_bm				0x2
-#define DCEN_CFG4_bm		0x4
-#define DCIN_CFG5_bm		0x8
-#define DRV_ENN_CFG6_bm		0x10
-#define DCO_bm 				0x20
-#define VERSION_bm			0xFF000000
+#define IOIN_bm				0xFF00003FUL
+#define STEP_bm 			0x1UL
+#define DIR_bm				0x2UL
+#define DCEN_CFG4_bm		0x4UL
+#define DCIN_CFG5_bm		0x8UL
+#define DRV_ENN_CFG6_bm		0x10UL
+#define DCO_bm 				0x20UL
+#define VERSION_bm			0xFF000000UL
 // IHOLD_IRUN
 #define IHOLD_bp 			0
 #define IRUN_bp				8
 #define IHOLDDELAY_bp	   16
-#define IHOLD_IRUN_bm		0xF1F1F
-#define IHOLD_bm 			0x1F
-#define IRUN_bm				0x1F00
-#define IHOLDDELAY_bm	    0xF0000
+#define IHOLD_IRUN_bm		0xF1F1FUL
+#define IHOLD_bm 			0x1FUL
+#define IRUN_bm				0x1F00UL
+#define IHOLDDELAY_bm	    0xF0000UL
 // TPOWERDOWN
 #define TPOWERDOWN_bp		0
-#define TPOWERDOWN_bm		0xFF
+#define TPOWERDOWN_bm		0xFFUL
 // TSTEP
 #define TSTEP_bp			0
-#define TSTEP_bm			0xFFFFF
+#define TSTEP_bm			0xFFFFFUL
 // TPWMTHRS
 #define TPWMTHRS_bp 		0
-#define TPWMTHRS_bm			0xFFFFF
+#define TPWMTHRS_bm			0xFFFFFUL
 // TCOOLTHRS
 #define TCOOLTHRS_bp		0
-#define TCOOLTHRS_bm		0xFFFFF
+#define TCOOLTHRS_bm		0xFFFFFUL
 // THIGH
 #define THIGH_bp 			0
-#define THIGH_bm			0xFFFFF
+#define THIGH_bm			0xFFFFFUL
 // XDIRECT
 #define XDIRECT_bp			0
-#define XDIRECT_bm			0xFFFFFFFF
+#define XDIRECT_bm			0xFFFFFFFFUL
 #define COIL_A_bp			0
 #define COIL_B_bp			16
-#define COIL_A_bm			0x1FF
-#define COIL_B_bm			0x1FF0000
+#define COIL_A_bm			0x1FFUL
+#define COIL_B_bm			0x1FF0000UL
 // VDCMIN
 #define VDCMIN_bp			0
-#define VDCMIN_bm			0x7FFFFF
+#define VDCMIN_bm			0x7FFFFFUL
 // MSLUT0
 #define MSLUT0_bp			0
-#define MSLUT0_bm			0xFFFFFFFF
+#define MSLUT0_bm			0xFFFFFFFFUL
 // MSLUT1
 #define MSLUT1_bp			0
-#define MSLUT1_bm			0xFFFFFFFF
+#define MSLUT1_bm			0xFFFFFFFFUL
 // MSLUT2
 #define MSLUT2_bp			0
-#define MSLUT2_bm			0xFFFFFFFF
+#define MSLUT2_bm			0xFFFFFFFFUL
 // MSLUT3
 #define MSLUT3_bp			0
-#define MSLUT3_bm			0xFFFFFFFF
+#define MSLUT3_bm			0xFFFFFFFFUL
 // MSLUT4
 #define MSLUT4_bp			0
-#define MSLUT4_bm			0xFFFFFFFF
+#define MSLUT4_bm			0xFFFFFFFFUL
 // MSLUT5
 #define MSLUT5_bp			0
-#define MSLUT5_bm			0xFFFFFFFF
+#define MSLUT5_bm			0xFFFFFFFFUL
 // MSLUT6
 #define MSLUT6_bp			0
-#define MSLUT6_bm			0xFFFFFFFF
+#define MSLUT6_bm			0xFFFFFFFFUL
 // MSLUT7
 #define MSLUT7_bp			0
-#define MSLUT7_bm			0xFFFFFFFF
+#define MSLUT7_bm			0xFFFFFFFFUL
 // MSLUTSEL
 #define MSLUTSEL_bp			0
-#define MSLUTSEL_bm			0xFFFFFFFF
+#define MSLUTSEL_bm			0xFFFFFFFFUL
 // MSLUTSTART
 #define START_SIN_bp		0
 #define START_SIN90_bp	   16
-#define START_SIN_bm 		0xFF
-#define START_SIN90_bm 		0xFF0000
+#define START_SIN_bm 		0xFFUL
+#define START_SIN90_bm 		0xFF0000UL
 // MSCNT
 #define MSCNT_bp			0
-#define MSCNT_bm			0x3FF
+#define MSCNT_bm			0x3FFUL
 // MSCURACT
 #define CUR_A_bp			0
 #define CUR_B_bp		   16
-#define CUR_A_bm			0x1FF
-#define CUR_B_bm			0x1FF0000
+#define CUR_A_bm			0x1FFUL
+#define CUR_B_bm			0x1FF0000UL
 // CHOPCONF
 #define TOFF_bp				0
 #define HSTRT_bp			4
@@ -187,23 +187,23 @@
 #define INTPOL_bp		   28
 #define DEDGE_bp		   29
 #define DISS2G_bp		   30
-#define CHOPCONF_bm			0xFFFFFFFF
-#define TOFF_bm			  	0xF
-#define HSTRT_bm		 	0x70
-#define FD_bm				0x830
-#define HEND_bm				0x780
-#define DISFDCC_bm			0x1000
-#define RNDTF_bm			0x2000
-#define CHM_bm				0x4000
-#define TBL_bm		  		0x18000
-#define VSENSE_bm	  		0x20000
-#define VHIGHFS_bm			0x40000
-#define VHIGHCHM_bm			0x80000
-#define SYNC_bm				0xF00000
-#define MRES_bm				0xF000000
-#define INTPOL_bm  			0x10000000
-#define DEDGE_bm   			0x20000000
-#define DISS2G_bm  			0x40000000
+#define CHOPCONF_bm			0xFFFFFFFFUL
+#define TOFF_bm			  	0xFUL
+#define HSTRT_bm		 	0x70UL
+#define FD_bm				0x830UL
+#define HEND_bm				0x780UL
+#define DISFDCC_bm			0x1000UL
+#define RNDTF_bm			0x2000UL
+#define CHM_bm				0x4000UL
+#define TBL_bm		  		0x18000UL
+#define VSENSE_bm	  		0x20000UL
+#define VHIGHFS_bm			0x40000UL
+#define VHIGHCHM_bm			0x80000UL
+#define SYNC_bm				0xF00000UL
+#define MRES_bm				0xF000000UL
+#define INTPOL_bm  			0x10000000UL
+#define DEDGE_bm   			0x20000000UL
+#define DISS2G_bm  			0x40000000UL
 // COOLCONF
 #define SEMIN_bp			0
 #define SEUP_bp				5
@@ -212,19 +212,19 @@
 #define SEIMIN_bp		   15
 #define SGT_bp			   16
 #define SFILT_bp		   24
-#define COOLCONF_bm			0x3FFFFFF
-#define SEMIN_bm			0xF
-#define SEUP_bm				0x60
-#define SEMAX_bm			0xF00
-#define SEDN_bm				0x6000
-#define SEIMIN_bm			0x80000
-#define SGT_bm				0x7F0000
-#define SFILT_bm			0x1000000
+#define COOLCONF_bm			0x3FFFFFFUL
+#define SEMIN_bm			0xFUL
+#define SEUP_bm				0x60UL
+#define SEMAX_bm			0xF00UL
+#define SEDN_bm				0x6000UL
+#define SEIMIN_bm			0x80000UL
+#define SGT_bm				0x7F0000UL
+#define SFILT_bm			0x1000000UL
 // DCCTRL
 #define DC_TIME_bp			0
 #define DC_SG_bp		   16
-#define DC_TIME_bm			0x3FF
-#define DC_SG_bm			0xFF0000
+#define DC_TIME_bm			0x3FFUL
+#define DC_SG_bm			0xFF0000UL
 // DRV_STATUS
 #define SG_RESULT_bp		0
 #define FSACTIVE_bp		   15
@@ -237,18 +237,18 @@
 #define OLA_bp			   29
 #define OLB_bp			   30
 #define STST_bp			   31
-#define DRV_STATUS_bm		0xFFFFFFFF
-#define SG_RESULT_bm		0x3FF
-#define FSACTIVE_bm			0x8000
-#define CS_ACTUAL_bm		0x1F0000
-#define STALLGUARD_bm		0x1000000
-#define OT_bm				0x2000000
-#define OTPW_bm				0x4000000
-#define S2GA_bm				0x8000000
-#define S2GB_bm				0x10000000
-#define OLA_bm				0x20000000
-#define OLB_bm				0x40000000
-#define STST_bm				0x80000000
+#define DRV_STATUS_bm		0xFFFFFFFFUL
+#define SG_RESULT_bm		0x3FFUL
+#define FSACTIVE_bm			0x8000UL
+#define CS_ACTUAL_bm		0x1F0000UL
+#define STALLGUARD_bm		0x1000000UL
+#define OT_bm				0x2000000UL
+#define OTPW_bm				0x4000000UL
+#define S2GA_bm				0x8000000UL
+#define S2GB_bm				0x10000000UL
+#define OLA_bm				0x20000000UL
+#define OLB_bm				0x40000000UL
+#define STST_bm				0x80000000UL
 // PWMCONF
 #define PWM_AMPL_bp 		0
 #define PWM_GRAD_bp 		8
@@ -256,23 +256,23 @@
 #define PWM_AUTOSCALE_bp   18
 #define PWM_SYMMETRIC_bp   19
 #define FREEWHEEL_bp 	   20
-#define PWMCONF_bm			0x7FFFFF
-#define PWM_AMPL_bm 		0xFF
-#define PWM_GRAD_bm 		0xFF00
-#define PWM_FREQ_bm 		0x30000
-#define PWM_AUTOSCALE_bm	0x40000
-#define PWM_SYMMETRIC_bm	0x80000
-#define FREEWHEEL_bm 		0x300000
+#define PWMCONF_bm			0x7FFFFFUL
+#define PWM_AMPL_bm 		0xFFUL
+#define PWM_GRAD_bm 		0xFF00UL
+#define PWM_FREQ_bm 		0x30000UL
+#define PWM_AUTOSCALE_bm	0x40000UL
+#define PWM_SYMMETRIC_bm	0x80000UL
+#define FREEWHEEL_bm 		0x300000UL
 // PWM_SCALE
 #define PWM_SCALE_bp		0
-#define PWM_SCALE_bm		0xFF
+#define PWM_SCALE_bm		0xFFUL
 // ENCM_CTRL
 #define INV_bp				0
 #define MAXSPEED_bp			1
-#define INV_bm				0x1
-#define MAXSPEED_bm			0x2
+#define INV_bm				0x1UL
+#define MAXSPEED_bm			0x2UL
 // LOST_STEPS
 #define LOST_STEPS_bp		0
-#define LOST_STEPS_bm		0xFFFFF
+#define LOST_STEPS_bm		0xFFFFFUL
 
 #endif
