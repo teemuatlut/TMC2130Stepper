@@ -334,6 +334,9 @@ class TMC2130Stepper {
 		// W: ENCM_CTRL
 		inline bool 		invert_encoder()									__attribute__((always_inline)) { return inv(); 											}
 		inline void 		invert_encoder(				bool value)	__attribute__((always_inline)) {				inv(value); 								}
+		// R: DRV_STATUS
+		inline uint32_t DRVSTATUS()												__attribute__((always_inline)) { return DRV_STATUS(); 							}
+
 
 		float Rsense = 0.11;
 		bool _started;
