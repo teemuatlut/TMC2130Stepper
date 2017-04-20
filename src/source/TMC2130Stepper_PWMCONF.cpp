@@ -3,7 +3,7 @@
 
 
 // PWMCONF
-uint32_t TMC2130Stepper::PWMCONF() { READ_REG(PWMCONF); }
+uint32_t TMC2130Stepper::PWMCONF() { return PWMCONF_sr; }
 void TMC2130Stepper::PWMCONF(uint32_t input) {
 	PWMCONF_sr = input;
 	WRITE_REG(PWMCONF);
