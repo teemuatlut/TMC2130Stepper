@@ -253,7 +253,7 @@ uint16_t TMC2130Stepper::rms_current() {
 	return (float)(irun()+1)/32.0 * (vsense()?0.180:0.325)/(Rsense+0.02) / 1.41421 * 1000;
 }
 
-void TMC2130Stepper::setCurrent(uint16_t mA, float Rsense, float multiplier) { rms_current(mA, multiplier, Rsense); }
+void TMC2130Stepper::setCurrent(uint16_t mA, float R, float multiplier) { rms_current(mA, multiplier, R); }
 uint16_t TMC2130Stepper::getCurrent() {	return val_mA; }
 
 void TMC2130Stepper::SilentStepStick2130(uint16_t current) { rms_current(current); }
