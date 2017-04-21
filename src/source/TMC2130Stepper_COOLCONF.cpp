@@ -2,7 +2,7 @@
 #include "TMC2130Stepper_MACROS.h"
 
 // COOLCONF
-uint32_t TMC2130Stepper::COOLCONF() { READ_REG(COOLCONF); }
+uint32_t TMC2130Stepper::COOLCONF() { return COOLCONF_sr; }
 void TMC2130Stepper::COOLCONF(uint32_t input) {
 	COOLCONF_sr = input;
 	WRITE_REG(COOLCONF);
