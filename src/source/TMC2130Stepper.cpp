@@ -126,7 +126,7 @@ bool TMC2130Stepper::getOTPW() { return flag_otpw; }
 
 void TMC2130Stepper::clear_otpw() {	flag_otpw = 0; }
 
-bool TMC2130Stepper::isEnabled() { return !digitalRead(_pinEN) & toff(); }
+bool TMC2130Stepper::isEnabled() { return !digitalRead(_pinEN) && toff(); }
 
 ///////////////////////////////////////////////////////////////////////////////////////
 // R+C: GSTAT
