@@ -37,6 +37,16 @@
 #define REG_ENCM_CTRL 			0x72
 #define REG_LOST_STEPS			0x73
 
+// SPI_STATUS
+#define RESET_FLAG_bp			0
+#define DRIVER_ERROR_bp			1
+#define SG2_bp 					2
+#define STANDSTILL_bp			3
+#define RESET_FLAG_bm			0x1UL
+#define DRIVER_ERROR_bm			0x2UL
+#define SG2_bm 					0x4UL
+#define STANDSTILL_bm			0x8UL
+
 // GCONF
 #define I_SCALE_ANALOG_bp		0
 #define INTERNAL_RSENSE_bp		1
