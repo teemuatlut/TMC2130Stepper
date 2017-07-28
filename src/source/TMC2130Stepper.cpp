@@ -287,6 +287,7 @@ uint16_t TMC2130Stepper::microsteps() {
 		case 7: return   2;
 		case 8: return   0;
 	}
+	return 0;
 }
 
 void TMC2130Stepper::blank_time(uint8_t value) {
@@ -305,6 +306,7 @@ uint8_t TMC2130Stepper::blank_time() {
 		case 0b10: return 36;
 		case 0b11: return 54;
 	}
+	return 0;
 }
 
 void TMC2130Stepper::hysterisis_low(int8_t value) { hend(value+3); }
@@ -328,4 +330,5 @@ uint8_t TMC2130Stepper::sg_current_decrease() {
 		case 0b10: return  2;
 		case 0b11: return  1;
 	}
+	return 0;
 }
