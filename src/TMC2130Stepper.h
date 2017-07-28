@@ -341,6 +341,7 @@ class TMC2130Stepper {
 		float Rsense = 0.11;
 		bool _started;
 		uint8_t status_response;
+		bool flag_otpw = false;
 
 	private:
 		//const uint8_t WRITE     = 0b10000000;
@@ -384,7 +385,6 @@ class TMC2130Stepper {
 		void send2130(uint8_t addressByte, uint32_t *config);
 
 		uint16_t val_mA           = 0;
-		bool flag_otpw            = 0;
 };
 
 #endif
