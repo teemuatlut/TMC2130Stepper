@@ -290,31 +290,6 @@ uint16_t TMC2130Stepper::microsteps() {
 	return 0;
 }
 
-void TMC2130Stepper::blank_time(uint8_t value) {
-	switch (value) {
-		case 16: tbl(0b00); break;
-		case 24: tbl(0b01); break;
-		case 36: tbl(0b10); break;
-		case 54: tbl(0b11); break;
-	}
-}
-
-uint8_t TMC2130Stepper::blank_time() {
-	switch (tbl()) {
-		case 0b00: return 16;
-		case 0b01: return 24;
-		case 0b10: return 36;
-		case 0b11: return 54;
-	}
-	return 0;
-}
-
-void TMC2130Stepper::hysterisis_low(int8_t value) { hend(value+3); }
-int8_t TMC2130Stepper::hysterisis_low() { return hend()-3; };
-
-void TMC2130Stepper::hysterisis_start(uint8_t value) { hstrt(value-1); }
-uint8_t TMC2130Stepper::hysterisis_start() { return hstrt()+1; }
-
 void TMC2130Stepper::sg_current_decrease(uint8_t value) {
 	switch(value) {
 		case 32: sedn(0b00); break;
