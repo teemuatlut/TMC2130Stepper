@@ -207,8 +207,8 @@ class TMC2130Stepper {
 		uint16_t microsteps();
 		void blank_time(uint8_t value);
 		uint8_t blank_time();
-		void hysterisis_low(int8_t value);
-		int8_t hysterisis_low();
+		void hysterisis_end(int8_t value);
+		int8_t hysterisis_end();
 		void hysterisis_start(uint8_t value);
 		uint8_t hysterisis_start();
 		void sg_current_decrease(uint8_t value);
@@ -274,6 +274,7 @@ class TMC2130Stepper {
 		inline uint8_t 	off_time()												__attribute__((always_inline)) { return toff(); 										}
 //		inline uint8_t 	hysterisis_start()								__attribute__((always_inline)) { return hstrt(); 										}
 //		inline int8_t 	hysterisis_low()									__attribute__((always_inline)) { return hend(); 										}
+		inline int8_t 	hysterisis_low()									__attribute__((always_inline)) { return hysterisis_end(); 					}
 		inline uint8_t 	fast_decay_time()									__attribute__((always_inline)) { return fd(); 											}
 		inline bool 		disable_I_comparator()						__attribute__((always_inline)) { return disfdcc(); 									}
 		inline bool 		random_off_time()									__attribute__((always_inline)) { return rndtf(); 										}
@@ -290,6 +291,7 @@ class TMC2130Stepper {
 		inline void 		off_time(					 uint8_t value)	__attribute__((always_inline)) {				toff(value); 								}
 //		inline void 		hysterisis_start(	 uint8_t value)	__attribute__((always_inline)) {				hstrt(value); 							}
 //		inline void 		hysterisis_low(		  int8_t value)	__attribute__((always_inline)) {				hend(value); 								}
+		inline void 		hysterisis_low(		  int8_t value)	__attribute__((always_inline)) {				hysterisis_end(value); 			}
 		inline void 		fast_decay_time(	 uint8_t value)	__attribute__((always_inline)) {				fd(value); 									}
 		inline void 		disable_I_comparator( bool value)	__attribute__((always_inline)) {				disfdcc(value);							}
 		inline void 		random_off_time(			bool value)	__attribute__((always_inline)) {				rndtf(value); 							}

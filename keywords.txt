@@ -55,7 +55,7 @@ CHOPCONF 				KEYWORD2
 off_time 				KEYWORD2
 hysterisis_start 		KEYWORD2
 fast_decay_time 		KEYWORD2
-hysterisis_low			KEYWORD2
+hysterisis_end			KEYWORD2
 sine_offset 			KEYWORD2
 disable_I_comparator 	KEYWORD2
 random_off_time 		KEYWORD2
