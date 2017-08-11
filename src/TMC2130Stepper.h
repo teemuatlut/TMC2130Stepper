@@ -377,7 +377,7 @@ class TMC2130Stepper {
 							CHOPCONF_sr 	= 0x00000000UL,
 							COOLCONF_sr 	= 0x00000000UL,
 							DCCTRL_sr 		= 0x00000000UL,
-							PWMCONF_sr 		= 0x00000000UL,
+							PWMCONF_sr 		= 0x00050480UL,
 							tmp_sr 				= 0x00000000UL,
 							TPOWERDOWN_sr = 0x00000000UL,
 							ENCM_CTRL_sr 	= 0x00000000UL,
