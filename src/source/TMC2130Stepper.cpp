@@ -1,6 +1,13 @@
-#include <SPI.h>
 #include "TMC2130Stepper.h"
 #include "TMC2130Stepper_MACROS.h"
+
+#ifdef ARDUINO_SAM_ARCHIM
+	#include "SW_SPI.h"
+	SW_SPI TMC_SPI = SW_SPI(); // Default: MOSI=28, MISO=26, SCK=27
+#else
+	#include <SPI.h>
+	#define TMC_SPI SPI
+#endif
 
 TMC2130Stepper::TMC2130Stepper(uint8_t pinEN, uint8_t pinDIR, uint8_t pinStep, uint8_t pinCS) {
 	_started = false;
@@ -59,11 +66,13 @@ void TMC2130Stepper::begin() {
 //uint32_t TMC2130Stepper::send2130(uint8_t addressByte, uint32_t *config, uint32_t value, uint32_t mask) {
 void TMC2130Stepper::send2130(uint8_t addressByte, uint32_t *config) {
 	//uint8_t s;
-	SPI.begin();
-	SPI.beginTransaction(SPISettings(16000000/8, MSBFIRST, SPI_MODE3));
+	TMC_SPI.begin();
+	#ifndef ARDUINO_SAM_ARCHIM
+		TMC_SPI.beginTransaction(SPISettings(16000000/8, MSBFIRST, SPI_MODE3));
+	#endif
 	digitalWrite(_pinCS, LOW);
 
-	status_response = SPI.transfer(addressByte & 0xFF); // s = 
+	status_response = TMC_SPI.transfer(addressByte & 0xFF); // s = 
 	#ifdef TMC2130DEBUG
 		Serial.println("## Received parameters:");
 		Serial.print("## Address byte: ");
@@ -77,28 +86,28 @@ void TMC2130Stepper::send2130(uint8_t addressByte, uint32_t *config) {
 	if (addressByte >> 7) { // Check if WRITE command
 		//*config &= ~mask; // Clear bits being set
 		//*config |= (value & mask); // Set new values
-		SPI.transfer((*config >> 24) & 0xFF);
-		SPI.transfer((*config >> 16) & 0xFF);
-		SPI.transfer((*config >>  8) & 0xFF);
-		SPI.transfer(*config & 0xFF);
+		TMC_SPI.transfer((*config >> 24) & 0xFF);
+		TMC_SPI.transfer((*config >> 16) & 0xFF);
+		TMC_SPI.transfer((*config >>  8) & 0xFF);
+		TMC_SPI.transfer(*config & 0xFF);
 		#ifdef TMC2130DEBUG
 			Serial.println("## WRITE cmd");
 			Serial.println("##########################");
 		#endif
 	} else { // READ command
-		SPI.transfer16(0x0000); // Clear SPI
-		SPI.transfer16(0x0000);
+		TMC_SPI.transfer16(0x0000); // Clear SPI
+		TMC_SPI.transfer16(0x0000);
 		digitalWrite(_pinCS, HIGH);
 		digitalWrite(_pinCS, LOW);
 
-		SPI.transfer(addressByte & 0xFF); // Send the address byte again
-		*config  = SPI.transfer(0x00);
+		TMC_SPI.transfer(addressByte & 0xFF); // Send the address byte again
+		*config  = TMC_SPI.transfer(0x00);
 		*config <<= 8;
-		*config |= SPI.transfer(0x00);
+		*config |= TMC_SPI.transfer(0x00);
 		*config <<= 8;
-		*config |= SPI.transfer(0x00);
+		*config |= TMC_SPI.transfer(0x00);
 		*config <<= 8;
-		*config |= SPI.transfer(0x00);
+		*config |= TMC_SPI.transfer(0x00);
 		#ifdef TMC2130DEBUG
 			Serial.println("## READ cmd");
 			Serial.print("## Received config: ");
@@ -108,7 +117,7 @@ void TMC2130Stepper::send2130(uint8_t addressByte, uint32_t *config) {
 	}
 
 	digitalWrite(_pinCS, HIGH);
-	SPI.endTransaction();
+	TMC_SPI.endTransaction();
 
 	//return s;
 }
