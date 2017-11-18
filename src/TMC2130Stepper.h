@@ -2,9 +2,7 @@
 
 //#define TMC2130DEBUG
 
-#if defined(ARDUINO) && ARDUINO >= 100
-	#include <Arduino.h>
-#endif
+#include <Arduino.h>
 
 const uint32_t TMC2130Stepper_version = 0x10100; // v1.1.0
 
