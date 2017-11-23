@@ -151,14 +151,14 @@ class TMC2130Stepper {
 		void semax(								uint8_t B);
 		void sedn(								uint8_t B);
 		void seimin(							bool 		B);
-		void sgt(									uint8_t B);
+		void sgt(									int8_t B);
 		void sfilt(								bool 		B);
 		uint8_t semin();
 		uint8_t seup();
 		uint8_t semax();
 		uint8_t sedn();
 		bool seimin();
-		uint8_t sgt();
+		int8_t sgt();
 		bool sfilt();
 		// PWMCONF
 		void PWMCONF(							uint32_t value);
