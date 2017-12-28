@@ -1,3 +1,10 @@
+# About this fork:
+This fork was created to enable TMC2130 support for the MK4Duo firmware on Arduino Due SAM boards.
+Changes:
+- Removed begin() from constructor
+- Changes compiler directive to properly detect SAM boards
+- Override software SPI pins, expose them to the user
+
 # TMC2130Stepper
 Arduino library for Trinamic TMC2130 Stepper driver
 
