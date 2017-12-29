@@ -1,4 +1,4 @@
-#ifdef ARDUINO_SAM_ARCHIM
+#ifdef ARDUINO_SAM_DUE
   #include "SW_SPI.h"
 
   void _digitalWrite(uint8_t pin, bool state) {

@@ -1,9 +1,9 @@
 #include "TMC2130Stepper.h"
 #include "TMC2130Stepper_MACROS.h"
 
-#ifdef ARDUINO_SAM_ARCHIM
+#ifdef ARDUINO_SAM_DUE
 	#include "SW_SPI.h"
-	SW_SPI TMC_SPI = SW_SPI(); // Default: MOSI=28, MISO=26, SCK=27
+	SW_SPI TMC_SPI = SW_SPI(51, 50, 52); // Default: MOSI=51, MISO=50, SCK=52
 #else
 	#include <SPI.h>
 	#define TMC_SPI SPI
@@ -17,7 +17,7 @@ TMC2130Stepper::TMC2130Stepper(uint8_t pinEN, uint8_t pinDIR, uint8_t pinStep, u
 	this->_pinSTEP = pinStep;
 	this->_pinCS = pinCS;
 
-	begin();
+	//begin(); //Removed constructor
 }
 
 void TMC2130Stepper::begin() {
@@ -67,7 +67,7 @@ void TMC2130Stepper::begin() {
 void TMC2130Stepper::send2130(uint8_t addressByte, uint32_t *config) {
 	//uint8_t s;
 	TMC_SPI.begin();
-	#ifndef ARDUINO_SAM_ARCHIM
+	#ifndef ARDUINO_SAM_DUE
 		TMC_SPI.beginTransaction(SPISettings(16000000/8, MSBFIRST, SPI_MODE3));
 	#endif
 	digitalWrite(_pinCS, LOW);
