@@ -2,9 +2,10 @@
 
 #include <Arduino.h>
 
-class SW_SPI {
+class SW_SPIClass {
 	public:
-		SW_SPI(uint8_t sw_mosi_pin=28, uint8_t sw_miso_pin=26, uint8_t sw_sck_pin=27);
+		void setPins(uint8_t sw_mosi_pin, uint8_t sw_miso_pin, uint8_t sw_sck_pin);
+		void init();
 		void begin() {};
 		byte transfer(uint8_t ulVal, uint8_t ulBitOrder=MSBFIRST);
 		uint16_t transfer16(uint16_t data);
@@ -13,4 +14,12 @@ class SW_SPI {
 		uint8_t mosi_pin,
 				miso_pin,
 				sck_pin;
+		uint8_t mosi_bm,
+				miso_bm,
+				sck_bm;
+		uint8_t mosi_register,
+				miso_register,
+				sck_register;
 };
+
+extern SW_SPIClass TMC_SW_SPI;

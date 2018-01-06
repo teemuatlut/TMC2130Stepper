@@ -10,6 +10,7 @@ const uint32_t TMC2130Stepper_version = 0x10100; // v1.1.0
 class TMC2130Stepper {
 	public:
 		TMC2130Stepper(uint8_t pinEN, uint8_t pinDIR, uint8_t pinStep, uint8_t pinCS);
+		TMC2130Stepper(uint8_t pinEN, uint8_t pinDIR, uint8_t pinStep, uint8_t pinCS, uint8_t pinMOSI, uint8_t pinMISO, uint8_t pinSCK);
 		void begin();
 		void checkStatus();
 		void rms_current(uint16_t mA, float multiplier=0.5, float RS=0.11);
@@ -385,4 +386,5 @@ class TMC2130Stepper {
 		void send2130(uint8_t addressByte, uint32_t *config);
 
 		uint16_t val_mA           = 0;
+		bool uses_sw_spi = false;
 };
