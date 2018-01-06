@@ -16,8 +16,6 @@ TMC2130Stepper::TMC2130Stepper(uint8_t pinEN, uint8_t pinDIR, uint8_t pinStep, u
 	this->_pinDIR = pinDIR;
 	this->_pinSTEP = pinStep;
 	this->_pinCS = pinCS;
-
-	begin();
 }
 
 void TMC2130Stepper::begin() {
