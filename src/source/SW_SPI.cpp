@@ -34,13 +34,15 @@ void SW_SPIClass::init() {
   pinMode(mosi_pin, OUTPUT);
   pinMode(sck_pin, OUTPUT);
   pinMode(miso_pin, INPUT);
-  mosi_bm = digitalPinToBitMask(mosi_pin);
-  miso_bm = digitalPinToBitMask(miso_pin);
-  sck_bm = digitalPinToBitMask(sck_pin);
-  #ifdef ARDUINO_ARCH_AVR
-    mosi_register = portOutputRegister(getPort(mosi_pin));
-    miso_register = portOutputRegister(getPort(miso_pin));
-    sck_register = portOutputRegister(getPort(sck_pin));
+  #ifndef TARGET_LPC1768
+    mosi_bm = digitalPinToBitMask(mosi_pin);
+    miso_bm = digitalPinToBitMask(miso_pin);
+    sck_bm = digitalPinToBitMask(sck_pin);
+    #ifdef ARDUINO_ARCH_AVR
+      mosi_register = portOutputRegister(getPort(mosi_pin));
+      miso_register = portOutputRegister(getPort(miso_pin));
+      sck_register = portOutputRegister(getPort(sck_pin));
+    #endif
   #endif
 }
 
@@ -51,28 +53,22 @@ byte SW_SPIClass::transfer(uint8_t ulVal, uint8_t ulBitOrder) {
   for (uint8_t i=0 ; i<8 ; ++i) {
     // Write bit
     if ( ulBitOrder == LSBFIRST ) {
-      //_digitalWrite( mosi_pin, !!(ulVal & (1 << i)) ) ;
       !!(ulVal & (1 << i)) ? writeMOSI_H : writeMOSI_L;
     } else {
-      //_digitalWrite( mosi_pin, !!(ulVal & (1 << (7 - i))) ) ;
       !!(ulVal & (1 << (7 - i))) ? writeMOSI_H : writeMOSI_L;
     }
 
     // Start clock pulse
-    //_digitalWrite( sck_pin, HIGH );
     writeSCK_H;
 
     // Read bit
     if ( ulBitOrder == LSBFIRST ) {
-      //value |= (_digitalRead( miso_pin ) ? 1 : 0) << i ;
       value |= ( readMISO ? 1 : 0) << i ;
     } else {
-      //value |= (_digitalRead( miso_pin ) ? 1 : 0) << (7 - i) ;
       value |= ( readMISO ? 1 : 0) << (7 - i) ;
     }
 
     // Stop clock pulse
-    //_digitalWrite( sck_pin, LOW );
     writeSCK_L;
   }
 

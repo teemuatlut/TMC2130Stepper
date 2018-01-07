@@ -2,6 +2,13 @@
 
 #include <Arduino.h>
 
+#ifndef MSBFIRST
+	#define MSBFIRST 0
+#endif
+#ifndef LSBFIRST
+	#define LSBFIRST 1
+#endif
+
 class SW_SPIClass {
 	public:
 		void setPins(uint16_t sw_mosi_pin, uint16_t sw_miso_pin, uint16_t sw_sck_pin);
