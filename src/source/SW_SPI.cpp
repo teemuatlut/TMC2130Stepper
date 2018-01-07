@@ -24,7 +24,7 @@ SW_SPIClass TMC_SW_SPI;
   #define readMISO digitalRead(miso_pin)
 #endif
 
-void SW_SPIClass::setPins(uint8_t sw_mosi_pin, uint8_t sw_miso_pin, uint8_t sw_sck_pin) {
+void SW_SPIClass::setPins(uint16_t sw_mosi_pin, uint16_t sw_miso_pin, uint16_t sw_sck_pin) {
   mosi_pin = sw_mosi_pin;
   miso_pin = sw_miso_pin;
   sck_pin = sw_sck_pin;

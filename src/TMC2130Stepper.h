@@ -9,8 +9,8 @@ const uint32_t TMC2130Stepper_version = 0x20100; // v2.1.0
 
 class TMC2130Stepper {
 	public:
-		TMC2130Stepper(uint8_t pinEN, uint8_t pinDIR, uint8_t pinStep, uint8_t pinCS);
-		TMC2130Stepper(uint8_t pinEN, uint8_t pinDIR, uint8_t pinStep, uint8_t pinCS, uint8_t pinMOSI, uint8_t pinMISO, uint8_t pinSCK);
+		TMC2130Stepper(uint16_t pinEN, uint16_t pinDIR, uint16_t pinStep, uint16_t pinCS);
+		TMC2130Stepper(uint16_t pinEN, uint16_t pinDIR, uint16_t pinStep, uint16_t pinCS, uint16_t pinMOSI, uint16_t pinMISO, uint16_t pinSCK);
 		void begin();
 		void checkStatus();
 		void rms_current(uint16_t mA, float multiplier=0.5, float RS=0.11);
@@ -347,13 +347,13 @@ class TMC2130Stepper {
 	private:
 		//const uint8_t WRITE     = 0b10000000;
 		//const uint8_t READ      = 0b00000000;
-		uint8_t _pinEN        = 16;
-		uint8_t _pinSTEP      = 18;
-		uint8_t _pinCS        = 17;
+		uint16_t _pinEN        = 16;
+		uint16_t _pinSTEP      = 18;
+		uint16_t _pinCS        = 17;
 		//const int MOSI_PIN    = 12;
 		//const int MISO_PIN    = 11;
 		//const int SCK_PIN     = 13;
-		uint8_t _pinDIR       = 19;
+		uint16_t _pinDIR       = 19;
 
 		// Shadow registers
 		uint32_t 	GCONF_sr 			= 0x00000000UL,

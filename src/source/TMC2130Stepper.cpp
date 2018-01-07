@@ -3,7 +3,7 @@
 #include <SPI.h>
 #include "SW_SPI.h"
 
-TMC2130Stepper::TMC2130Stepper(uint8_t pinEN, uint8_t pinDIR, uint8_t pinStep, uint8_t pinCS) {
+TMC2130Stepper::TMC2130Stepper(uint16_t pinEN, uint16_t pinDIR, uint16_t pinStep, uint16_t pinCS) {
 	_started = false;
 
 	this->_pinEN = pinEN;
@@ -12,7 +12,7 @@ TMC2130Stepper::TMC2130Stepper(uint8_t pinEN, uint8_t pinDIR, uint8_t pinStep, u
 	this->_pinCS = pinCS;
 }
 
-TMC2130Stepper::TMC2130Stepper(uint8_t pinEN, uint8_t pinDIR, uint8_t pinStep, uint8_t pinCS, uint8_t pinMOSI, uint8_t pinMISO, uint8_t pinSCK) {
+TMC2130Stepper::TMC2130Stepper(uint16_t pinEN, uint16_t pinDIR, uint16_t pinStep, uint16_t pinCS, uint16_t pinMOSI, uint16_t pinMISO, uint16_t pinSCK) {
 	_started = false;
 	uses_sw_spi = true;
 
