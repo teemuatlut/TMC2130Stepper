@@ -6,7 +6,7 @@
 #endif
 #include <stdint.h>
 
-const uint32_t TMC2130Stepper_version = 0x20100; // v2.1.0
+const uint32_t TMC2130Stepper_version = 0x20101; // v2.1.1
 
 class TMC2130Stepper {
 	public:
