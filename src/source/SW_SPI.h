@@ -1,8 +1,6 @@
 #pragma once
 
-#if defined(ARDUINO)
-	#include <Arduino.h>
-#endif
+#include <Arduino.h>
 
 #ifndef MSBFIRST
 	#define MSBFIRST 0
