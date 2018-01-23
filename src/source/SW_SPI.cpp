@@ -9,14 +9,14 @@ SW_SPIClass TMC_SW_SPI;
   #define writeSCK_H sck_register |= sck_bm
   #define writeSCK_L sck_register &= ~sck_bm
   #define readMISO miso_register & miso_bm
-#elif defined(ARDUINO_ARCH_SAM)
+#elif defined(ARDUINO_ARCH_SAM) // DUE:1.2MHz
   // by stimmer https://forum.arduino.cc/index.php?topic=129868.msg980466#msg980466
   #define writeMOSI_H g_APinDescription[mosi_pin].pPort -> PIO_SODR = g_APinDescription[mosi_pin].ulPin
   #define writeMOSI_L g_APinDescription[mosi_pin].pPort -> PIO_CODR = g_APinDescription[mosi_pin].ulPin
   #define writeSCK_H g_APinDescription[sck_pin].pPort -> PIO_SODR = g_APinDescription[sck_pin].ulPin
   #define writeSCK_L g_APinDescription[sck_pin].pPort -> PIO_CODR = g_APinDescription[sck_pin].ulPin
   #define readMISO !!(g_APinDescription[miso_pin].pPort -> PIO_PDSR & g_APinDescription[miso_pin].ulPin)
-#else
+#else // DUE:116kHz
   #define writeMOSI_H digitalWrite(mosi_pin, HIGH)
   #define writeMOSI_L digitalWrite(mosi_pin, LOW)
   #define writeSCK_H digitalWrite(sck_pin, HIGH)
