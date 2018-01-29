@@ -17,9 +17,9 @@ class SW_SPIClass {
 		uint8_t mosi_bm,
 				miso_bm,
 				sck_bm;
-		uint8_t mosi_register,
-				miso_register,
-				sck_register;
+		volatile uint8_t *mosi_register,
+						 *miso_register,
+						 *sck_register;
 };
 
 extern SW_SPIClass TMC_SW_SPI;

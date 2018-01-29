@@ -4,11 +4,11 @@ SW_SPIClass TMC_SW_SPI;
 
 #if defined(ARDUINO_ARCH_AVR)
   #define getPort(P) digitalPinToPort(P)
-  #define writeMOSI_H mosi_register |= mosi_bm
-  #define writeMOSI_L mosi_register &= ~mosi_bm
-  #define writeSCK_H sck_register |= sck_bm
-  #define writeSCK_L sck_register &= ~sck_bm
-  #define readMISO miso_register & miso_bm
+  #define writeMOSI_H *mosi_register |= mosi_bm
+  #define writeMOSI_L *mosi_register &= ~mosi_bm
+  #define writeSCK_H *sck_register |= sck_bm
+  #define writeSCK_L *sck_register &= ~sck_bm
+  #define readMISO *miso_register & miso_bm
 #elif defined(ARDUINO_ARCH_SAM) // DUE:1.2MHz
   // by stimmer https://forum.arduino.cc/index.php?topic=129868.msg980466#msg980466
   #define writeMOSI_H g_APinDescription[mosi_pin].pPort -> PIO_SODR = g_APinDescription[mosi_pin].ulPin
