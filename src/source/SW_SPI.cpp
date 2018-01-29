@@ -39,9 +39,9 @@ void SW_SPIClass::init() {
     miso_bm = digitalPinToBitMask(miso_pin);
     sck_bm = digitalPinToBitMask(sck_pin);
     #ifdef ARDUINO_ARCH_AVR
-      mosi_register = portOutputRegister(getPort(mosi_pin));
-      miso_register = portOutputRegister(getPort(miso_pin));
-      sck_register = portOutputRegister(getPort(sck_pin));
+      mosi_register = *portOutputRegister(getPort(mosi_pin));
+      miso_register = *portOutputRegister(getPort(miso_pin));
+      sck_register = *portOutputRegister(getPort(sck_pin));
     #endif
   #endif
 }
