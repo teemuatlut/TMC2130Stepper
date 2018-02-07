@@ -3,26 +3,24 @@
 #include <SPI.h>
 #include "SW_SPI.h"
 
-TMC2130Stepper::TMC2130Stepper(uint16_t pinEN, uint16_t pinDIR, uint16_t pinStep, uint16_t pinCS) {
-	_started = false;
+TMC2130Stepper::TMC2130Stepper(uint16_t pinCS) : _pinCS(pinCS) { _started = false; }
 
-	this->_pinEN = pinEN;
-	this->_pinDIR = pinDIR;
-	this->_pinSTEP = pinStep;
-	this->_pinCS = pinCS;
-}
+TMC2130Stepper::TMC2130Stepper(uint16_t pinEN, uint16_t pinDIR, uint16_t pinStep, uint16_t pinCS) :
+	_pinEN(pinEN),
+	_pinDIR(pinDIR),
+	_pinSTEP(pinStep),
+	_pinCS(pinCS),
+	_started(false)
+	{}
 
-TMC2130Stepper::TMC2130Stepper(uint16_t pinEN, uint16_t pinDIR, uint16_t pinStep, uint16_t pinCS, uint16_t pinMOSI, uint16_t pinMISO, uint16_t pinSCK) {
-	_started = false;
-	uses_sw_spi = true;
-
-	this->_pinEN = pinEN;
-	this->_pinDIR = pinDIR;
-	this->_pinSTEP = pinStep;
-	this->_pinCS = pinCS;
-
-	TMC_SW_SPI.setPins(pinMOSI, pinMISO, pinSCK);
-}
+TMC2130Stepper::TMC2130Stepper(uint16_t pinEN, uint16_t pinDIR, uint16_t pinStep, uint16_t pinCS, uint16_t pinMOSI, uint16_t pinMISO, uint16_t pinSCK) :
+	_pinEN(pinEN),
+	_pinDIR(pinDIR),
+	_pinSTEP(pinStep),
+	_pinCS(pinCS),
+	_started(false),
+	uses_sw_spi(true)
+	{ TMC_SW_SPI.setPins(pinMOSI, pinMISO, pinSCK); }
 
 void TMC2130Stepper::begin() {
 #ifdef TMC2130DEBUG
@@ -39,13 +37,20 @@ void TMC2130Stepper::begin() {
 	delay(200);
 
 	//set pins
-	pinMode(_pinEN, OUTPUT);
-	pinMode(_pinDIR, OUTPUT);
-	pinMode(_pinSTEP, OUTPUT);
+	if (_pinEN != 0xFFFF) {
+		pinMode(_pinEN, OUTPUT);
+		digitalWrite(_pinEN, HIGH); //deactivate driver (LOW active)
+	}
+	if (_pinDIR != 0xFFFF) {
+		pinMode(_pinDIR, OUTPUT);
+		digitalWrite(_pinDIR, LOW); //LOW or HIGH
+	}
+	if (_pinSTEP != 0xFFFF) {
+		pinMode(_pinSTEP, OUTPUT);
+		digitalWrite(_pinSTEP, LOW);
+	}
+
 	pinMode(_pinCS, OUTPUT);
-	digitalWrite(_pinEN, HIGH); //deactivate driver (LOW active)
-	digitalWrite(_pinDIR, LOW); //LOW or HIGH
-	digitalWrite(_pinSTEP, LOW);
 	digitalWrite(_pinCS, HIGH);
 
 	if (uses_sw_spi) TMC_SW_SPI.init();
