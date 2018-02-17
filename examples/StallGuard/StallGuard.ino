@@ -28,25 +28,36 @@
 
 #include <SPI.h>
 #include <TMC2130Stepper.h>
-TMC2130Stepper TMC2130 = TMC2130Stepper(EN_PIN, DIR_PIN, STEP_PIN, CS_PIN);
+#include <TMC2130Stepper_REGDEFS.h>
+TMC2130Stepper driver = TMC2130Stepper(EN_PIN, DIR_PIN, STEP_PIN, CS_PIN);
+
+bool vsense;
+
+uint16_t rms_current(uint8_t CS, float Rsense = 0.11) {
+  return (float)(CS+1)/32.0 * (vsense?0.180:0.325)/(Rsense+0.02) / 1.41421 * 1000;
+}
 
 void setup() {
   //init serial port
   {
-	  Serial.begin(250000); //init serial port and set baudrate
-	  while(!Serial); //wait for serial port to connect (needed for Leonardo only)
-	  Serial.println("\nStart...");
-    TMC2130.begin();
-	}
+    Serial.begin(250000); //init serial port and set baudrate
+    while(!Serial); //wait for serial port to connect (needed for Leonardo only)
+    Serial.println("\nStart...");
+    driver.begin();
+  }
 
   //set TMC2130 config
   {
-		TMC2130.rms_current(600); // mA
-		TMC2130.microsteps(16);
-		TMC2130.diag1_stall(1);
-		TMC2130.diag1_active_high(1);
-		TMC2130.coolstep_min_speed(0xFFFFF); // 20bit max
-		TMC2130.sg_stall_value(STALL_VALUE);
+    driver.rms_current(600); // mA
+    driver.microsteps(16);
+    driver.diag1_stall(1);
+    driver.diag1_active_high(1);
+    driver.coolstep_min_speed(0xFFFFF); // 20bit max
+    driver.THIGH(0);
+    driver.semin(5);
+    driver.semax(2);
+    driver.sedn(0b01);
+    driver.sg_stall_value(STALL_VALUE);
   }
 
   // Set stepper interrupt
@@ -67,6 +78,8 @@ void setup() {
 
   //TMC2130 outputs on (LOW active)
   digitalWrite(EN_PIN, LOW);
+
+  vsense = driver.vsense();
 }
 
 ISR(TIMER1_COMPA_vect){
@@ -80,18 +93,21 @@ void loop()
   uint32_t ms = millis();
 
   while(Serial.available() > 0) {
-  	int8_t read_byte = Serial.read();
-  	if (read_byte == '0') 		 { TIMSK1 &= ~(1 << OCIE1A); digitalWrite( EN_PIN, HIGH ); }
-  	else if (read_byte == '1') { TIMSK1 |=  (1 << OCIE1A); digitalWrite( EN_PIN,  LOW ); }
+    int8_t read_byte = Serial.read();
+    if (read_byte == '0')      { TIMSK1 &= ~(1 << OCIE1A); digitalWrite( EN_PIN, HIGH ); }
+    else if (read_byte == '1') { TIMSK1 |=  (1 << OCIE1A); digitalWrite( EN_PIN,  LOW ); }
     else if (read_byte == '+') if (OCR1A > MAX_SPEED) OCR1A -= 20;
     else if (read_byte == '-') if (OCR1A < MIN_SPEED) OCR1A += 20;
   }
     
   if((ms-last_time) > 100) //run every 0.1s
   {
-    last_time = ms;   
+    last_time = ms;
+    uint32_t drv_status = driver.DRV_STATUS();
     Serial.print("0 ");
-    Serial.println(TMC2130.sg_result(), DEC);
+    Serial.print((drv_status & SG_RESULT_bm)>>SG_RESULT_bp , DEC);
+    Serial.print(" ");
+    Serial.println(rms_current((drv_status & CS_ACTUAL_bm)>>CS_ACTUAL_bp), DEC);
   }
 }
 
