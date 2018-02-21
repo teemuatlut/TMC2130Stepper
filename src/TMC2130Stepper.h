@@ -22,8 +22,7 @@ class TMC2130Stepper {
 		bool getOTPW();
 		void clear_otpw();
 		bool isEnabled();
-//    void takeSteps(int steps);
-//    void step(int steps, int speed);
+		void push();
 		// GCONF
 		uint32_t GCONF();
 		void GCONF(								uint32_t value);

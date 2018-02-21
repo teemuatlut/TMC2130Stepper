@@ -147,6 +147,21 @@ void TMC2130Stepper::clear_otpw() {	flag_otpw = 0; }
 
 bool TMC2130Stepper::isEnabled() { return !digitalRead(_pinEN) && toff(); }
 
+void TMC2130Stepper::push() {
+	GCONF(GCONF_sr);
+	IHOLD_IRUN(IHOLD_IRUN_sr);
+	TPOWERDOWN(TPOWERDOWN_sr);
+	TPWMTHRS(TPWMTHRS_sr);
+	TCOOLTHRS(TCOOLTHRS_sr);
+	THIGH(THIGH_sr);
+	XDIRECT(XDIRECT_sr);
+	VDCMIN(VDCMIN_sr);
+	CHOPCONF(CHOPCONF_sr);
+	COOLCONF(COOLCONF_sr);
+	PWMCONF(PWMCONF_sr);
+	ENCM_CTRL(ENCM_CTRL_sr);
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////
 // R+C: GSTAT
 void 	TMC2130Stepper::GSTAT(uint8_t input){
