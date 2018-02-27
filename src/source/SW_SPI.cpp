@@ -2,7 +2,7 @@
 
 SW_SPIClass TMC_SW_SPI;
 
-#if defined(ARDUINO_ARCH_AVR)
+#if defined(ARDUINO_ARCH_AVR) && !defined(__AVR_ATmega2560__)
   #define getPort(P) digitalPinToPort(P)
   #define writeMOSI_H *mosi_register |= mosi_bm
   #define writeMOSI_L *mosi_register &= ~mosi_bm
@@ -34,7 +34,7 @@ void SW_SPIClass::init() {
   pinMode(mosi_pin, OUTPUT);
   pinMode(sck_pin, OUTPUT);
   pinMode(miso_pin, INPUT);
-  #ifndef TARGET_LPC1768
+  #if !defined(__AVR_ATmega2560__) && !defined(TARGET_LPC1768)
     mosi_bm = digitalPinToBitMask(mosi_pin);
     miso_bm = digitalPinToBitMask(miso_pin);
     sck_bm = digitalPinToBitMask(sck_pin);
