@@ -162,6 +162,15 @@ void TMC2130Stepper::push() {
 	ENCM_CTRL(ENCM_CTRL_sr);
 }
 
+uint8_t TMC2130Stepper::test_connection() {
+	uint32_t drv_status = DRV_STATUS();
+	switch (drv_status) {
+	    case 0xFFFFFFFF: return 1;
+	    case 0: return 2;
+	    default: return 0;
+	}
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////
 // R+C: GSTAT
 void 	TMC2130Stepper::GSTAT(uint8_t input){

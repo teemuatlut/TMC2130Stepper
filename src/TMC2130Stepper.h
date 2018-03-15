@@ -23,6 +23,7 @@ class TMC2130Stepper {
 		void clear_otpw();
 		bool isEnabled();
 		void push();
+		uint8_t test_connection();
 		// GCONF
 		uint32_t GCONF();
 		void GCONF(								uint32_t value);
