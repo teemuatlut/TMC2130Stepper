@@ -36,7 +36,7 @@ diag1_chopper_on 		KEYWORD2
 diag1_steps_skipped 	KEYWORD2
 diag0_active_high 		KEYWORD2
 diag1_active_high 		KEYWORD2
-small_hysterisis 		KEYWORD2
+small_hysteresis 		KEYWORD2
 stop_enable 			KEYWORD2
 direct_mode 			KEYWORD2
 hold_current			KEYWORD2
@@ -54,9 +54,9 @@ coil_B_current 			KEYWORD2
 DCstep_min_speed 		KEYWORD2
 CHOPCONF 				KEYWORD2
 off_time 				KEYWORD2
-hysterisis_start 		KEYWORD2
+hysteresis_start 		KEYWORD2
 fast_decay_time 		KEYWORD2
-hysterisis_end			KEYWORD2
+hysteresis_end			KEYWORD2
 sine_offset 			KEYWORD2
 disable_I_comparator 	KEYWORD2
 random_off_time 		KEYWORD2

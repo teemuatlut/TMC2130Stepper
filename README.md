@@ -119,7 +119,7 @@ diag1_chopper_on 	| 0/1 | bool | Enable DIAG1 active when chopper is on
 diag1_steps_skipped | 0/1 | bool | Enable output toggle when steps are skipped in dcStep mode (increment of LOST_STEPS). Do not enable in conjunction with other DIAG1 options. 
 diag0_active_high 	| 0/1 | bool | Set DIAG0 to active high
 diag1_active_high 	| 0/1 | bool | Set DIAG1 to active high
-small_hysterisis 	| 0/1 | bool | <b>0:</b> Hysteresis for step frequency comparison is 1/16 <br><b>1:</b> Hysteresis for step frequency comparison is 1/32 
+small_hysteresis 	| 0/1 | bool | <b>0:</b> Hysteresis for step frequency comparison is 1/16 <br><b>1:</b> Hysteresis for step frequency comparison is 1/32
 stop_enable 		| 0/1 | bool | Emergency stop: DCIN stops the sequencer when tied high (no steps become executed by the sequencer, motor goes to standstill state).
 direct_mode 		| 0/1 | bool | Motor coil currents and polarity are directly controlled by the SPI interface.
 
@@ -171,9 +171,9 @@ Function 				| Argument  | Returns 	| Description
 ------------------------|-----------|-----------|-----------------------------
 CHOPCONF 				| - 		| uint32_t 	| Read actual bits from the register
 off_time 				| 0..15 	| uint8_t 	| Off time setting controls duration of slow decay phase<br>NCLK= 12 + 32*TOFF<br>Initialized to value 2 (NCLK = 76) by begin()
-hysterisis_start 		| 1..8 		| uint8_t 	| Add 1, 2, …, 8 to hysteresis low value HEND (1/512 of this setting adds to current setting) Attention: Effective HEND+HSTRT ≤ 16. Hint: Hysteresis decrement is done each 16 clocks
+hysteresis_start 		| 1..8 		| uint8_t 	| Add 1, 2, …, 8 to hysteresis low value HEND (1/512 of this setting adds to current setting) Attention: Effective HEND+HSTRT ≤ 16. Hint: Hysteresis decrement is done each 16 clocks
 fast_decay_time 		| 0..15 	| uint8_t 	| Fast decay time setting TFD with  NCLK= 32*HSTRT
-hysterisis_end 			| -3..12	| int8_t 	| This is the hysteresis value which becomes used for the hysteresis chopper. 
+hysteresis_end 			| -3..12	| int8_t 	| This is the hysteresis value which becomes used for the hysteresis chopper. 
 sine_offset 			| -3..12	| int8_t 	| This is the sine wave offset and 1/512 of the value becomes added to the absolute value of each sine wave entry.
 disable_I_comparator 	| 0/1		| bool 	| <b>1:</b> Disables current comparator usage for termination of the fast decay cycle.<br>chopper_mode needs to be 1.
 random_off_time 		| 0/1		| bool 	| <b>0:</b> Chopper off time is fixed as set by TOFF <br><b>1:</b> Random mode, TOFF is random modulated by dNCLK= -12 … +3 clocks. 

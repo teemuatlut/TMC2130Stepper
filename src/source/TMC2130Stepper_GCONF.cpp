@@ -22,7 +22,7 @@ void TMC2130Stepper::diag1_onstate(bool B) 			{ MOD_REG(GCONF, DIAG1_ONSTATE);		
 void TMC2130Stepper::diag1_steps_skipped(bool B) 	{ MOD_REG(GCONF, DIAG1_STEPS_SKIPPED);	}
 void TMC2130Stepper::diag0_int_pushpull(bool B) 	{ MOD_REG(GCONF, DIAG0_INT_PUSHPULL);	}
 void TMC2130Stepper::diag1_pushpull(bool B) 		{ MOD_REG(GCONF, DIAG1_PUSHPULL);		}
-void TMC2130Stepper::small_hysterisis(bool B) 		{ MOD_REG(GCONF, SMALL_HYSTERISIS);		}
+void TMC2130Stepper::small_hysteresis(bool B) 		{ MOD_REG(GCONF, SMALL_HYSTERESIS);		}
 void TMC2130Stepper::stop_enable(bool B) 			{ MOD_REG(GCONF, STOP_ENABLE);			}
 void TMC2130Stepper::direct_mode(bool B) 			{ MOD_REG(GCONF, DIRECT_MODE);			}
 
@@ -40,7 +40,7 @@ bool TMC2130Stepper::diag1_onstate() 				{ GET_BYTE(GCONF, DIAG1_ONSTATE);		}
 bool TMC2130Stepper::diag1_steps_skipped() 			{ GET_BYTE(GCONF, DIAG1_STEPS_SKIPPED);	}
 bool TMC2130Stepper::diag0_int_pushpull() 			{ GET_BYTE(GCONF, DIAG0_INT_PUSHPULL);	}
 bool TMC2130Stepper::diag1_pushpull() 				{ GET_BYTE(GCONF, DIAG1_PUSHPULL);		}
-bool TMC2130Stepper::small_hysterisis() 			{ GET_BYTE(GCONF, SMALL_HYSTERISIS);	}
+bool TMC2130Stepper::small_hysteresis() 			{ GET_BYTE(GCONF, SMALL_HYSTERESIS);	}
 bool TMC2130Stepper::stop_enable() 					{ GET_BYTE(GCONF, STOP_ENABLE);			}
 bool TMC2130Stepper::direct_mode() 					{ GET_BYTE(GCONF, DIRECT_MODE);			}
 

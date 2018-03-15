@@ -42,11 +42,11 @@ bool 	TMC2130Stepper::intpol()	{ GET_BYTE(CHOPCONF, INTPOL);	}
 bool 	TMC2130Stepper::dedge()		{ GET_BYTE(CHOPCONF, DEDGE);	}
 bool 	TMC2130Stepper::diss2g()	{ GET_BYTE(CHOPCONF, DISS2G);	}
 
-void TMC2130Stepper::hysterisis_end(int8_t value) { hend(value+3); }
-int8_t TMC2130Stepper::hysterisis_end() { return hend()-3; };
+void TMC2130Stepper::hysteresis_end(int8_t value) { hend(value+3); }
+int8_t TMC2130Stepper::hysteresis_end() { return hend()-3; };
 
-void TMC2130Stepper::hysterisis_start(uint8_t value) { hstrt(value-1); }
-uint8_t TMC2130Stepper::hysterisis_start() { return hstrt()+1; }
+void TMC2130Stepper::hysteresis_start(uint8_t value) { hstrt(value-1); }
+uint8_t TMC2130Stepper::hysteresis_start() { return hstrt()+1; }
 
 void TMC2130Stepper::blank_time(uint8_t value) {
 	switch (value) {

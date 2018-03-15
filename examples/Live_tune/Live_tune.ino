@@ -157,9 +157,9 @@ void loop() {
 			serialTuple("diag1_active_high", arg);
 			myStepper.diag1_active_high(arg);
 		}
-		else if (cmd == "small_hysterisis") {
-			serialTuple("small_hysterisis", arg);
-			myStepper.small_hysterisis(arg);
+		else if (cmd == "small_hysteresis") {
+			serialTuple("small_hysteresis", arg);
+			myStepper.small_hysteresis(arg);
 		}
 		else if (cmd == "stop_enable") {
 			serialTuple("stop_enable", arg);
@@ -221,17 +221,17 @@ void loop() {
 			serialTuple("off_time", arg);
 			myStepper.off_time(arg);
 		}
-		else if (cmd == "hysterisis_start") {
-			serialTuple("hysterisis_start", arg);
-			myStepper.hysterisis_start(arg);
+		else if (cmd == "hysteresis_start") {
+			serialTuple("hysteresis_start", arg);
+			myStepper.hysteresis_start(arg);
 		}
 		else if (cmd == "fast_decay_time") {
 			serialTuple("fast_decay_time", arg);
 			myStepper.fast_decay_time(arg);
 		}
-		else if (cmd == "hysterisis_low") {
-			serialTuple("hysterisis_low", arg);
-			myStepper.hysterisis_low(arg);
+		else if (cmd == "hysteresis_low") {
+			serialTuple("hysteresis_low", arg);
+			myStepper.hysteresis_low(arg);
 		}
 /*		else if (cmd == "sine_offset") {
 			serialTuple("sine_offset", arg);

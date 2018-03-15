@@ -62,7 +62,7 @@ constexpr uint8_t DIAG1_ONSTATE_bp	   		= 10;
 constexpr uint8_t DIAG1_STEPS_SKIPPED_bp 	= 11;
 constexpr uint8_t DIAG0_INT_PUSHPULL_bp  	= 12;
 constexpr uint8_t DIAG1_PUSHPULL_bp	   		= 13;
-constexpr uint8_t SMALL_HYSTERISIS_bp    	= 14;
+constexpr uint8_t SMALL_HYSTERESIS_bp    	= 14;
 constexpr uint8_t STOP_ENABLE_bp		   	= 15;
 constexpr uint8_t DIRECT_MODE_bp		   	= 16;
 constexpr uint32_t GCONF_bm					= 0x3FFFFUL;
@@ -80,7 +80,7 @@ constexpr uint32_t DIAG1_ONSTATE_bm			= 0x400UL;
 constexpr uint32_t DIAG1_STEPS_SKIPPED_bm	= 0x800UL;
 constexpr uint32_t DIAG0_INT_PUSHPULL_bm	= 0x1000UL;
 constexpr uint32_t DIAG1_PUSHPULL_bm		= 0x2000UL;
-constexpr uint32_t SMALL_HYSTERISIS_bm		= 0x4000UL;
+constexpr uint32_t SMALL_HYSTERESIS_bm		= 0x4000UL;
 constexpr uint32_t STOP_ENABLE_bm			= 0x8000UL;
 constexpr uint32_t DIRECT_MODE_bm			= 0x10000UL;
 // GSTAT
