@@ -4,7 +4,7 @@
 #include <Arduino.h>
 #include <stdint.h>
 
-#define TMC2130STEPPER_VERSION 0x020201 // v2.2.1
+#define TMC2130STEPPER_VERSION 0x020200 // v2.2.0
 const uint32_t TMC2130Stepper_version = TMC2130STEPPER_VERSION;
 
 class TMC2130Stepper {
