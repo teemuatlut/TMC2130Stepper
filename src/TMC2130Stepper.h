@@ -214,6 +214,12 @@ class TMC2130Stepper {
 		void sg_current_decrease(uint8_t value);
 		uint8_t sg_current_decrease();
 
+		// Backward compatibility
+		inline void hysterisis_end(int8_t value) { hysteresis_end(value); }
+		inline int8_t hysterisis_end() { hysteresis_end(); }
+		inline void hysterisis_start(uint8_t value) { hysteresis_start(value); }
+		inline uint8_t hysterisis_start() { hysteresis_start(); }
+
 		// Aliases
 
 		// RW: GCONF
