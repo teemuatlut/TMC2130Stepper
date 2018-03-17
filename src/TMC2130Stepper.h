@@ -4,7 +4,7 @@
 #include <Arduino.h>
 #include <stdint.h>
 
-#define TMC2130STEPPER_VERSION 0x020201 // v2.2.1
+#define TMC2130STEPPER_VERSION 0x020200 // v2.2.0
 const uint32_t TMC2130Stepper_version = TMC2130STEPPER_VERSION;
 
 class TMC2130Stepper {
@@ -213,6 +213,12 @@ class TMC2130Stepper {
 		uint8_t hysteresis_start();
 		void sg_current_decrease(uint8_t value);
 		uint8_t sg_current_decrease();
+
+		// Backward compatibility
+		inline void hysterisis_end(int8_t value) { hysteresis_end(value); }
+		inline int8_t hysterisis_end() { hysteresis_end(); }
+		inline void hysterisis_start(uint8_t value) { hysteresis_start(value); }
+		inline uint8_t hysterisis_start() { hysteresis_start(); }
 
 		// Aliases
 
