@@ -338,6 +338,12 @@ class TMC2130Stepper {
 		// R: DRV_STATUS
 		inline uint32_t DRVSTATUS()												__attribute__((always_inline)) { return DRV_STATUS(); 							}
 
+		// Backwards compatibility
+		inline void hysterisis_end(int8_t value) __attribute__((always_inline)) { hysteresis_end(value); }
+		inline int8_t hysterisis_end() __attribute__((always_inline)) { return hysteresis_end(); }
+		inline void hysterisis_start(uint8_t value) __attribute__((always_inline)) { hysteresis_start(value); }
+		inline uint8_t hysterisis_start() __attribute__((always_inline)) { return hysteresis_start(); }
+
 
 		float Rsense = 0.11;
 		bool _started;
