@@ -56,11 +56,8 @@ void TMC2130Stepper::begin() {
 
 	if (uses_sw_spi) TMC_SW_SPI.init();
 
-	GCONF(GCONF_sr);
-	CHOPCONF(CHOPCONF_sr);
-	COOLCONF(COOLCONF_sr);
-	PWMCONF(PWMCONF_sr);
-	IHOLD_IRUN(IHOLD_IRUN_sr);
+	// Reset registers
+	push();
 
 	toff(8); //off_time(8);
 	tbl(1); //blank_time(24);
