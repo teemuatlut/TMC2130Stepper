@@ -173,88 +173,88 @@ uint8_t TMC2130Stepper::test_connection() {
 // R+C: GSTAT
 void 	TMC2130Stepper::GSTAT(uint8_t input){
 	GSTAT_sr = input;
-	WRITE_REG(GSTAT);
+	TMC_WRITE_REG(GSTAT);
 }
-uint8_t TMC2130Stepper::GSTAT()			 	{ READ_REG_R(GSTAT); 		}
-bool 	TMC2130Stepper::reset()				{ GET_BYTE(GSTAT, RESET);	}
-bool 	TMC2130Stepper::drv_err()			{ GET_BYTE(GSTAT, DRV_ERR);	}
-bool 	TMC2130Stepper::uv_cp()				{ GET_BYTE(GSTAT, UV_CP);	}
+uint8_t TMC2130Stepper::GSTAT()			 	{ TMC_READ_REG_R(GSTAT); 		}
+bool 	TMC2130Stepper::reset()				{ TMC_GET_BYTE(GSTAT, RESET);	}
+bool 	TMC2130Stepper::drv_err()			{ TMC_GET_BYTE(GSTAT, DRV_ERR);	}
+bool 	TMC2130Stepper::uv_cp()				{ TMC_GET_BYTE(GSTAT, UV_CP);	}
 ///////////////////////////////////////////////////////////////////////////////////////
 // R: IOIN
-uint32_t 	TMC2130Stepper::IOIN() 			{ READ_REG_R(IOIN); 				}
-bool 		TMC2130Stepper::step()			{ GET_BYTE_R(IOIN, STEP);			}
-bool 		TMC2130Stepper::dir()			{ GET_BYTE_R(IOIN, DIR);			}
-bool 		TMC2130Stepper::dcen_cfg4()		{ GET_BYTE_R(IOIN, DCEN_CFG4);		}
-bool 		TMC2130Stepper::dcin_cfg5()		{ GET_BYTE_R(IOIN, DCIN_CFG5);		}
-bool 		TMC2130Stepper::drv_enn_cfg6()	{ GET_BYTE_R(IOIN, DRV_ENN_CFG6);	}
-bool 		TMC2130Stepper::dco()			{ GET_BYTE_R(IOIN, DCO);			}
-uint8_t 	TMC2130Stepper::version() 		{ GET_BYTE_R(IOIN, VERSION);		}
+uint32_t 	TMC2130Stepper::IOIN() 			{ TMC_READ_REG_R(IOIN); 				}
+bool 		TMC2130Stepper::step()			{ TMC_GET_BYTE_R(IOIN, STEP);			}
+bool 		TMC2130Stepper::dir()			{ TMC_GET_BYTE_R(IOIN, DIR);			}
+bool 		TMC2130Stepper::dcen_cfg4()		{ TMC_GET_BYTE_R(IOIN, DCEN_CFG4);		}
+bool 		TMC2130Stepper::dcin_cfg5()		{ TMC_GET_BYTE_R(IOIN, DCIN_CFG5);		}
+bool 		TMC2130Stepper::drv_enn_cfg6()	{ TMC_GET_BYTE_R(IOIN, DRV_ENN_CFG6);	}
+bool 		TMC2130Stepper::dco()			{ TMC_GET_BYTE_R(IOIN, DCO);			}
+uint8_t 	TMC2130Stepper::version() 		{ TMC_GET_BYTE_R(IOIN, VERSION);		}
 ///////////////////////////////////////////////////////////////////////////////////////
 // W: TPOWERDOWN
 uint32_t TMC2130Stepper::TPOWERDOWN() { return TPOWERDOWN_sr; }
 void TMC2130Stepper::TPOWERDOWN(uint32_t input) {
 	TPOWERDOWN_sr = input;
-	WRITE_REG(TPOWERDOWN);
+	TMC_WRITE_REG(TPOWERDOWN);
 }
 ///////////////////////////////////////////////////////////////////////////////////////
 // R: TSTEP
-uint32_t TMC2130Stepper::TSTEP() { READ_REG_R(TSTEP); }
+uint32_t TMC2130Stepper::TSTEP() { TMC_READ_REG_R(TSTEP); }
 ///////////////////////////////////////////////////////////////////////////////////////
 // W: TPWMTHRS
 uint32_t TMC2130Stepper::TPWMTHRS() { return TPWMTHRS_sr; }
 void TMC2130Stepper::TPWMTHRS(uint32_t input) {
 	TPWMTHRS_sr = input;
-	WRITE_REG(TPWMTHRS);
+	TMC_WRITE_REG(TPWMTHRS);
 }
 ///////////////////////////////////////////////////////////////////////////////////////
 // W: TCOOLTHRS
 uint32_t TMC2130Stepper::TCOOLTHRS() { return TCOOLTHRS_sr; }
 void TMC2130Stepper::TCOOLTHRS(uint32_t input) {
 	TCOOLTHRS_sr = input;
-	WRITE_REG(TCOOLTHRS);
+	TMC_WRITE_REG(TCOOLTHRS);
 }
 ///////////////////////////////////////////////////////////////////////////////////////
 // W: THIGH
 uint32_t TMC2130Stepper::THIGH() { return THIGH_sr; }
 void TMC2130Stepper::THIGH(uint32_t input) {
 	THIGH_sr = input;
-	WRITE_REG(THIGH);
+	TMC_WRITE_REG(THIGH);
 }
 ///////////////////////////////////////////////////////////////////////////////////////
 // RW: XDIRECT
-uint32_t TMC2130Stepper::XDIRECT() { READ_REG(XDIRECT); }
+uint32_t TMC2130Stepper::XDIRECT() { TMC_READ_REG(XDIRECT); }
 void TMC2130Stepper::XDIRECT(uint32_t input) {
 	XDIRECT_sr = input;
-	WRITE_REG(XDIRECT);
+	TMC_WRITE_REG(XDIRECT);
 }
-void TMC2130Stepper::coil_A(int16_t B) 	{ MOD_REG(XDIRECT, COIL_A); 	}
-void TMC2130Stepper::coil_B(int16_t B) 	{ MOD_REG(XDIRECT, COIL_B); 	}
-int16_t TMC2130Stepper::coil_A() 		{ GET_BYTE_R(XDIRECT, COIL_A); 	}
-int16_t TMC2130Stepper::coil_B() 		{ GET_BYTE_R(XDIRECT, COIL_A); 	}
+void TMC2130Stepper::coil_A(int16_t B) 	{ TMC_MOD_REG(XDIRECT, COIL_A); 	}
+void TMC2130Stepper::coil_B(int16_t B) 	{ TMC_MOD_REG(XDIRECT, COIL_B); 	}
+int16_t TMC2130Stepper::coil_A() 		{ TMC_GET_BYTE_R(XDIRECT, COIL_A); 	}
+int16_t TMC2130Stepper::coil_B() 		{ TMC_GET_BYTE_R(XDIRECT, COIL_A); 	}
 ///////////////////////////////////////////////////////////////////////////////////////
 // W: VDCMIN
 uint32_t TMC2130Stepper::VDCMIN() { return VDCMIN_sr; }
 void TMC2130Stepper::VDCMIN(uint32_t input) {
 	VDCMIN_sr = input;
-	WRITE_REG(VDCMIN);
+	TMC_WRITE_REG(VDCMIN);
 }
 ///////////////////////////////////////////////////////////////////////////////////////
 // R: PWM_SCALE
-uint8_t TMC2130Stepper::PWM_SCALE() { READ_REG_R(PWM_SCALE); }
+uint8_t TMC2130Stepper::PWM_SCALE() { TMC_READ_REG_R(PWM_SCALE); }
 ///////////////////////////////////////////////////////////////////////////////////////
 // W: ENCM_CTRL
 uint8_t TMC2130Stepper::ENCM_CTRL() { return ENCM_CTRL_sr; }
 void TMC2130Stepper::ENCM_CTRL(uint8_t input) {
 	ENCM_CTRL_sr = input;
-	WRITE_REG(ENCM_CTRL);
+	TMC_WRITE_REG(ENCM_CTRL);
 }
-void TMC2130Stepper::inv(bool B)		{ MOD_REG(ENCM_CTRL, INV);		}
-void TMC2130Stepper::maxspeed(bool B)	{ MOD_REG(ENCM_CTRL, MAXSPEED); }
-bool TMC2130Stepper::inv() 				{ GET_BYTE(ENCM_CTRL, INV); 	}
-bool TMC2130Stepper::maxspeed() 		{ GET_BYTE(ENCM_CTRL, MAXSPEED);}
+void TMC2130Stepper::inv(bool B)		{ TMC_MOD_REG(ENCM_CTRL, INV);		}
+void TMC2130Stepper::maxspeed(bool B)	{ TMC_MOD_REG(ENCM_CTRL, MAXSPEED); }
+bool TMC2130Stepper::inv() 				{ TMC_GET_BYTE(ENCM_CTRL, INV); 	}
+bool TMC2130Stepper::maxspeed() 		{ TMC_GET_BYTE(ENCM_CTRL, MAXSPEED);}
 ///////////////////////////////////////////////////////////////////////////////////////
 // R: LOST_STEPS
-uint32_t TMC2130Stepper::LOST_STEPS() { READ_REG_R(LOST_STEPS); }
+uint32_t TMC2130Stepper::LOST_STEPS() { TMC_READ_REG_R(LOST_STEPS); }
 
 
 /**
