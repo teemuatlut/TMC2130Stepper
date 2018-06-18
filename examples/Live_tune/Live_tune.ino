@@ -106,6 +106,8 @@ void setup() {
 	digitalWrite(DIR_PIN, LOW); //LOW or HIGH
 	digitalWrite(STEP_PIN, LOW);
 	digitalWrite(CS_PIN, HIGH);
+    SPI.begin();
+    pinMode(MISO, INPUT_PULLUP);
 
 	myStepper.push();
     myStepper.tbl(1); //blank_time(24);

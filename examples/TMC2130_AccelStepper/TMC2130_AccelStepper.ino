@@ -17,6 +17,7 @@ TMC2130Stepper driver = TMC2130Stepper(EN_PIN, DIR_PIN, STEP_PIN, CS_PIN);
 AccelStepper stepper = AccelStepper(stepper.DRIVER, STEP_PIN, DIR_PIN);
 
 void setup() {
+    SPI.begin();
     Serial.begin(9600);
     while(!Serial);
     Serial.println("Start...");

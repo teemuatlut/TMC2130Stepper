@@ -3,6 +3,7 @@
 //#define TMC2130DEBUG
 #include <Arduino.h>
 #include <stdint.h>
+#include <SPI.h>
 
 #define TMC2130STEPPER_VERSION 0x020300 // v2.3.0
 

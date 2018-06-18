@@ -26,7 +26,6 @@
 #define STEP_PIN  54  //           18        54  //step
 #define CS_PIN    40  //           17        64  //chip select
 
-#include <SPI.h>
 #include <TMC2130Stepper.h>
 #include <TMC2130Stepper_REGDEFS.h>
 TMC2130Stepper driver = TMC2130Stepper(CS_PIN);
@@ -51,6 +50,8 @@ void setup() {
     digitalWrite(DIR_PIN, LOW); //LOW or HIGH
     digitalWrite(STEP_PIN, LOW);
     digitalWrite(CS_PIN, HIGH);
+    SPI.begin();
+    pinMode(MISO, INPUT_PULLUP);
   }
 
   //set TMC2130 config

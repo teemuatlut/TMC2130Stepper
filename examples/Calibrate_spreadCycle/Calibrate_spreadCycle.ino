@@ -176,6 +176,8 @@ void initPins() {
     digitalWrite(DIR_PIN, LOW); //LOW or HIGH
     digitalWrite(STEP_PIN, LOW);
     digitalWrite(CS_PIN, HIGH);
+    SPI.begin();
+    pinMode(MISO, INPUT_PULLUP);
 }
 
 void loop() {}
