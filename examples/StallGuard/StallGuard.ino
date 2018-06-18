@@ -29,7 +29,7 @@
 #include <SPI.h>
 #include <TMC2130Stepper.h>
 #include <TMC2130Stepper_REGDEFS.h>
-TMC2130Stepper driver = TMC2130Stepper(EN_PIN, DIR_PIN, STEP_PIN, CS_PIN);
+TMC2130Stepper driver = TMC2130Stepper(CS_PIN);
 
 bool vsense;
 
@@ -43,7 +43,14 @@ void setup() {
     Serial.begin(250000); //init serial port and set baudrate
     while(!Serial); //wait for serial port to connect (needed for Leonardo only)
     Serial.println("\nStart...");
-    driver.begin();
+    pinMode(EN_PIN, OUTPUT);
+    pinMode(DIR_PIN, OUTPUT);
+    pinMode(STEP_PIN, OUTPUT);
+    pinMode(CS_PIN, OUTPUT);
+    digitalWrite(EN_PIN, HIGH); //deactivate driver (LOW active)
+    digitalWrite(DIR_PIN, LOW); //LOW or HIGH
+    digitalWrite(STEP_PIN, LOW);
+    digitalWrite(CS_PIN, HIGH);
   }
 
   //set TMC2130 config
