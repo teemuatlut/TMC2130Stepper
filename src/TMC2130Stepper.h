@@ -109,6 +109,8 @@ class TMC2130Stepper {
 		// VDCMIN
 		uint32_t VDCMIN();
 		void VDCMIN(							uint32_t input);
+		// MSCNT
+		uint16_t MSCNT();
 		// CHOPCONF
 		uint32_t CHOPCONF();
 		void CHOPCONF(						uint32_t value);
