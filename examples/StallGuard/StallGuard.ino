@@ -55,6 +55,11 @@ void setup() {
 
   //set TMC2130 config
   {
+    driver.push();
+    driver.toff(3);
+    driver.tbl(1);
+    driver.hysteresis_start(4);
+    driver.hysteresis_end(-2);
     driver.rms_current(600); // mA
     driver.microsteps(16);
     driver.diag1_stall(1);
