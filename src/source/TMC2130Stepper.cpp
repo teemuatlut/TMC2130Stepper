@@ -242,6 +242,19 @@ void TMC2130Stepper::VDCMIN(uint32_t input) {
 // R: MSCNT
 uint16_t TMC2130Stepper::MSCNT() { TMC_READ_REG_R(MSCNT); }
 ///////////////////////////////////////////////////////////////////////////////////////
+// R: MSCURACT
+uint32_t TMC2130Stepper::MSCURACT() { TMC_READ_REG_R(MSCURACT); }
+int16_t TMC2130Stepper::cur_a() {
+	int16_t value = (MSCURACT()&CUR_A_bm) >> CUR_A_bp;
+	if (value > 255) value -= 512;
+	return value;
+}
+int16_t TMC2130Stepper::cur_b() {
+	int16_t value = (MSCURACT()&CUR_B_bm) >> CUR_B_bp;
+	if (value > 255) value -= 512;
+	return value;
+}
+///////////////////////////////////////////////////////////////////////////////////////
 // R: PWM_SCALE
 uint8_t TMC2130Stepper::PWM_SCALE() { TMC_READ_REG_R(PWM_SCALE); }
 ///////////////////////////////////////////////////////////////////////////////////////
