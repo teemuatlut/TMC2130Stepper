@@ -200,8 +200,8 @@ void TMC2130Stepper::TPOWERDOWN(uint32_t input) {
 uint32_t TMC2130Stepper::TSTEP() { TMC_READ_REG_R(TSTEP); }
 ///////////////////////////////////////////////////////////////////////////////////////
 // W: TPWMTHRS
-uint32_t TMC2130Stepper::TPWMTHRS() { return TPWMTHRS_sr; }
-void TMC2130Stepper::TPWMTHRS(uint32_t input) {
+uint8_t TMC2130Stepper::TPWMTHRS() { return TPWMTHRS_sr; }
+void TMC2130Stepper::TPWMTHRS(uint8_t input) {
 	TPWMTHRS_sr = input;
 	TMC_WRITE_REG(TPWMTHRS);
 }

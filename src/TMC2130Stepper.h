@@ -87,8 +87,8 @@ class TMC2130Stepper {
 		bool 		dco();
 		uint8_t 	version();
 		// TPOWERDOWN
-		uint32_t TPOWERDOWN();
-		void TPOWERDOWN(					uint32_t input);
+		uint8_t TPOWERDOWN();
+		void TPOWERDOWN(					uint8_t input);
 		// TSTEP
 		uint32_t TSTEP();
 		// TPWMTHRS
@@ -121,7 +121,7 @@ class TMC2130Stepper {
 		void CHOPCONF(						uint32_t value);
 		void toff(								uint8_t B);
 		void hstrt(								uint8_t B);
-		void hend(								int8_t  B);
+		void hend(								uint8_t B);
 		void fd(									uint8_t B);
 		void disfdcc(							bool 		B);
 		void rndtf(								bool 		B);
@@ -137,7 +137,7 @@ class TMC2130Stepper {
 		void diss2g(							bool 		B);
 		uint8_t toff();
 		uint8_t hstrt();
-		int8_t  hend();
+		uint8_t hend();
 		uint8_t fd();
 		bool 	disfdcc();
 		bool 	rndtf();

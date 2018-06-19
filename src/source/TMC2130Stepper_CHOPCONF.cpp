@@ -10,7 +10,7 @@ void TMC2130Stepper::CHOPCONF(uint32_t input) {
 
 void TMC2130Stepper::toff(		uint8_t B )	{ TMC_MOD_REG(CHOPCONF, TOFF);		}
 void TMC2130Stepper::hstrt(		uint8_t B )	{ TMC_MOD_REG(CHOPCONF, HSTRT);		}
-void TMC2130Stepper::hend(		int8_t  B )	{ TMC_MOD_REG(CHOPCONF, HEND);		}
+void TMC2130Stepper::hend(		uint8_t B )	{ TMC_MOD_REG(CHOPCONF, HEND);		}
 void TMC2130Stepper::fd(		uint8_t B )	{ TMC_MOD_REG(CHOPCONF, FD);		}
 void TMC2130Stepper::disfdcc(	bool 	B )	{ TMC_MOD_REG(CHOPCONF, DISFDCC);	}
 void TMC2130Stepper::rndtf(		bool 	B )	{ TMC_MOD_REG(CHOPCONF, RNDTF);		}
@@ -27,7 +27,7 @@ void TMC2130Stepper::diss2g(	bool 	B )	{ TMC_MOD_REG(CHOPCONF, DISS2G);	}
 
 uint8_t TMC2130Stepper::toff()		{ TMC_GET_BYTE(CHOPCONF, TOFF);		}
 uint8_t TMC2130Stepper::hstrt()		{ TMC_GET_BYTE(CHOPCONF, HSTRT);	}
-int8_t  TMC2130Stepper::hend()		{ TMC_GET_BYTE(CHOPCONF, HEND);		}
+uint8_t TMC2130Stepper::hend()		{ TMC_GET_BYTE(CHOPCONF, HEND);		}
 uint8_t TMC2130Stepper::fd()		{ TMC_GET_BYTE(CHOPCONF, FD);		}
 bool 	TMC2130Stepper::disfdcc()	{ TMC_GET_BYTE(CHOPCONF, DISFDCC);	}
 bool 	TMC2130Stepper::rndtf()		{ TMC_GET_BYTE(CHOPCONF, RNDTF);	}
