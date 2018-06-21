@@ -190,8 +190,8 @@ bool 		TMC2130Stepper::dco()			{ TMC_GET_BYTE_R(IOIN, DCO);			}
 uint8_t 	TMC2130Stepper::version() 		{ TMC_GET_BYTE_R(IOIN, VERSION);		}
 ///////////////////////////////////////////////////////////////////////////////////////
 // W: TPOWERDOWN
-uint32_t TMC2130Stepper::TPOWERDOWN() { return TPOWERDOWN_sr; }
-void TMC2130Stepper::TPOWERDOWN(uint32_t input) {
+uint8_t TMC2130Stepper::TPOWERDOWN() { return TPOWERDOWN_sr; }
+void TMC2130Stepper::TPOWERDOWN(uint8_t input) {
 	TPOWERDOWN_sr = input;
 	TMC_WRITE_REG(TPOWERDOWN);
 }
@@ -200,8 +200,8 @@ void TMC2130Stepper::TPOWERDOWN(uint32_t input) {
 uint32_t TMC2130Stepper::TSTEP() { TMC_READ_REG_R(TSTEP); }
 ///////////////////////////////////////////////////////////////////////////////////////
 // W: TPWMTHRS
-uint8_t TMC2130Stepper::TPWMTHRS() { return TPWMTHRS_sr; }
-void TMC2130Stepper::TPWMTHRS(uint8_t input) {
+uint32_t TMC2130Stepper::TPWMTHRS() { return TPWMTHRS_sr; }
+void TMC2130Stepper::TPWMTHRS(uint32_t input) {
 	TPWMTHRS_sr = input;
 	TMC_WRITE_REG(TPWMTHRS);
 }
