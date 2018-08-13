@@ -111,31 +111,31 @@ class TMC2130Stepper {
 		uint32_t VDCMIN();
 		void VDCMIN(							uint32_t input);
 		// MSLUT0		0x60
-    uint32_t MSLUT0();
+    		uint32_t MSLUT0();
 		void MSLUT0(							uint32_t input);
 		// MSLUT1		0x61
-    uint32_t MSLUT1();
+    		uint32_t MSLUT1();
 		void MSLUT1(							uint32_t input);
 		// MSLUT2		0x62
-    uint32_t MSLUT2();
+   		 uint32_t MSLUT2();
 		void MSLUT2(							uint32_t input);
 		// MSLUT3		0x63
-    uint32_t MSLUT3();
+   		 uint32_t MSLUT3();
 		void MSLUT3(							uint32_t input);
 		// MSLUT4		0x64
-    uint32_t MSLUT4();
+   		 uint32_t MSLUT4();
 		void MSLUT4(							uint32_t input);
 		// MSLUT5		0x65
-    uint32_t MSLUT5();
+    		uint32_t MSLUT5();
 		void MSLUT5(							uint32_t input);
 		// MSLUT6		0x66
-    uint32_t MSLUT6();
+   		uint32_t MSLUT6();
 		void MSLUT6(							uint32_t input);
 		// MSLUT7		0x67
-    uint32_t MSLUT7();
+   		uint32_t MSLUT7();
 		void MSLUT7(							uint32_t input);
 		// MSLUTSEL		0x68
-    uint32_t MSLUTSEL();
+   		uint32_t MSLUTSEL();
 		void MSLUTSEL(							uint32_t input);
 		// MSLUTSTART	0x69
 		uint32_t MSLUTSTART();
@@ -313,19 +313,19 @@ class TMC2130Stepper {
 		inline void 	  lut_msutsel(	uint32_t value)	  __attribute__((always_inline)) {		        MSLUTSEL(value); 						}
 		inline uint32_t lut_mslut0()					          __attribute__((always_inline)) {     return MSLUT0(); 									}
 		inline void 	  lut_mslut0(	uint32_t value)	    __attribute__((always_inline)) {		        MSLUT0(value); 							}
-    inline uint32_t lut_mslut1()					          __attribute__((always_inline)) {     return MSLUT1(); 									}
+    		inline uint32_t lut_mslut1()					          __attribute__((always_inline)) {     return MSLUT1(); 									}
 		inline void 	  lut_mslut1(	uint32_t value)	    __attribute__((always_inline)) {		        MSLUT1(value); 							}
-    inline uint32_t lut_mslut2()					          __attribute__((always_inline)) {     return MSLUT2(); 									}
+    		inline uint32_t lut_mslut2()					          __attribute__((always_inline)) {     return MSLUT2(); 									}
 		inline void 	  lut_mslut2(	uint32_t value)	    __attribute__((always_inline)) {		        MSLUT2(value); 							}
-    inline uint32_t lut_mslut3()					          __attribute__((always_inline)) {     return MSLUT3(); 									}
+    		inline uint32_t lut_mslut3()					          __attribute__((always_inline)) {     return MSLUT3(); 									}
 		inline void 	  lut_mslut3(	uint32_t value)	    __attribute__((always_inline)) {		        MSLUT3(value); 							}
-    inline uint32_t lut_mslut4()					          __attribute__((always_inline)) {     return MSLUT4(); 									}
+    		inline uint32_t lut_mslut4()					          __attribute__((always_inline)) {     return MSLUT4(); 									}
 		inline void 	  lut_mslut4(	uint32_t value)	    __attribute__((always_inline)) {		        MSLUT4(value); 							}
-    inline uint32_t lut_mslut5()					          __attribute__((always_inline)) {     return MSLUT5(); 									}
+    		inline uint32_t lut_mslut5()					          __attribute__((always_inline)) {     return MSLUT5(); 									}
 		inline void 	  lut_mslut5(	uint32_t value)	    __attribute__((always_inline)) {		        MSLUT5(value); 							}
-    inline uint32_t lut_mslut6()					          __attribute__((always_inline)) {     return MSLUT6(); 									}
+    		inline uint32_t lut_mslut6()					          __attribute__((always_inline)) {     return MSLUT6(); 									}
 		inline void 	  lut_mslut6(	uint32_t value)	    __attribute__((always_inline)) {		        MSLUT6(value); 							}
-    inline uint32_t lut_mslut7()					          __attribute__((always_inline)) {     return MSLUT7(); 									}
+    		inline uint32_t lut_mslut7()					          __attribute__((always_inline)) {     return MSLUT7(); 									}
 		inline void 	  lut_mslut7(	uint32_t value)	    __attribute__((always_inline)) {		        MSLUT7(value); 							}
 		// RW: CHOPCONF
 		inline uint8_t 	off_time()												__attribute__((always_inline)) { return toff(); 										}
