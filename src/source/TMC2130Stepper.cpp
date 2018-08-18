@@ -98,7 +98,7 @@ void TMC2130Stepper::send2130(uint8_t addressByte, uint32_t *config) {
 	} else {
 		SPI.begin();
 		//SPI.beginTransaction(SPISettings(16000000/8, MSBFIRST, SPI_MODE3));
-		SPI.beginTransaction(SPISettings(16000000/4, MSBFIRST, SPI_MODE3)); //SpeedUp to /4 (Error @ /2)
+		SPI.beginTransaction(SPISettings(84000000/pow(2,1+4), MSBFIRST, SPI_MODE3)); //SpeedUp, Same Speedas SDCard
 		digitalWrite(_pinCS, LOW);
 
 		status_response = SPI.transfer(addressByte & 0xFF); // s =
