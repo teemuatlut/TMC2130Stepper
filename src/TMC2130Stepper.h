@@ -110,6 +110,29 @@ class TMC2130Stepper {
 		// VDCMIN
 		uint32_t VDCMIN();
 		void VDCMIN(							uint32_t input);
+		// MSLUT0..MSLUT7
+		uint32_t MSLUT0();
+		void MSLUT0(							uint32_t input);
+		uint32_t MSLUT1();
+		void MSLUT1(							uint32_t input);
+		 uint32_t MSLUT2();
+		void MSLUT2(							uint32_t input);
+		 uint32_t MSLUT3();
+		void MSLUT3(							uint32_t input);
+		 uint32_t MSLUT4();
+		void MSLUT4(							uint32_t input);
+		uint32_t MSLUT5();
+		void MSLUT5(							uint32_t input);
+		uint32_t MSLUT6();
+		void MSLUT6(							uint32_t input);
+		uint32_t MSLUT7();
+		void MSLUT7(							uint32_t input);
+		// MSLUTSEL
+		uint32_t MSLUTSEL();
+		void MSLUTSEL(						uint32_t input);
+		// MSLUTSTART
+		uint32_t MSLUTSTART();
+		void MSLUTSTART(					uint32_t input);
 		// MSCNT
 		uint16_t MSCNT();
 		// MSCURACT
@@ -276,6 +299,27 @@ class TMC2130Stepper {
 		// W
 		inline uint32_t DCstep_min_speed()								__attribute__((always_inline)) { return VDCMIN(); 									}
 		inline void 		DCstep_min_speed(	uint32_t value)	__attribute__((always_inline)) {				VDCMIN(value); 							}
+		// W
+		inline uint32_t lut_mslutstart()								__attribute__((always_inline)) {		 return MSLUTSTART(); 							}
+		inline void 		lut_mslutstart(	uint32_t value)	__attribute__((always_inline)) {						MSLUTSTART(value); 					}
+		inline uint32_t lut_msutsel()										__attribute__((always_inline)) {		 return MSLUTSEL(); 								}
+		inline void 		lut_msutsel(	uint32_t value)		__attribute__((always_inline)) {						MSLUTSEL(value); 						}
+		inline uint32_t ms_lookup_0()										__attribute__((always_inline)) {		 return MSLUT0(); 									}
+		inline void 		ms_lookup_0(	uint32_t value)		__attribute__((always_inline)) {						MSLUT0(value); 							}
+		inline uint32_t ms_lookup_1()										__attribute__((always_inline)) {		 return MSLUT1(); 									}
+		inline void 		ms_lookup_1(	uint32_t value)		__attribute__((always_inline)) {						MSLUT1(value); 							}
+		inline uint32_t ms_lookup_2()										__attribute__((always_inline)) {		 return MSLUT2(); 									}
+		inline void 		ms_lookup_2(	uint32_t value)		__attribute__((always_inline)) {						MSLUT2(value); 							}
+		inline uint32_t ms_lookup_3()										__attribute__((always_inline)) {		 return MSLUT3(); 									}
+		inline void 		ms_lookup_3(	uint32_t value)		__attribute__((always_inline)) {						MSLUT3(value); 							}
+		inline uint32_t ms_lookup_4()										__attribute__((always_inline)) {		 return MSLUT4(); 									}
+		inline void 		ms_lookup_4(	uint32_t value)		__attribute__((always_inline)) {						MSLUT4(value); 							}
+		inline uint32_t ms_lookup_5()										__attribute__((always_inline)) {		 return MSLUT5(); 									}
+		inline void 		ms_lookup_5(	uint32_t value)		__attribute__((always_inline)) {						MSLUT5(value); 							}
+		inline uint32_t ms_lookup_6()										__attribute__((always_inline)) {		 return MSLUT6(); 									}
+		inline void 		ms_lookup_6(	uint32_t value)		__attribute__((always_inline)) {						MSLUT6(value); 							}
+		inline uint32_t ms_lookup_7()										__attribute__((always_inline)) {		 return MSLUT7(); 									}
+		inline void 		ms_lookup_7(	uint32_t value)		__attribute__((always_inline)) {						MSLUT7(value); 							}
 		// RW: CHOPCONF
 		inline uint8_t 	off_time()												__attribute__((always_inline)) { return toff(); 										}
 //		inline uint8_t 	hysteresis_start()								__attribute__((always_inline)) { return hstrt(); 										}
@@ -387,15 +431,15 @@ class TMC2130Stepper {
 							THIGH_sr 			= 0x00000000UL,
 							XDIRECT_sr 		= 0x00000000UL,
 							VDCMIN_sr 		= 0x00000000UL,
-							MSLUT0_sr 		= 0x00000000UL,
-							MSLUT1_sr 		= 0x00000000UL,
-							MSLUT2_sr 		= 0x00000000UL,
-							MSLUT3_sr 		= 0x00000000UL,
-							MSLUT4_sr 		= 0x00000000UL,
-							MSLUT5_sr 		= 0x00000000UL,
-							MSLUT6_sr 		= 0x00000000UL,
-							MSLUT7_sr 		= 0x00000000UL,
-							MSLUTSEL_sr 	= 0x00000000UL,
+							MSLUT0_sr 		= 0xAAAAB554UL,
+							MSLUT1_sr 		= 0x4A9554AAUL,
+							MSLUT2_sr 		= 0x24492929UL,
+							MSLUT3_sr 		= 0x10104222UL,
+							MSLUT4_sr 		= 0xFBFFFFFFUL,
+							MSLUT5_sr 		= 0xB5BB777DUL,
+							MSLUT6_sr 		= 0x49295556UL,
+							MSLUT7_sr 		= 0x00404222UL,
+							MSLUTSEL_sr 	= 0xFFFF8056UL,
 							CHOPCONF_sr 	= 0x00000000UL,
 							COOLCONF_sr 	= 0x00000000UL,
 							DCCTRL_sr 		= 0x00000000UL,
@@ -404,7 +448,7 @@ class TMC2130Stepper {
 							TPOWERDOWN_sr = 0x00000000UL,
 							ENCM_CTRL_sr 	= 0x00000000UL,
 							GSTAT_sr			= 0x00000000UL,
-						  MSLUTSTART_sr = 0x00000000UL;
+							MSLUTSTART_sr = 0x00F70000UL;
 
 		void send2130(uint8_t addressByte, uint32_t *config);
 
