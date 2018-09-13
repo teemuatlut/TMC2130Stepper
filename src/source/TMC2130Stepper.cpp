@@ -3,25 +3,23 @@
 #include <SPI.h>
 #include "SW_SPI.h"
 
-TMC2130Stepper::TMC2130Stepper(uint16_t pinCS) : _pinCS(pinCS) { _started = false; }
+TMC2130Stepper::TMC2130Stepper(uint16_t pinCS) : _pinCS(pinCS), uses_sw_spi(false) {}
 
-TMC2130Stepper::TMC2130Stepper(uint16_t pinEN, uint16_t pinDIR, uint16_t pinStep, uint16_t pinCS) {
-	_started = false;
-	_pinEN = pinEN;
-	_pinSTEP = pinStep;
-	_pinCS = pinCS;
-	_pinDIR = pinDIR;
-}
+TMC2130Stepper::TMC2130Stepper(uint16_t pinEN, uint16_t pinDIR, uint16_t pinStep, uint16_t pinCS) :
+	_pinEN(pinEN),
+	_pinSTEP(pinStep),
+	_pinCS(pinCS),
+	_pinDIR(pinDIR),
+	uses_sw_spi(false)
+	{}
 
-TMC2130Stepper::TMC2130Stepper(uint16_t pinEN, uint16_t pinDIR, uint16_t pinStep, uint16_t pinCS, uint16_t pinMOSI, uint16_t pinMISO, uint16_t pinSCK) {
-	_started = false;
-	_pinEN = pinEN;
-	_pinSTEP = pinStep;
-	_pinCS = pinCS;
-	_pinDIR = pinDIR;
-	uses_sw_spi = true;
-	TMC_SW_SPI.setPins(pinMOSI, pinMISO, pinSCK);
-}
+TMC2130Stepper::TMC2130Stepper(uint16_t pinEN, uint16_t pinDIR, uint16_t pinStep, uint16_t pinCS, uint16_t pinMOSI, uint16_t pinMISO, uint16_t pinSCK) :
+	_pinEN(pinEN),
+	_pinSTEP(pinStep),
+	_pinCS(pinCS),
+	_pinDIR(pinDIR),
+	uses_sw_spi(true)
+	{ TMC_SW_SPI.setPins(pinMOSI, pinMISO, pinSCK); }
 
 void TMC2130Stepper::begin() {
 #ifdef TMC2130DEBUG

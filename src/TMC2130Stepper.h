@@ -414,13 +414,13 @@ class TMC2130Stepper {
 	private:
 		//const uint8_t WRITE     = 0b10000000;
 		//const uint8_t READ      = 0b00000000;
-		uint16_t _pinEN        = 0xFFFF;
-		uint16_t _pinSTEP      = 0xFFFF;
-		uint16_t _pinCS        = 0xFFFF;
+		const uint16_t _pinEN        = 0xFFFF;
+		const uint16_t _pinSTEP      = 0xFFFF;
+		const uint16_t _pinCS        = 0xFFFF;
 		//const int MOSI_PIN    = 12;
 		//const int MISO_PIN    = 11;
 		//const int SCK_PIN     = 13;
-		uint16_t _pinDIR       = 0xFFFF;
+		const uint16_t _pinDIR       = 0xFFFF;
 
 		// Shadow registers
 		uint32_t 	GCONF_sr 			= 0x00000000UL,
@@ -453,5 +453,5 @@ class TMC2130Stepper {
 		void send2130(uint8_t addressByte, uint32_t *config);
 
 		uint16_t val_mA           = 0;
-		bool uses_sw_spi = false;
+		const bool uses_sw_spi;
 };
