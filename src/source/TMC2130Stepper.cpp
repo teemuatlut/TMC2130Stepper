@@ -59,8 +59,6 @@ void TMC2130Stepper::begin() {
 
 	toff(8); //off_time(8);
 	tbl(1); //blank_time(24);
-
-	_started = true;
 }
 
 void TMC2130Stepper::send2130(uint8_t addressByte, uint32_t *config) {

@@ -397,19 +397,8 @@ class TMC2130Stepper {
 
 
 		float Rsense = 0.11;
-		bool _started;
 		uint8_t status_response;
 		bool flag_otpw = false;
-
-		// Stored settings for Marlin LCD
-		struct {
-			uint16_t I_rms = 0;
-			bool stealthChop_enabled = false;
-			uint8_t hybrid_thrs = 0;
-			int8_t homing_thrs = 0;
-			uint8_t cs_actual = 0;
-			uint16_t sg_result = 0;
-		} stored;
 
 	private:
 		//const uint8_t WRITE     = 0b10000000;
