@@ -42,7 +42,6 @@ void TMC2130Stepper::begin() {
 	}
 	if (_pinDIR != 0xFFFF) {
 		pinMode(_pinDIR, OUTPUT);
-		digitalWrite(_pinDIR, LOW); //LOW or HIGH
 	}
 	if (_pinSTEP != 0xFFFF) {
 		pinMode(_pinSTEP, OUTPUT);
