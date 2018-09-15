@@ -5,7 +5,7 @@
 #include <stdint.h>
 #include <SPI.h>
 
-#define TMC2130STEPPER_VERSION 0x020403 // v2.4.3
+#define TMC2130STEPPER_VERSION 0x020500 // v2.5.0
 
 class TMC2130Stepper {
 	public:
