@@ -236,7 +236,7 @@ void TMC2130Stepper::XDIRECT(uint32_t input) {
 void TMC2130Stepper::coil_A(int16_t B) 	{ TMC_MOD_REG(XDIRECT, COIL_A); 	}
 void TMC2130Stepper::coil_B(int16_t B) 	{ TMC_MOD_REG(XDIRECT, COIL_B); 	}
 int16_t TMC2130Stepper::coil_A() 		{ TMC_GET_BYTE_R(XDIRECT, COIL_A); 	}
-int16_t TMC2130Stepper::coil_B() 		{ TMC_GET_BYTE_R(XDIRECT, COIL_A); 	}
+int16_t TMC2130Stepper::coil_B() 		{ TMC_GET_BYTE_R(XDIRECT, COIL_B); 	}
 ///////////////////////////////////////////////////////////////////////////////////////
 // W: VDCMIN
 uint32_t TMC2130Stepper::VDCMIN() { return VDCMIN_sr; }
