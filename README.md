@@ -1,13 +1,7 @@
+This library has been superseded by the newer [TMCStepper library](https://github.com/teemuatlut/TMCStepper) which supports many more of the Trinamic stepper drivers and more MCU architectures.
+
 # TMC2130Stepper
 Arduino library for Trinamic TMC2130 Stepper driver
-
-## TODO:
-- [ ] Comments
-- [x] Documentation
-- [x] Examples
-- [x] Easy setup for NEMA17 with default settings
-- [x] Convert functions returning 0/1 to boolean
-- [ ] Fritzing image of the wiring for an example setup
 
 ## Installation:
 
